@@ -38,18 +38,11 @@ Filtering the data to consider racial/hate tweets in the U.S.
 ### Data storage structure
 
 State | Count | Score -> Timeblock (days) -> Tweets
-
 #### Fields
-+ State
-+ City
-+ Score
-+ Username
-+ Tweet MSG ID
-+ Timestamp
 
-| State        | City     | Username      | Tweet MSG ID  | Timestamp  |
-| :----------: | :------: | :-----------: | :-----------: | :--------: |
-| Colorado     | Denver   | Person        | somekeyID     | 2017-06-01 |
+| State        | City     | Score | Username      | Tweet MSG ID  | Timestamp  |
+| :----------: | :------: | :---: | :-----------: | :-----------: | :--------: |
+| Colorado     | Denver   | 7     | Person        | somekeyID     | 2017-06-01 |
 
 ### Questions
 + Does there need to be a pre-processor for filtering?
