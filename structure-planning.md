@@ -20,6 +20,7 @@ Twitter <- Queuing system -> DB <-> Elastic search <- Web interface <- Client
  * PHP
  * JS
  * Elm
+ * Google Maps API
 
 ## Twitter API filtering
 Filtering the data to consider racial/hate tweets in the U.S.
