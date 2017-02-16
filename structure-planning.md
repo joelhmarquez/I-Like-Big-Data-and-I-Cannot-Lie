@@ -31,9 +31,14 @@ Filtering the data to consider racial/hate tweets in the U.S.
 ### Flow of filtering data
 1. Geolocation
   * Filter by country first
-  * Filter by country
-2. Body
-3. Insert to DB
+  * Filter by state
+2. Filter by tweet body
+3. Queuing system
+4. Insert to DB
+5. Send through elastic search
+6. Google charts
+7. Web interface
+8. Cycle 5-7
 
 ### Data storage structure
 
