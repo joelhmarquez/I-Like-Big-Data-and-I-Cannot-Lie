@@ -1,5 +1,7 @@
 #Structure Planning
 
+Document to outline the stack structure as well as the storage structure
+
 ## Stack structure
 Twitter <- Queuing system -> DB <-> Elastic search <- Web interface <- Client
 
@@ -32,6 +34,22 @@ Filtering the data to consider racial/hate tweets in the U.S.
   * Filter by country
 2. Body
 3. Insert to DB
+
+### Data storage structure
+
+State | Count | Score -> Timeblock (days) -> Tweets
+
+#### Fields
++ State
++ City
++ Score
++ Username
++ Tweet MSG ID
++ Timestamp
+
+| State        | City     | Username      | Tweet MSG ID  | Timestamp  |
+| :----------: | :------: | :-----------: | :-----------: | :--------: |
+| Colorado     | Denver   | Person        | somekeyID     | 2017-06-01 |
 
 ### Questions
 + Does there need to be a pre-processor for filtering?
