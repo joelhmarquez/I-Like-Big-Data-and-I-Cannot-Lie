@@ -42,7 +42,7 @@ Filtering the data to consider racial/hate tweets in the U.S.
 
 ### Data storage structure
 
-State | Count | Score -> Timeblock (days) -> Tweets
+State | Count | Score -> Timeblock (days || time from epoch) -> Tweets
 #### Fields
 
 | State        | City     | Score | Username      | Tweet MSG ID  | Timestamp  |
