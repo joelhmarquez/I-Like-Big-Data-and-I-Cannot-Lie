@@ -9,7 +9,7 @@ Twitter <- Queuing system -> DB <-> Elastic search <- Web interface <- Client
 + Queuing system
  * Storm
 + DB
- * Cassandra
+ * Cassandra -> NoSQL
  * Dynamo?
 + Elastic search
 + Web interface
