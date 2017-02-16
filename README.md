@@ -5,6 +5,6 @@ Big data project for ATLS 5214.
 ##Teammates
 * Amber Womack (Back-end)
 * Erik Eakins (Sentiment Analysis)
-* Michael Swisher (Support)
+* Michael Swisher (API / Elastic search / Doodle)
 * Christina Nguyen (Front-end)
 * Joel Marquez (Queuing system)
