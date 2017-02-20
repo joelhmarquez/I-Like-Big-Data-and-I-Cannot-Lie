@@ -41,7 +41,11 @@ Filtering the data to consider racial/hate tweets in the U.S.
 7. Web interface
 8. Cycle 5-7
 
+#### Filtering and storing API
+We will be doing sentiment analysis to get a score for each tweet, and using the score to update counters of how "vitriolic" each state's tweets are. We also need to store all geo-tagged tweets to keep track of the total number of tweets (so we can get a score over the total tweet count, e.g. a percentage).
+
 ### Data storage structure
+Storing data as tweets filtered by location, and score. 
 
 State | Count | Score -> Timeblock (days || time from epoch) -> Tweets
 #### Fields
