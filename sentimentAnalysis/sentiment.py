@@ -1,5 +1,6 @@
 from textblob import TextBlob
 from textblob.sentiments import NaiveBayesAnalyzer
+import math
 
 #For this to work, it is necessary to use the following command:
 #pip install textblob
@@ -7,27 +8,39 @@ from textblob.sentiments import NaiveBayesAnalyzer
 #The score will be greater than 0 because the statement is positive
 #even though the content is not.
 
-def checkForHateWords(tweet):
-    hateWords = set(['race','racism','discrimination','vandalism',
-        'hate','slur','abuse','genocide','thug','thuggery','bigotry',
-        'violence','sex','sexual', 'assault', 'bullying', 'shooting',
-        'threat', 'threatening', 'kill', 'terror', 'terrorism', 'crime',
-        'criminal', 'bashing', 'shaming', 'slut', 'abusive', 'nigga',
-        'fuck', 'frick', 'nigger','chinks',"fishface"
-    ])
+hateWords = set()
 
+def normalizeText(tweet):
+    tempString.deepcopy(tweet)
+    # Do tolkenization and normalization of tweet
+    return tempString
+
+def checkForHateWords(tweet):
+    #normalized = normalizeText(tweet)
     for word in tweet.split():
         if word.lower() in hateWords:
             sentimentScore = TextBlob(tweet)
-            return (True,sentimentScore.sentiment.polarity)
+            return (True,abs(sentimentScore.sentiment.polarity))
     return (False,0)
 
+def loadHateWords():
+    hateWords = set()
+    hateFile = open("hate.txt", "r")
+    for word in hateFile:
+        hateWords.add(word.rstrip())
+    print(hateWords)
+    hateFile.close()
 
+
+# The main function will need to be removed when
+# integrating with Storm's java program.
 def main():
+    loadHateWords()
     testSentiment = open("test.txt","r")
     for line in testSentiment:
         result,score = checkForHateWords(line)
         if result:
-            print("{} score:{}".format(line,score))
+            print("{} score:{}".format(line.rstrip(),score))
+    testSentiment.close()
 
 main()
