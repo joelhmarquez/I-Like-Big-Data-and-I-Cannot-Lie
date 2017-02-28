@@ -11,7 +11,7 @@ public class TwitterStreamTopology {
         String consumerSecret = "";
         String accessToken = "";
         String accessTokenSecret = "";
-        String[] keyWords = {"Big Data"};
+        String[] keyWords = {"hate"};
 
         TopologyBuilder builder = new TopologyBuilder();
 
