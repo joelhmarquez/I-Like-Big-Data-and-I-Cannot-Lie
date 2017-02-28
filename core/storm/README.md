@@ -12,8 +12,7 @@ To successfully compile and run our storm project do the following steps:
    brew install storm
    ```
 
-3. From the storm directory, run
+3. From the storm directory, run (Will compile, package, and run our Storm project)
    ```
    ./start.sh
    ```
-to run the shell script which will compile, and run our storm program
