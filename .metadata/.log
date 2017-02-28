@@ -1074,3 +1074,9 @@ java.io.FileNotFoundException: /Users/joelhmarquez/Documents/CU/spring17/atls-42
 	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:236)
 	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:47)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-02-28 10:02:13.493
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-02-28 10:02:13.509
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

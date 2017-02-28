@@ -1,6 +1,11 @@
 package com.ilbdaicnl.storm;
 
 import org.apache.storm.utils.Utils;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.topology.TopologyBuilder;
@@ -12,7 +17,30 @@ public class TwitterStreamTopology {
         String accessToken = "";
         String accessTokenSecret = "";
         String[] keyWords = {"hate"};
-
+        
+        /* Reading in oauth values */
+        BufferedReader br = null;
+        try {
+        	br = new BufferedReader(new FileReader(".env"));
+        	
+        	consumerKey = br.readLine();
+        	consumerSecret = br.readLine();
+        	accessToken = br.readLine();
+        	accessTokenSecret = br.readLine();
+        } catch (IOException ioe) {
+        	ioe.printStackTrace();
+        } finally {
+        	try {
+        		if(br != null){
+            		br.close();
+            	}
+        	} catch (IOException ioe){
+        		System.out.println("Error in closing the BufferedReader");
+        	}
+        	
+        }
+        
+        
         TopologyBuilder builder = new TopologyBuilder();
 
         builder.setSpout("twitter", new TwitterStreamSpout(consumerKey, consumerSecret,
