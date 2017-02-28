@@ -6,7 +6,7 @@ To successfully compile and run our storm project do the following steps:
    [Maven](http://maven.apache.org/install.html)
 
 2. Download Storm and add it to your path
-   [Storm](http://storm.apache.org/downloads.html)
+   [Storm](http://storm.apache.org/downloads.html) <br>
    *Mac users with homebrew can run:*
    ```
    brew install storm
