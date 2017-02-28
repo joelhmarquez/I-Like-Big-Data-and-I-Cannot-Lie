@@ -6,6 +6,8 @@
 #-----------------------------------------------------------------------
 
 from twitter import *
+import json
+import ../sentimentAnalysis/sentiment.py
 
 #-----------------------------------------------------------------------
 # load our API credentials 
@@ -25,7 +27,7 @@ twitter = Twitter(
 # Twitter API docs:
 # https://dev.twitter.com/rest/reference/get/search/tweets
 #-----------------------------------------------------------------------
-query = twitter.search.tweets(q = "lazy dog")
+query = twitter.search.tweets(q = "nigger", lang="en")
 
 #-----------------------------------------------------------------------
 # How long did this query take?
@@ -35,7 +37,13 @@ print "Search complete (%.3f seconds)" % (query["search_metadata"]["completed_in
 #-----------------------------------------------------------------------
 # Loop through each of the results, and print its content.
 #-----------------------------------------------------------------------
+file = open("tweets.txt", "w")
+#json.dump(query,file)
 for result in query["statuses"]:
-	#print "(%s) @%s %s" % (result["created_at"], result["user"]["screen_name"], result["text"])
-	print "{}\n".format(result)
+	json.dump(result,file)
+	file.write("\n\n")
+	# print "{}\n".format(result)
 	print "Created at: {}  User Screen Name: {}  Text: {} \n\n".format(result["created_at"], result["user"]["screen_name"], result["text"].encode("ascii", "ignore"))
+	
+
+file.close()
