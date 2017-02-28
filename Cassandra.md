@@ -19,16 +19,19 @@ Document to provide helpful hints, links, structure of Cassandra
 + Install Java or $java –version
 + echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 + echo "deb-src http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-+ gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
-+ gpg --export --armor F758CE318D77295D | sudo apt-key add –
-+ gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
-+ gpg --export --armor 2B5C1B00 | sudo apt-key add –
-+ gpg --keyserver pgp.mit.edu --recv-keys 0353B12C
-+ gpg --export --armor 0353B12C | sudo apt-key add –
-+ sudo apt-get update
-+ sudo apt-get install Cassandra
-+ sudo service cassandra status
-+ sudo nodetool status
++ In order to avoid package signature warnings during package updates 
+ * gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
+ * gpg --export --armor F758CE318D77295D | sudo apt-key add –
+ * gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
+ * gpg --export --armor 2B5C1B00 | sudo apt-key add –
+ * gpg --keyserver pgp.mit.edu --recv-keys 0353B12C
+ * gpg --export --armor 0353B12C | sudo apt-key add –
++ Update the database package and complete installation
+ * sudo apt-get update
+ * sudo apt-get install Cassandra
++ Checking if it worked
+ * sudo service cassandra status
+ * sudo nodetool status
 
 ## Running Cassandra (cqlsh) :
 + https://gist.github.com/Micka33/89897e1490240a56c036
