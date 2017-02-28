@@ -5,6 +5,7 @@ Document to provide helpful hints, links, structure of Cassandra
 ## Helpful Sites for resource information
 + Basic Info:
  * http://cassandra.apache.org/doc/latest/getting_started/index.html 
+ * https://www.tutorialspoint.com/cassandra/cassandra_installation.htm
 + Installing: 
  * https://www.digitalocean.com/community/tutorials/how-to-install-cassandra-and-run-a-single-node-cluster-on-ubuntu-14-04
 + For GUI implementation: A resource: 
