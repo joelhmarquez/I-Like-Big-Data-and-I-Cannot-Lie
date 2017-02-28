@@ -16,7 +16,7 @@ public class TwitterStreamTopology {
         String consumerSecret = "";
         String accessToken = "";
         String accessTokenSecret = "";
-        String[] keyWords = {"hate"};
+        String[] keyWords = {""};
         
         /* Reading in oauth values */
         BufferedReader br = null;

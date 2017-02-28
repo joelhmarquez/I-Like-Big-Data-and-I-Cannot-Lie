@@ -100,7 +100,9 @@ public class TwitterStreamSpout extends BaseRichSpout {
 
         else {
 
-            FilterQuery query = new FilterQuery().track(keyWords);
+            FilterQuery query = new FilterQuery().track(keyWords).locations(new double[][]{new double[]{-126.562500,30.448674},
+                new double[]{-61.171875,44.087585
+                }});
             twitterStream.filter(query);
         }
 

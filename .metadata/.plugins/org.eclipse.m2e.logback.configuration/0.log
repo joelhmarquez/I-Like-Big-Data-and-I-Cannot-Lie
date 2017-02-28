@@ -1094,3 +1094,71 @@ Caused by: java.io.FileNotFoundException: /Users/joelhmarquez/Documents/CU/sprin
 2017-02-28 10:24:23,667 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
 2017-02-28 10:24:23,668 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2017-02-28 10:24:23,668 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 10:54:48,934 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:54:48,934 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 10:54:48,935 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:54:48,935 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 10:59:47,107 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:59:47,107 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 10:59:47,108 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:59:47,108 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 10:59:50,446 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:59:50,446 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 10:59:50,447 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 10:59:50,447 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:02:08,332 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:02:08,332 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:02:08,333 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:02:08,333 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:06:42,800 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:06:42,800 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:06:42,801 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:06:42,801 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:07:03,323 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:03,323 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:07:03,325 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:03,325 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:07:29,029 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:29,029 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:07:29,030 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:29,030 [Worker-69] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:07:54,940 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:54,940 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:07:54,941 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:07:54,941 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:09:33,870 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:09:33,870 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:09:33,871 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:09:33,871 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:12:44,300 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:12:44,301 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:12:44,301 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:12:44,302 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:13:53,254 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:13:53,254 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:13:53,255 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:13:53,255 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:13:55,352 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:13:55,352 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:13:55,353 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:13:55,353 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:14:23,717 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:23,717 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:14:23,719 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:23,719 [Worker-73] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:14:24,732 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:24,733 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:14:24,734 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:24,734 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:14:59,640 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:59,641 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:14:59,643 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:14:59,643 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:15:50,171 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:15:50,171 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:15:50,172 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:15:50,172 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
+2017-02-28 11:17:13,373 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:17:13,373 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/main/resources
+2017-02-28 11:17:13,374 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-02-28 11:17:13,374 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/joelhmarquez/Documents/CU/spring17/atls-4214/group/I-Like-Big-Data-and-I-Cannot-Lie/core/storm/src/test/resources
