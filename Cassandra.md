@@ -12,7 +12,9 @@ Document to provide helpful hints, links, structure of Cassandra
  * https://github.com/sebgiroux/Cassandra-Cluster-Admin 
 + Setting up the client driver from a simple connect and query program: 
  * http://docs.datastax.com/en/developer/java-driver/3.1/manual/
-
++ Datastax Java Driver for Apache Cassandra
+ * https://github.com/datastax/java-driver
+ 
 ## Download/Install:
 + Install Java or $java –version
 + echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
