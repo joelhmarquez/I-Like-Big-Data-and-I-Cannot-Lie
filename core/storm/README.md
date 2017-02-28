@@ -13,7 +13,7 @@ To successfully compile and run our storm project do the following steps:
    ```
 
 3. From the storm directory, run
-```
-./start.sh
-```
+   ```
+   ./start.sh
+   ```
 to run the shell script which will compile, and run our storm program
