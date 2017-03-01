@@ -1,10 +1,12 @@
 ﻿#I like big data and I cannot lie
 
-Big data project for ATLS 5214. 
+Big data project for ATLS 5214.
+
+Creating a heat map of the United States that will indicate the level of hate/racisim/bullying/threats in Twitter tweets by state
 
 ##Teammates
-* Amber Womack (Back-end)
-* Erik Eakins (Sentiment Analysis)
-* Michael Swisher (API / Elastic search / Doodle)
-* Christina Nguyen (Front-end)
-* Joel Marquez (Queuing system)
+* Amber Womack
+* Erik Eakins
+* Michael Swisher
+* Christina Nguyen
+* Joel Marquez
