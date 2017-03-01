@@ -14,6 +14,8 @@ Document to provide helpful hints, links, structure of Cassandra
  * http://docs.datastax.com/en/developer/java-driver/3.1/manual/
 + Datastax Java Driver for Apache Cassandra
  * https://github.com/datastax/java-driver
+ * The client Cassandra driver contains the logic for connecting to cassandra and running queries in a fast and efficient manner 
+ * For more resources on understanding Cassandra drivers: https://www.slideshare.net/planetcassandra/client-drivers-and-cassandra-the-right-way
  
 ## Download/Install:
 + Install Java or $java –version
