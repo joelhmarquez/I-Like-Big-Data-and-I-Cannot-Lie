@@ -1,4 +1,5 @@
 
-¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(òı”ûÿÿÿÿ8Â÷‹¨+
 X
-squid:S106";Replace this usage of System.out or System.err by a logger.(ÌØô›8Â÷‹¨+
+squid:S106";Replace this usage of System.out or System.err by a logger.(ÌØô›8‰ÿ ¯¨+
+¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(òı”ûÿÿÿÿ8Â÷‹¨+
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÑÀ›•ùÿÿÿÿ8’ŠÃ¯¨+
