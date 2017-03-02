@@ -7,7 +7,7 @@
 + Openjdk 8
  * Installation instructions
  * Required packages: openjdk-8-jdk openjdk-8-jre openjdk-8-headless
-## Installation
+### Installation
 + Follow Debian instructions to install from the command line http://cassandra.apache.org/download/
 + Do additional setup if needed by modifying values in /etc/cassandra/cassandra.yaml
  * http://cassandra.apache.org/doc/latest/getting_started/configuring.html has info about what is in the cassandra.yaml
