@@ -1,28 +1,28 @@
 #Cassandra Database Administration
 + Written by Micheal Swisher
 
-### Preface 
+## Preface 
 + Requirements:
  * Debian based host operating system (Ubuntu 14.04+, Debian 7+)
 + Openjdk 8
  * Installation instructions
  * Required packages: openjdk-8-jdk openjdk-8-jre openjdk-8-headless
-##Installation
+## Installation
 + Follow Debian instructions to install from the command line http://cassandra.apache.org/download/
 + Do additional setup if needed by modifying values in /etc/cassandra/cassandra.yaml
  * http://cassandra.apache.org/doc/latest/getting_started/configuring.html has info about what is in the cassandra.yaml
  * Example of how to change cluster name here
-##Interaction
+## Interaction
 + Get sysinfo about db
  * user:~$ nodetool status
 + Interactive shell using CQL
  * user:~$ cqlsh
 + Useful commands
  * Describe, show, select * from <table>
-##Java
+## Java
 + Use DataStax Drivers
  * They exist on GitHub
-##Miscellaneous
+## Miscellaneous
 + Key terms
  * Keyspace is analogous to SQL Database
  * Column Family (also table in Cassandra) is a table
@@ -47,11 +47,11 @@
  * Use “nodetool repair”
  * Login using “cqlsh -u cassandra -p cassandra”
  * Create new admin
- * 1. CREATE ROLE <new_super_user> WITH PASSWORD = '<some_secure_password>' AND SUPERUSER = true AND LOGIN = true;
+ ** CREATE ROLE <new_super_user> WITH PASSWORD = '<some_secure_password>' AND SUPERUSER = true AND LOGIN = true;
  * Logout then log back in with new admin
  * Disable old cassandra admin
  * 1. ALTER ROLE cassandra WITH PASSWORD='SomeNonsenseThatNoOneWillThinkOf' AND SUPERUSER=false;
-##References
+## References
 + https://www.tutorialspoint.com/cassandra/cassandra_create_keyspace.htm
 + https://blog.evanweaver.com/2009/07/06/up-and-running-with-cassandra/
 + http://schabby.de/cassandra-getting-started/
