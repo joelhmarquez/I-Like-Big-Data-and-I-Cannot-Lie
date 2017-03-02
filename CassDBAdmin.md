@@ -8,7 +8,7 @@
  * Installation instructions
  * Required packages: openjdk-8-jdk openjdk-8-jre openjdk-8-headless
  
-### Installation
+## Installation
 + Follow Debian instructions to install from the command line http://cassandra.apache.org/download/
 + Do additional setup if needed by modifying values in /etc/cassandra/cassandra.yaml
  * http://cassandra.apache.org/doc/latest/getting_started/configuring.html has info about what is in the cassandra.yaml
@@ -21,9 +21,11 @@
  * user:~$ cqlsh
 + Useful commands
  * Describe, show, select * from <table>
+ 
 ## Java
 + Use DataStax Drivers
  * They exist on GitHub
+ 
 ## Miscellaneous
 + Key terms
  * Keyspace is analogous to SQL Database
@@ -53,6 +55,7 @@
  * Logout then log back in with new admin
  * Disable old cassandra admin
  * 1. ALTER ROLE cassandra WITH PASSWORD='SomeNonsenseThatNoOneWillThinkOf' AND SUPERUSER=false;
+ 
 ## References
 + https://www.tutorialspoint.com/cassandra/cassandra_create_keyspace.htm
 + https://blog.evanweaver.com/2009/07/06/up-and-running-with-cassandra/
