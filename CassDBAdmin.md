@@ -1,4 +1,4 @@
-#Cassandra Database Administration
+# Cassandra Database Administration
 + Written by Micheal Swisher
 
 ## Preface 
@@ -13,16 +13,20 @@
 + Do additional setup if needed by modifying values in /etc/cassandra/cassandra.yaml
  * http://cassandra.apache.org/doc/latest/getting_started/configuring.html has info about what is in the cassandra.yaml
  * Example of how to change cluster name here
- 
++ Pom.xml
+ * Maven dependencies
+ * https://maven.apache.org/pom.html
+ * https://www.youtube.com/watch?v=lO_bJTjCdhM
+
 ## Interaction
 + Get sysinfo about db
  * user:~$ nodetool status
 + Interactive shell using CQL
  * user:~$ cqlsh
 + Useful commands
- * Describe, show, select * from <table>
+ * Describe, show, select * from 'table'
  
-## Java
+## Interaction
 + Use DataStax Drivers
  * They exist on GitHub
  
@@ -38,11 +42,11 @@
  * Switch to keyspace
  * 1. USE cycling;
  * Add table to keyspace
- * 1. INSERT INTO cycling.cyclist_category JSON '{  "category" : "GC",   "points" : 780,   "id" : "829aa84a-4bba-411f-a4fb-38167a987cda",  "lastname" : "SUTHERLAND" }';
+ * 1. INSERT INTO cycling.cyclist_category JSON '{  "category": "GC", "points" : 780, "id" : "829aa84a-4bba-411f-a4fb-38167a987cda", "lastname" : "SUTHERLAND" }';
  * Visualize keyspace and tables
- * 1. Describe keyspaces      <<< prints all keyspaces
- * 2. Describe cycling            <<< prints schema
- * 3. Dump tables: Select * from <table name>
+ * 1. Describe keyspaces  : prints all keyspaces
+ * 2. Describe cycling    : prints schema
+ * 3. Dump tables: Select * from "table name"
 + Securing Cassandra
  * Add replication for single node
  * 1. ALTER KEYSPACE "system_auth" WITH REPLICATION =  { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
@@ -51,12 +55,13 @@
  * Use “nodetool repair”
  * Login using “cqlsh -u cassandra -p cassandra”
  * Create new admin
- ** CREATE ROLE <new_super_user> WITH PASSWORD = '<some_secure_password>' AND SUPERUSER = true AND LOGIN = true;
+ * CREATE ROLE "new_super_user" WITH PASSWORD = 'some_secure_password' AND SUPERUSER = true AND LOGIN = true;
  * Logout then log back in with new admin
  * Disable old cassandra admin
  * 1. ALTER ROLE cassandra WITH PASSWORD='SomeNonsenseThatNoOneWillThinkOf' AND SUPERUSER=false;
  
 ## References
+
 + https://www.tutorialspoint.com/cassandra/cassandra_create_keyspace.htm
 + https://blog.evanweaver.com/2009/07/06/up-and-running-with-cassandra/
 + http://schabby.de/cassandra-getting-started/
