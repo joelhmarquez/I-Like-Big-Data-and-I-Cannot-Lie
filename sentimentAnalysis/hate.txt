@@ -24,17 +24,17 @@ race
 racism
 discrimination
 vandalism
+vandalize
 hate
 slur
 abuse
 genocide
 thuggery
-bigotry
+violent
 violence
 sex
 sexual
 assault
-bullying
 shooting
 threat
 threatening
@@ -44,7 +44,8 @@ terrorism
 crime
 criminal
 bashing
-shaming
+shame
+ashamed
 abusive
 ratchet
 chink
@@ -53,3 +54,4 @@ gook
 big-nose
 fucker
 SOB
+carpetbagger
