@@ -41,12 +41,14 @@
  * 1. CREATE KEYSPACE IF NOT EXISTS cycling WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 3 };
  * Switch to keyspace
  * 1. USE cycling;
+ * Create table:
+ * CREATE TABLE cyclist_category (category varchar, points int, id varchar, lastname varchar, PRIMARY KEY (id));
  * Add table to keyspace
  * 1. INSERT INTO cycling.cyclist_category JSON '{  "category": "GC", "points" : 780, "id" : "829aa84a-4bba-411f-a4fb-38167a987cda", "lastname" : "SUTHERLAND" }';
  * Visualize keyspace and tables
  * 1. Describe keyspaces  : prints all keyspaces
  * 2. Describe cycling    : prints schema
- * 3. Dump tables: Select * from "table name"
+ * 3. Dump tables: Select * from "table name" 
 + Securing Cassandra
  * Add replication for single node
  * 1. ALTER KEYSPACE "system_auth" WITH REPLICATION =  { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
@@ -70,6 +72,7 @@
 + http://docs.datastax.com/en/cassandra/2.1/cassandra/security/secure_config_native_authorize_t.html
 + http://docs.datastax.com/en/cql/3.1/cql/cql_using/update_ks_rf_t.html
 + https://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureConfigNativeAuth.html
++ http://docs.datastax.com/en/cql/3.1/cql/cql_using/create_table_t.html
 
 
 
