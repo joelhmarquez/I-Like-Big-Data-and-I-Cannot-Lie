@@ -55,4 +55,4 @@ State | Count | Score -> Timeblock (days || time from epoch) -> Tweets
 | Colorado     | Denver   | 7     | Person        | somekeyID     | 2017-06-01 |
 
 ### Questions
-+ Does there need to be a pre-processor for filtering?
++ Does there need to be a pre-processor for filtering? No, Storm will take care of the filtering for us. 
