@@ -1,15 +1,16 @@
 
-¤squid:S1186@"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψό’£ϋÿÿÿÿ8†βα‹¨+
-¤squid:S1186L"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(α§¤”ϋÿÿÿÿ8†βα‹¨+
-¤squid:S1186H"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ξ¥¥ψÿÿÿÿ8†βα‹¨+
-squid:S1186D"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ην–λ8†βα‹¨+
-squid:S11887"\Reduce this anonymous class number of lines from 31 to at most 20, or make it a named class.(ƒψ‡ÿÿÿÿÿ8†βα‹¨+
-Usquid:S1135Q"2Complete the task associated to this TODO comment.(» ζÿÿÿÿÿ8†βα‹¨+
-Usquid:S1135."2Complete the task associated to this TODO comment.(ƒ® ϊÿÿÿÿ8…Ϋ‹¨+
-}squid:S00116"YRename this field "_twitterStream" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΩΒΪϊÿÿÿÿ8·ΤΪ‹¨+
-¥squid:S1186‡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«²¤ψÿÿÿÿ8†βα‹¨+
-¥squid:S1186‹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¦ωÿÿÿÿ8†βα‹¨+
+¤squid:S1186M"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(α§¤”ϋÿÿÿÿ8†βα‹¨+
 \
-squid:S899<":Do something with the "boolean" value returned by "offer".(§—ϊÿÿÿÿ8†βα‹¨+
-±squid:S22934"Replace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.)(ί­ίϋÿÿÿÿ8†βα‹¨+
-tsquid:S00116"URename this field "_collector" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΒρΤ8·ΤΪ‹¨+
+squid:S899=":Do something with the "boolean" value returned by "offer".(§—ϊÿÿÿÿ8†βα‹¨+
+ksquid:UselessImportCheck";Remove this unused import 'twitter4j.TwitterObjectFactory'.(ω΅Ρƒύÿÿÿÿ8¨ΊΙ±ª+
+¥squid:S1186‹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¦ωÿÿÿÿ8†βα‹¨+
+±squid:S22935"Replace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.)(ί­ίϋÿÿÿÿ8†βα‹¨+
+squid:S11888"\Reduce this anonymous class number of lines from 31 to at most 20, or make it a named class.(ƒψ‡ÿÿÿÿÿ8†βα‹¨+
+Usquid:S1135/"2Complete the task associated to this TODO comment.(ƒ® ϊÿÿÿÿ8…Ϋ‹¨+
+}squid:S00116"YRename this field "_twitterStream" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΩΒΪϊÿÿÿÿ8·ΤΪ‹¨+
+¤squid:S1186A"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ψό’£ϋÿÿÿÿ8†βα‹¨+
+¤squid:S1186I"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ξ¥¥ψÿÿÿÿ8†βα‹¨+
+Usquid:S1135R"2Complete the task associated to this TODO comment.(» ζÿÿÿÿÿ8†βα‹¨+
+squid:S1186E"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ην–λ8†βα‹¨+
+¥squid:S1186‡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«²¤ψÿÿÿÿ8†βα‹¨+
+tsquid:S00116"URename this field "_collector" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΒρΤ8·ΤΪ‹¨+

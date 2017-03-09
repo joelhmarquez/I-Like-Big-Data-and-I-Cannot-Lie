@@ -8,6 +8,7 @@ import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
+import twitter4j.TwitterObjectFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 import twitter4j.auth.AccessToken;
@@ -115,7 +116,6 @@ public class TwitterStreamSpout extends BaseRichSpout {
             Utils.sleep(50);
         } else {
             _collector.emit(new Values(ret));
-
         }
     }
 

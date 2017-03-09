@@ -1,5 +1,0 @@
-package com.ilbdaicnl.storm;
-
-public class TwitterStreamSpout {
-
-}

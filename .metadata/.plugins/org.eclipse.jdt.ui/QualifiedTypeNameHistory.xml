@@ -3,4 +3,10 @@
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="org.apache.storm.task.ShellBolt"/>
+<fullyQualifiedTypeName name="org.apache.storm.topology.IRichBolt"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="twitter4j.json.DataObjectFactory"/>
+<fullyQualifiedTypeName name="twitter4j.TwitterObjectFactory"/>
+<fullyQualifiedTypeName name="org.apache.storm.shade.org.eclipse.jetty.util.ajax.JSON"/>
 </qualifiedTypeNameHistroy>

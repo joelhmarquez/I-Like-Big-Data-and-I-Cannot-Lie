@@ -47,6 +47,12 @@
   </dependencies>
 
 	<build>
+		<resources>
+	      <resource>
+	        <directory>./multilang</directory>
+	      </resource>
+	    </resources>
+	    
 	   <plugins>
 	     <!-- any other plugins -->
 	     <plugin>
