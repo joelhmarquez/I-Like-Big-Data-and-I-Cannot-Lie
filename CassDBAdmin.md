@@ -1,5 +1,4 @@
 # Cassandra Database Administration
-+ Written by Micheal Swisher
 
 ## Preface 
 + Requirements:
@@ -61,7 +60,9 @@
  * Logout then log back in with new admin
  * Disable old cassandra admin
  * 1. ALTER ROLE cassandra WITH PASSWORD='SomeNonsenseThatNoOneWillThinkOf' AND SUPERUSER=false;
- 
+## Nesting Reference
++ https://pkghosh.wordpress.com/2013/07/14/storing-nested-objects-in-cassandra-composite_columns/
++ http://stackoverflow.com/questions/24391035/nested-data-data-modelling-in-cassandra
 ## References
 
 + https://www.tutorialspoint.com/cassandra/cassandra_create_keyspace.htm
