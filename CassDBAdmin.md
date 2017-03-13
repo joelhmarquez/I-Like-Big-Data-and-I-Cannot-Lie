@@ -1,5 +1,4 @@
 # Cassandra Database Administration
-+ Written by Micheal Swisher
 
 ## Preface 
 + Requirements:
