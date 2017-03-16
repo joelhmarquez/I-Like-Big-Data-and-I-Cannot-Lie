@@ -2,3 +2,4 @@
 .DS_STORE
 .metadata/
 config.py
+*/__pycache__/*
