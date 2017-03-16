@@ -23,6 +23,8 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.Utils;
 
+import com.google.gson.Gson;
+
 @SuppressWarnings("serial")
 public class TwitterStreamSpout extends BaseRichSpout {
 	SpoutOutputCollector _collector;
@@ -115,7 +117,9 @@ public class TwitterStreamSpout extends BaseRichSpout {
         if (ret == null) {
             Utils.sleep(50);
         } else {
-            _collector.emit(new Values(ret));
+            Gson gson = new Gson();
+            String json = gson.toJson(ret);
+            _collector.emit(new Values(json));
         }
     }
 

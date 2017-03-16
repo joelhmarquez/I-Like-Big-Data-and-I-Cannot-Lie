@@ -5,6 +5,8 @@ import org.apache.storm.utils.Utils;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
@@ -40,7 +42,6 @@ public class TwitterStreamTopology {
         	
         }
         
-        
         TopologyBuilder builder = new TopologyBuilder();
 
         builder.setSpout("twitter", new TwitterStreamSpout(consumerKey, consumerSecret,
@@ -54,9 +55,9 @@ public class TwitterStreamTopology {
 
         LocalCluster cluster = new LocalCluster();
 
-        cluster.submitTopology("test", conf, builder.createTopology());
+        cluster.submitTopology("racialMapping", conf, builder.createTopology());
 
-        Utils.sleep(10000);
+        Utils.sleep(1000000);
         cluster.shutdown();
     }
 }

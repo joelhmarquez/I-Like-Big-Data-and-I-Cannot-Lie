@@ -2,7 +2,7 @@
 # from textblob.sentiments import NaiveBayesAnalyzer
 # import math
 import storm
-# import json
+import json
 #For this to work, it is necessary to use the following command:
 #pip install textblob
 #The test.txt uses hate words to say positive stuff about racism, etc
@@ -10,10 +10,14 @@ import storm
 #even though the content is not.
 
 
-class tweetFilteredSentiment(storm.BasicBolt):
-#     hateWords = set()    
-    def normalizeText(self,tup):
-        storm.emit(tup)
+class tweetFilteredSentiment(storm.BasicBolt):#, json.JSONEncoder):
+#     hateWords = set()
+    #def default(self, tup):
+    #    if isinstance(tup, complex):
+    #        storm.emit([tup.real, tup.imag])
+    #    storm.emit(json.JSONEncoder.default(self,tup))
+    def process(self,tup):
+        storm.emit([tup.__dict__])
 
 tweetFilteredSentiment().run()
 #         tempString.deepcopy(tweet)
