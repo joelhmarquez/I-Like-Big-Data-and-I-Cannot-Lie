@@ -8,7 +8,6 @@ import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
-import twitter4j.TwitterObjectFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
 import twitter4j.auth.AccessToken;
@@ -22,8 +21,6 @@ import org.apache.storm.topology.base.BaseRichSpout;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
 import org.apache.storm.utils.Utils;
-
-import com.google.gson.Gson;
 
 @SuppressWarnings("serial")
 public class TwitterStreamSpout extends BaseRichSpout {
@@ -117,9 +114,7 @@ public class TwitterStreamSpout extends BaseRichSpout {
         if (ret == null) {
             Utils.sleep(50);
         } else {
-            Gson gson = new Gson();
-            String json = gson.toJson(ret);
-            _collector.emit(new Values(json));
+            _collector.emit(new Values(ret));
         }
     }
 

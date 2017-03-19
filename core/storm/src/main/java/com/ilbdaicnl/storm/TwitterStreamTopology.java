@@ -46,8 +46,9 @@ public class TwitterStreamTopology {
 
         builder.setSpout("twitter", new TwitterStreamSpout(consumerKey, consumerSecret,
                 accessToken, accessTokenSecret, keyWords));
-        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("twitter");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("sentiment");
+        builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
+//        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("twitter");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("formatter");
 
 
         Config conf = new Config();

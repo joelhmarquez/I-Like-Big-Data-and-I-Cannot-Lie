@@ -1,5 +1,9 @@
 package com.ilbdaicnl.storm;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseBasicBolt;
@@ -10,8 +14,25 @@ import twitter4j.Status;
 public class TwitterStreamPrint extends BaseBasicBolt {
 	@Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
-//		Status tweet = (Status) tuple.getValueByField("tweet");
         System.out.println(tuple);
+        
+        
+//        BufferedWriter bw = null;
+//
+//        try {
+//           bw = new BufferedWriter(new FileWriter("sample.txt", true));
+//           bw.write(tuple.toString());
+//           bw.newLine();
+//           bw.flush();
+//        } catch (IOException ioe) {
+//        	ioe.printStackTrace();
+//        } finally {                    
+//        	if (bw != null) try {
+//        		bw.close();
+//        	} catch (IOException ioe2) {
+//        		ioe2.printStackTrace();
+//        	}
+//        } 
     }
 
     @Override
