@@ -21,9 +21,10 @@ class insertTweetData(storm.BasicBolt):
         cluster = Cluster('192.168.1.1')
         # cluster.connection_class = LibevConnection
         session = cluster.connect()
-        selectDB = "USE "+self.state+";"
+        #selectDB = "USE "+self.state+";"
         insertData = "INSERT INTO "+self.state+"."+self.time+" JSON "+json.dumps(tweet)+";"
-        session.execute(selectDB)
+        #session.execute(selectDB)
+        session.set_keyspace(self.state)
         try:
             session.execute(insertData)
             break
