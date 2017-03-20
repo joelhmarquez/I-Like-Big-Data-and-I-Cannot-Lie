@@ -3,5 +3,5 @@ machine:
     - cassandra
 
 test:
-  post:
+  override:
     - python tests.py
