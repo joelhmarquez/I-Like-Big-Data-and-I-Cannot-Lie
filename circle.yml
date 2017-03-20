@@ -1,0 +1,7 @@
+machine:
+  services:
+    - cassandra
+
+test:
+  post:
+    - python tests.py
