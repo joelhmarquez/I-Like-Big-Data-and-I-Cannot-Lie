@@ -1,6 +1,6 @@
 ﻿#I like big data and I cannot lie
 
-[![CircleCI](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie.svg?style=svg&circle-token=081c033c9d14b3246d9422a8bbde12b6b432e0a1)](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie)
+[![CircleCI](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie.svg?style=shield&circle-token=081c033c9d14b3246d9422a8bbde12b6b432e0a1)](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie)
 
 Big data project for ATLS 5214.
 
