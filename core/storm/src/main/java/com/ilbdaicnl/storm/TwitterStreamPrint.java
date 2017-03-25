@@ -9,16 +9,17 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Tuple;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import twitter4j.Status;
 
 public class TwitterStreamPrint extends BaseBasicBolt {
 	@Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
-        System.out.println(tuple);
-        
-        
-//        BufferedWriter bw = null;
-//
+        System.out.println(tuple.getValueByField("tweet"));
+       
+        BufferedWriter bw = null;
+
 //        try {
 //           bw = new BufferedWriter(new FileWriter("sample.txt", true));
 //           bw.write(tuple.toString());
