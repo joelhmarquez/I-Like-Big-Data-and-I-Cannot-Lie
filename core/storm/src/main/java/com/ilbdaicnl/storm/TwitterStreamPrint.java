@@ -18,8 +18,8 @@ public class TwitterStreamPrint extends BaseBasicBolt {
     public void execute(Tuple tuple, BasicOutputCollector collector) {
         System.out.println(tuple.getValueByField("tweet"));
        
-        BufferedWriter bw = null;
-
+//        BufferedWriter bw = null;
+//
 //        try {
 //           bw = new BufferedWriter(new FileWriter("sample.txt", true));
 //           bw.write(tuple.toString());

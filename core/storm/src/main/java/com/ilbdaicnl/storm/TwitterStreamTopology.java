@@ -2,11 +2,9 @@ package com.ilbdaicnl.storm;
 
 import org.apache.storm.utils.Utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
@@ -20,27 +18,18 @@ public class TwitterStreamTopology {
         String accessTokenSecret = "";
         String[] keyWords = {""};
         
-        /* Reading in oauth values */
-        BufferedReader br = null;
+        /* Reading in twitter oauth values */
         try {
-        	br = new BufferedReader(new FileReader(".env"));
-        	
-        	consumerKey = br.readLine();
-        	consumerSecret = br.readLine();
-        	accessToken = br.readLine();
-        	accessTokenSecret = br.readLine();
-        } catch (IOException ioe) {
-        	ioe.printStackTrace();
-        } finally {
-        	try {
-        		if(br != null){
-            		br.close();
-            	}
-        	} catch (IOException ioe){
-        		System.out.println("Error in closing the BufferedReader");
-        	}
-        	
-        }
+        	Properties env = new Properties();
+            InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
+			env.load(stream);
+			consumerKey = env.getProperty("consumer.key");
+			consumerSecret = env.getProperty("consumer.secret");
+			accessToken = env.getProperty("access.token");
+			accessTokenSecret = env.getProperty("access.token.secret");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
         TopologyBuilder builder = new TopologyBuilder();
 

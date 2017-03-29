@@ -57,11 +57,10 @@
   </dependencies>
 
 	<build>
-		<!-- <sourceDirectory>src/main/java</sourceDirectory> -->
 		<resources>
-	      <resource>
-	        <directory>multilang</directory>
-	      </resource>
+		  <resource>
+                <directory>src/main/resources</directory>
+          </resource>
 	      <resource>
 	        <directory>multilang/resources</directory>
 	      </resource>
