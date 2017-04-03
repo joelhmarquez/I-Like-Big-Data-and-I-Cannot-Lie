@@ -1,4 +1,5 @@
 *.swp
+.sonarlint
 .DS_STORE
 .metadata/
 config.py
