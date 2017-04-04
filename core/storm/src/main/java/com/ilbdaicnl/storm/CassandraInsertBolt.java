@@ -7,9 +7,9 @@ import org.apache.storm.topology.IRichBolt;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.tuple.Fields;
 
-public class SentimentAnalysisBolt extends ShellBolt implements IRichBolt{
-		public SentimentAnalysisBolt() {
-	      super("python", "resources/sentiment.py");
+public class CassandraInsertBolt extends ShellBolt implements IRichBolt{
+		public CassandraInsertBolt() {
+	      super("python", "resources/insertBolt.py");
 	    }
 
 	    @Override

@@ -28,7 +28,7 @@ public class TwitterStreamTopology {
 			accessToken = env.getProperty("access.token");
 			accessTokenSecret = env.getProperty("access.token.secret");
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
         
         TopologyBuilder builder = new TopologyBuilder();
@@ -37,8 +37,9 @@ public class TwitterStreamTopology {
                 accessToken, accessTokenSecret, keyWords));
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
         builder.setBolt("geolocation", new GeolocationBolt()).shuffleGrouping("formatter");
-//        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("twitter");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation");
+        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("insert");
+        builder.setBolt("insert", new CassandraInsertBolt(), 2).shuffleGrouping("sentiment");
 
 
         Config conf = new Config();

@@ -1,8 +1,14 @@
-# from textblob import TextBlob
-# from textblob.sentiments import NaiveBayesAnalyzer
-# import math
+from textblob import TextBlob
+from textblob.sentiments import NaiveBayesAnalyzer
+import math
 import storm
 import json
+hateWords = set()
+hateFile = open("resources/hatewords.txt", "r")
+for word in hateFile:
+    hateWords.add(word.rstrip())
+hateFile.close()
+
 #For this to work, it is necessary to use the following command:
 #pip install textblob
 #The test.txt uses hate words to say positive stuff about racism, etc
@@ -10,46 +16,20 @@ import json
 #even though the content is not.
 
 
-class tweetFilteredSentiment(storm.BasicBolt):#, json.JSONEncoder):
-#     hateWords = set()
-    #def default(self, tup):
-    #    if isinstance(tup, complex):
-    #        storm.emit([tup.real, tup.imag])
-    #    storm.emit(json.JSONEncoder.default(self,tup))
+class tweetFilteredSentiment(storm.BasicBolt):
+    global hateWords
+    
     def process(self,tup):
-        storm.emit([tup.__dict__])
+    	tweet = tup.values[0]
+    	tweet['tweettext'] = tweet['text']
+    	del tweet['text']
+    	tweet['sentimentScore'] = self.checkForHateWords(tweet['tweettext'])
+    	storm.emit([tweet])
+
+    def checkForHateWords(self,tweet):
+        for word in tweet.split():
+            if word.lower() in hateWords:
+                return abs(TextBlob(tweet))        
+        return 0
 
 tweetFilteredSentiment().run()
-#         tempString.deepcopy(tweet)
-#         # Do tolkenization and normalization of tweet
-#         return tempString
-# 
-#     def checkForHateWords(self,tweet):
-#         #normalized = normalizeText(tweet)
-#         for word in tweet.split():
-#             if word.lower() in hateWords:
-#                 sentimentScore = TextBlob(tweet)
-#                 storm.emit((True,abs(sentimentScore.sentiment.polarity)))
-#         storm.emit((False,0))
-# 
-#     def loadHateWords(self):
-#         hateWords = set()
-#         hateFile = open("hatewords.txt", "r")
-#         for word in hateFile:
-#             hateWords.add(word.rstrip())
-#         hateFile.close()
-# 
-# #tweetFilteredSentiment().run()
-# 
-# # The main function will need to be removed when
-# # integrating with Storm's java program.
-# def main():
-#     loadHateWords()
-#     testSentiment = open("test.txt","r")
-#     for line in testSentiment:
-#         result,score = checkForHateWords(line)
-#         if result:
-#             print("{} score:{}".format(line.rstrip(),score))
-#     testSentiment.close()
-# 
-# main()
