@@ -17,40 +17,40 @@ class insertTweetData(storm.BasicBolt):
         self.state = tweet['state']
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600))
-        # self.insert(tweet)
-        storm.emit([self.insert(tweet)]) #We shouldn't have to emit at this point.  This should be the end of the storm path
+        self.insert(tweet)
     
     def insert(self,tweet):
         # Need to figure out authentication for connecting to server
-        # authProvider = PlainTextAuthProvider(username='internal', password='fuckapplebees')
-        # cluster = Cluster(["0.0.0.0"],port=9042)#,protocol_version=2,auth_provider=authProvider)
-        # cluster.connection_class = LibevConnection
-        # session = cluster.connect()
-        # session.execute("CREATE KEYSPACE IF NOT EXISTS "+self.state+" WITH replication = {'class':'SimpleStrategy', 'replication_factor':3};")
-        # selectDB = "USE "+self.state+";"
-        insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
-        return insertData #This is for testing purposes
-        # session.execute(selectDB)
-        # session.set_keyspace(self.state)
-        # try:
-        #     #print(insertData)
-        #     session.execute(insertData)
+        cluster = Cluster(["172.31.35.21"],port=9042)
+        cluster.connection_class = LibevConnection
+        try:
+            session = cluster.connect()
+            selectDB = "USE "+self.state+";"
+            insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
+            try:
+                session.execute(selectDB)
 
-        # except Exception as e:
-        #     createTable = "CREATE TABLE \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
-        #     print(createTable)
-        #     try:
-        #         session.execute(createTable)
-        #         try:
-        #             session.execute(insertData)
+                try:
+                    session.execute(insertData)
+
+                except:
+                    createTable = "CREATE TABLE \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
+
+                    try:
+                        session.execute(createTable)
+                        try:
+                            session.execute(insertData)
                    
-        #         #except Exception as e:
-        #             #print("Error inserting data after creating table")
+                        except:
+                            storm.emit("error", ["Error inserting data after creating table"])
 
-        #     #except Exception as e:
-        #         #print("Error creating table")
-
-        # cluster.shutdown()
+                    except Exception as e:
+                        storm.emit("error", ["Error creating table"])
+            except:
+                storm.emit("error", ["Error selecting keyspace"])
+        except:
+            storm.emit("error", ["Error connecting"])
+        cluster.shutdown()
 
 
 insertTweetData().run()
