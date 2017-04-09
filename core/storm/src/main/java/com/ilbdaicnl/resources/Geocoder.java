@@ -60,7 +60,7 @@ public class Geocoder {
 	private String getState(AddressComponent[] addressComponents){
 		for(int i=0; i<addressComponents.length; i++){
 			if(addressComponents[i].types[0].toString().equals("administrative_area_level_1")){
-				return addressComponents[i].shortName;
+				return addressComponents[i].longName;
 			}
 		}
 		return null;
