@@ -64,13 +64,21 @@ view : Model -> Html Msg
 view model =
     div
         [ style
-            [ ( "display", "flex" ) ]
+            [ ( "text-align", "center")
+            , ( "position", "absolute" )
+            , ( "width", "100%") 
+            , ( "font-family", "Candara")
+            , ( "top", "0px")]
         ]
-        [ div []
-            [ h3 [] [ text "" ]
-            , button
-                [ onClick Shift ]
-                [ text "Shift Map"]
+        [ div [ style
+                [ ("height", "100px")
+                , ("background-color", "black")
+                , ("color", "white")
+                , ("text-align", "middle")
+                , ("line-height", "100px")
+                , ( "top" , "0px" )]
+            ]
+            [ h1[] [ text "I Like Big Data and I Cannot Lie"] 
             ]
         , div []
             [ h3[] [ text "Map Display" ]
