@@ -1,9 +1,5 @@
 package com.ilbdaicnl.resources;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.AddressComponent;
@@ -14,15 +10,8 @@ public class Geocoder {
 	
 	public TweetObject setState(TweetObject tweet){
 		/* Reading in google maps api key values */
-		String apiKey = null;
-	    try {
-	    	Properties env = new Properties();         
-	        InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
-			env.load(stream);
-			apiKey = env.getProperty("google.key");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ResourceMgr resourceMgr = ResourceMgr.getInstance();
+		String apiKey = resourceMgr.getApiKey();
 	    
 		GeoApiContext context = new GeoApiContext().setApiKey(apiKey);
 		

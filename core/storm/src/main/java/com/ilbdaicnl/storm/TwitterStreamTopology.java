@@ -4,6 +4,8 @@ import org.apache.storm.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ilbdaicnl.resources.ResourceMgr;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,38 +28,13 @@ public class TwitterStreamTopology {
         String accessTokenSecret = "";
         List<String> keyWords = new ArrayList<String>();
         
-        BufferedReader br = null;
+        ResourceMgr resourceMgr = ResourceMgr.getInstance();
         
-        /* Reading in twitter oauth values and keyWords*/
-        try {
-        	Properties env = new Properties();
-            InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
-			env.load(stream);
-			consumerKey = env.getProperty("consumer.key");
-			consumerSecret = env.getProperty("consumer.secret");
-			accessToken = env.getProperty("access.token");
-			accessTokenSecret = env.getProperty("access.token.secret");
-			
-			
-			br = new BufferedReader(new FileReader("src/main/resources/hatewords.txt"));
-			
-			String line;
-            while ((line = br.readLine()) != null) {
-                keyWords.add(line);
-            }
-		
-			logger.info("Successfully read in environment variables and keywords");
-		} catch (IOException e) {
-			logger.error("Error reading in environment variables or keywords: " + e.getMessage());
-		} finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (IOException e) {
-            	logger.error("Error closing bufferReader: " + e.getMessage());
-            }
-        }
+        consumerKey = resourceMgr.getConsumerKey();
+        consumerSecret = resourceMgr.getConsumerSecret();
+        accessToken = resourceMgr.getAccessToken();
+        accessTokenSecret = resourceMgr.getAccessTokenSecret();
+        keyWords = resourceMgr.getKeyWords();
         
         TopologyBuilder builder = new TopologyBuilder();
 
@@ -65,10 +42,10 @@ public class TwitterStreamTopology {
                 accessToken, accessTokenSecret, keyWords.toArray(new String[0])));
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
         builder.setBolt("geolocation", new GeolocationBolt()).shuffleGrouping("formatter");
-        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation", "success");
-//        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "success");
-        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
-        builder.setBolt("log", new CassandraInsertBolt()).shuffleGrouping("insert", "error");
+//        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation", "success");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "success");
+//        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
+//        builder.setBolt("log", new CassandraInsertBolt()).shuffleGrouping("insert", "error");
 
 
         Config conf = new Config();
