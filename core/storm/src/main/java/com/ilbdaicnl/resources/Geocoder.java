@@ -19,6 +19,7 @@ public class Geocoder {
 		String apiKey = resourceMgr.getApiKey();
 	    
 		GeoApiContext context = new GeoApiContext().setApiKey(apiKey);
+		context.disableRetries();
 		
 		GeocodingResult[] results = null;
 
