@@ -1,5 +1,8 @@
 package com.ilbdaicnl.resources;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.AddressComponent;
@@ -9,6 +12,8 @@ import com.google.maps.model.LatLng;
 public class Geocoder {
 	
 	public TweetObject setState(TweetObject tweet){
+		final Logger logger = LoggerFactory.getLogger(Geocoder.class);
+
 		/* Reading in google maps api key values */
 		ResourceMgr resourceMgr = ResourceMgr.getInstance();
 		String apiKey = resourceMgr.getApiKey();
@@ -23,15 +28,17 @@ public class Geocoder {
 			try{
 				results =  GeocodingApi.reverseGeocode(context, location).await();
 			} catch (Exception e) {
-				e.printStackTrace();
+				apiKey = resourceMgr.refreshKey();
+				logger.error("Geocoding error: " + e.getMessage());
 			}
 		}
 		/* If lat/lng are null but a user profile location is set */
 		else if(tweet.getLocation() != null){
 			try{
-				results =  GeocodingApi.geocode(context, tweet.getLocation()).await();
+				results = GeocodingApi.geocode(context, tweet.getLocation()).await();
 			} catch (Exception e) {
-				e.printStackTrace();
+				apiKey = resourceMgr.refreshKey();
+				logger.error("Geocoding error: " + e.getMessage());
 			}
 		}
 		

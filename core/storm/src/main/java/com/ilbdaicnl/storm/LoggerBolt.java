@@ -7,13 +7,15 @@ import org.apache.storm.tuple.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 public class LoggerBolt extends BaseBasicBolt {
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		String error = (String) tuple.getValueByField("error");
+		ObjectNode error = (ObjectNode) tuple.getValueByField("error");
 		final Logger logger = LoggerFactory.getLogger(TwitterStreamTopology.class);
 		
-		logger.error(error);
+		logger.error(error.get("error").asText());
 	}
 	 @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {

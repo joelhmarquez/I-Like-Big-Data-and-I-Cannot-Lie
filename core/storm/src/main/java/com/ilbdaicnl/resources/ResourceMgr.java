@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -19,7 +20,7 @@ public class ResourceMgr {
 	private String accessTokenSecret;
 	List<String> keyWords = new ArrayList<String>();
 	
-	private String apiKey;
+	List<String> gmapsApiKeys;
 	
 	final Logger logger = LoggerFactory.getLogger(ResourceMgr.class);
 	 
@@ -35,7 +36,8 @@ public class ResourceMgr {
 			this.consumerSecret = env.getProperty("consumer.secret");
 			this.accessToken = env.getProperty("access.token");
 			this.accessTokenSecret = env.getProperty("access.token.secret");
-			this.apiKey = env.getProperty("google.key");
+			
+			this.gmapsApiKeys = new ArrayList<String>(Arrays.asList(env.getProperty("google.keys").split("\\s*,\\s*")));
 			
 			br = new BufferedReader(new FileReader("src/main/resources/hatewords.txt"));
 			
@@ -83,6 +85,15 @@ public class ResourceMgr {
 	}
 
 	public String getApiKey() {
-		return apiKey;
+		return gmapsApiKeys.get(0);
+	}
+	
+	public String refreshKey(){
+		System.out.println("Reset Key");
+		String currentKey = gmapsApiKeys.get(0);
+		gmapsApiKeys.remove(0);
+		gmapsApiKeys.add(currentKey);
+		
+		return gmapsApiKeys.get(0);
 	}
 }
