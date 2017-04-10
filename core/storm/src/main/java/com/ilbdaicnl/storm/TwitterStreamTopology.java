@@ -36,7 +36,7 @@ public class TwitterStreamTopology {
 //        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation", "success");
         builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "success");
 //        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
-//        builder.setBolt("log", new CassandraInsertBolt()).shuffleGrouping("insert", "error");
+//        builder.setBolt("log", new LoggerBolt()).shuffleGrouping("insert", "error");
 
 
         Config conf = new Config();

@@ -20,9 +20,9 @@ class insertTweetData(storm.BasicBolt):
         self.insert(tweet)
     
     def insert(self,tweet):
-        # Need to figure out authentication for connecting to server
+        # Need to figure out how to emit an error properly for logging
         cluster = Cluster(["172.31.35.21"],port=9042)
-        cluster.connection_class = LibevConnection
+        # cluster.connection_class = LibevConnection
         try:
             session = cluster.connect()
             selectDB = "USE "+self.state+";"

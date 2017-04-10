@@ -29,7 +29,8 @@ class tweetFilteredSentiment(storm.BasicBolt):
     def checkForHateWords(self,tweet):
         for word in tweet.split():
             if word.lower() in hateWords:
-                return abs(TextBlob(tweet))        
+                score = TextBlob(tweet)
+                return abs(score.sentiment.polarity)
         return 0
 
 tweetFilteredSentiment().run()
