@@ -2,6 +2,8 @@
 Attempting to use Elm to update Google Maps, based on tutorial: 
     https://github.com/simonh1000/elm-google-maps-2/blob/master/src/Main.elm
     http://simonh1000.github.io/2015/10/elm-architecture-ports/
+    https://github.com/simonh1000/elm-google-maps
+    https://github.com/rtfeldman/elm-google-maps/tree/master/src
 -}
 
 port module Gmap exposing (..)
