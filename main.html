@@ -10,8 +10,8 @@
     <script type = "text/javascript" src="elm.js"></script>
     <style media = "map_screen">
         #map {
-            width: 500px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             background-color: gray;
         }
     </style>
@@ -26,7 +26,8 @@
     <script type = "text/javascript">
         var div = document.getElementById('elm');
         var mapDiv = document.getElementById('map');
-        var map = Elm.embed(Elm.Gmap, div);
+        var map = Elm.Gmap.embed(div);
+        //var map = Elm.embed(Elm.Gmap, div, { reset:[] });
 
         map.ports.lat.subscribe(function(lat) {
             console.log("received", lat);
