@@ -13,7 +13,16 @@ class insertTweetData(storm.BasicBolt):
 
     def process(self,tup):
         tweet = tup.values[0]
+        #tweet['tweet'] = tweet['tweet'].replace("'","")
+        #tweet['tweet'] = tweet['tweet'].replace("\"","")
+        self.id = tweet['id']
         self.text = tweet['tweettext']
+        self.text = self.text.replace("'","")
+        self.text = self.text.replace("\"","")
+        self.lat = tweet['lat']
+        self.lng = tweet['lng']
+        self.location = tweet['location']
+        self.score = tweet['sentimentscore']
         self.state = tweet['state']
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600))
@@ -26,7 +35,8 @@ class insertTweetData(storm.BasicBolt):
         try:
             session = cluster.connect()
             selectDB = "USE "+self.state+";"
-            insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
+            #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
+            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state");"
             try:
                 session.execute(selectDB)
 
