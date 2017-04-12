@@ -6,7 +6,7 @@ import math
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time text, location text, score int, state text"
+CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time text, location text, sentimentscore int, state text"
 
 class insertTweetData(storm.BasicBolt):
     global CREATE_COLUMNS
@@ -33,7 +33,7 @@ class insertTweetData(storm.BasicBolt):
                 try:
                     session.execute(insertData)
 
-                except:
+                except Exception as e:
                     createTable = "CREATE TABLE \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
 
                     try:
@@ -41,15 +41,15 @@ class insertTweetData(storm.BasicBolt):
                         try:
                             session.execute(insertData)
                    
-                        except:
-                            storm.emit([e.strerror])
+                        except Exception as e:
+                            storm.emit([e])
 
                     except Exception as e:
-                        storm.emit([e.strerror])
-            except:
-                storm.emit([e.strerror])
-        except:
-            storm.emit([e.strerror])
+                        storm.emit([e])
+            except Exception as e:
+                storm.emit([e])
+        except Exception as e:
+            storm.emit([e])
         cluster.shutdown()
 
 
