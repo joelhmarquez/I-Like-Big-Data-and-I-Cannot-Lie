@@ -42,14 +42,14 @@ class insertTweetData(storm.BasicBolt):
                             session.execute(insertData)
                    
                         except:
-                            storm.emit(["Error inserting data after creating table"])
+                            storm.emit([e.strerror])
 
                     except Exception as e:
-                        storm.emit(["Error creating table"])
+                        storm.emit([e.strerror])
             except:
-                storm.emit(["Error selecting keyspace"])
+                storm.emit([e.strerror])
         except:
-            storm.emit(["Error connecting"])
+            storm.emit([e.strerror])
         cluster.shutdown()
 
 
