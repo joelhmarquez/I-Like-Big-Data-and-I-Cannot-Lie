@@ -16,7 +16,7 @@ import twitter4j.Status;
 public class TwitterStreamPrint extends BaseBasicBolt {
 	@Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
-        System.out.println(tuple.getValueByField("tweet"));
+        System.out.println(tuple.getValueByField("error"));
        
 //        BufferedWriter bw = null;
 //

@@ -14,7 +14,7 @@ public class CassandraInsertBolt extends ShellBolt implements IRichBolt{
 
 	    @Override
 	    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-	      declarer.declareStream("error", new Fields("tweet"));
+	      declarer.declare(new Fields("error"));
 	    }
 
 	    @Override
