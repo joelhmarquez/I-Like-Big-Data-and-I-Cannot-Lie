@@ -7,7 +7,7 @@ import re
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time text, location text, sentimentscore int, state text"
+CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time text, location text, sentimentscore text, state text"
 
 class insertTweetData(storm.BasicBolt):
     global CREATE_COLUMNS
@@ -21,7 +21,8 @@ class insertTweetData(storm.BasicBolt):
         self.text = tweet['tweettext']
         self.text = self.text.replace("'"," ")
         self.text = self.text.replace("\""," ")
-        self.text = self.text.replace("\/"," ")
+        self.text = self.text.replace("\\"," ")
+        #self.text = self.text.replace("@"," ")
         #self.text = re.sub(r'^https?:\/\/.*[\r\n]*', '', self.text, flags=re.MULTILINE)
         self.lat = tweet['lat']
         self.lng = tweet['lng']
@@ -32,6 +33,7 @@ class insertTweetData(storm.BasicBolt):
         self.time = int(math.floor(self.time//3600))
         #storm.emit([tup.__dict__])
         self.insert(tweet)
+        # storm.emit([self.insert(tweet)])
     
     def insert(self,tweet):
         # Need to figure out how to emit an error properly for logging
@@ -42,7 +44,7 @@ class insertTweetData(storm.BasicBolt):
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
             insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
-            
+            return insertData
             try:
                 session.execute(selectDB)
 
