@@ -1,6 +1,7 @@
 import storm
 import json
 import math
+import re
 # from cassandra.io.libevreactor import LibevConnection
 # Previous not built for Windows
 from cassandra.cluster import Cluster
@@ -15,10 +16,13 @@ class insertTweetData(storm.BasicBolt):
         tweet = tup.values[0]
         #tweet['tweet'] = tweet['tweet'].replace("'","")
         #tweet['tweet'] = tweet['tweet'].replace("\"","")
+        #tweet['tweet'] = tweet['tweet'].replace("\/","")
         self.id = tweet['id']
         self.text = tweet['tweettext']
-        self.text = self.text.replace("'","")
-        self.text = self.text.replace("\"","")
+        self.text = self.text.replace("'"," ")
+        self.text = self.text.replace("\""," ")
+        self.text = self.text.replace("\/"," ")
+        #self.text = re.sub(r'^https?:\/\/.*[\r\n]*', '', self.text, flags=re.MULTILINE)
         self.lat = tweet['lat']
         self.lng = tweet['lng']
         self.location = tweet['location']
@@ -26,6 +30,7 @@ class insertTweetData(storm.BasicBolt):
         self.state = tweet['state']
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600))
+        #storm.emit([tup.__dict__])
         self.insert(tweet)
     
     def insert(self,tweet):
@@ -33,10 +38,11 @@ class insertTweetData(storm.BasicBolt):
         cluster = Cluster(["172.31.35.21"],port=9042)
         # cluster.connection_class = LibevConnection
         try:
-            session = cluster.connect()
+            #session = cluster.connect()
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
             insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
+            
             try:
                 session.execute(selectDB)
 
@@ -64,3 +70,4 @@ class insertTweetData(storm.BasicBolt):
 
 
 insertTweetData().run()
+
