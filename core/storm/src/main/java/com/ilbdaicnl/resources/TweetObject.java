@@ -13,7 +13,7 @@ public class TweetObject {
 	private String time;
 	private String location;
 	private String state;
-	private String sentimentScore;
+	private String sentimentscore;
 	
 	public TweetObject(Status tweet){
 		this.id = Long.toString(tweet.getId());
@@ -23,7 +23,7 @@ public class TweetObject {
 		this.time = Long.toString(tweet.getCreatedAt().getTime());
 		this.location = tweet.getUser()!=null ? tweet.getUser().getLocation(): null;
 		this.state = null;
-		this.sentimentScore = null;
+		this.sentimentscore = null;
 	}
 	
 	public TweetObject(ObjectNode tweet){
@@ -34,7 +34,7 @@ public class TweetObject {
 		this.time = tweet.findValue("time").asText();
 		this.location = tweet.findValue("location").asText();
 		this.state = tweet.findValue("state").asText();
-		this.sentimentScore = tweet.findValue("sentimentScore").asText();
+		this.sentimentscore = tweet.findValue("sentimentscore").asText();
 	}
 	
 	public String getId() {
@@ -79,12 +79,12 @@ public class TweetObject {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getSentimentScore() {
-		return sentimentScore;
+	public String getSentimentscore() {
+		return sentimentscore;
 	}
 
 	public void setSentimentScore(String sentimentScore) {
-		this.sentimentScore = sentimentScore;
+		this.sentimentscore = sentimentScore;
 	}
 	
 	public ObjectNode asJSON(){
@@ -98,7 +98,7 @@ public class TweetObject {
 		formattedTweet.put("time", this.time);
 		formattedTweet.put("location", this.location);
 		formattedTweet.put("state", this.state);
-		formattedTweet.put("sentimentScore", this.sentimentScore);
+		formattedTweet.put("sentimentScore", this.sentimentscore);
 		
 		return formattedTweet;
 	}

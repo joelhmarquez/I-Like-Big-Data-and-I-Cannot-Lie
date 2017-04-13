@@ -36,7 +36,7 @@ class insertTweetData(storm.BasicBolt):
             session = cluster.connect()
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
-            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state");"
+            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
             try:
                 session.execute(selectDB)
 

@@ -23,7 +23,7 @@ class tweetFilteredSentiment(storm.BasicBolt):
     	tweet = tup.values[0]
     	tweet['tweettext'] = tweet['text']
     	del tweet['text']
-    	tweet['sentimentScore'] = self.checkForHateWords(tweet['tweettext'])
+    	tweet['sentimentscore'] = str(self.checkForHateWords(tweet['tweettext']))
     	storm.emit([tweet])
 
     def checkForHateWords(self,tweet):
