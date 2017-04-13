@@ -31,7 +31,6 @@ class insertTweetData(storm.BasicBolt):
         self.state = tweet['state']
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600))
-        #storm.emit([tup.__dict__])
         self.insert(tweet)
         # storm.emit([self.insert(tweet)])
     
@@ -44,12 +43,11 @@ class insertTweetData(storm.BasicBolt):
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
             insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
-            return insertData
             try:
                 session.execute(selectDB)
 
                 try:
-                    session.execute("INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';")
+                    #session.execute("INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';")
                     session.execute(insertData)
 
                 except Exception as e:
@@ -61,14 +59,17 @@ class insertTweetData(storm.BasicBolt):
                             session.execute(insertData)
                    
                         except Exception as e:
-                            storm.emit([e])
+                            error = "Unable to insert data. Query: "+insertData
+                            storm.emit([error])
 
                     except Exception as e:
-                        storm.emit([e])
+                        error = "Unable to CREATE TABLE "+str(self.time)
+                        storm.emit([error])
             except Exception as e:
-                storm.emit([e])
+                error = "Unable to select keyspace "+self.state
+                storm.emit([error])
         except Exception as e:
-            storm.emit([e])
+            storm.emit(["Unable to connect to Cassandra"])
         cluster.shutdown()
 
 
