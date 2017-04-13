@@ -1,4 +1,4 @@
-module Base.Navbar exposing (..)
+--module Base.Navbar exposing (..)
 
 import Bootstrap.Navbar as Navbar
 import Html exposing (..)
@@ -11,13 +11,14 @@ type alias Model =
 initState : (Model, Cmd Msg)
 initState toMsg = 
     let
-        (navbarState, navbarCmd) = Navbar.initState NavbarMsg
+        (navbarState, navbarCmd) = 
+            Navbar.initialState NavbarMsg
     in 
-        ({ navbarState = navbarState }, navBarCmd )
+        ({ navbarState = navbarState }, navbarCmd )
 
 type Msg = NavbarMsg Navbar.State
 
-update : Msg -> MOdel -> (Model, Cmd Msg)
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of 
         NavbarMsg state ->
@@ -26,3 +27,8 @@ update msg model =
 view : Model -> Html Msg
 view model = 
     Navbar.config NavbarMsg
+        |> Navbar.withAnimation
+        |> Navbar.brand 
+            [ href "#" ] 
+            [ text "Tweet Dat(a) Hate" ]
+        |> Navbar.view model.navbarState
