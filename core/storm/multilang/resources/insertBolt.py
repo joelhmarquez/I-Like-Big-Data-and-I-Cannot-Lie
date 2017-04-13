@@ -38,7 +38,7 @@ class insertTweetData(storm.BasicBolt):
         cluster = Cluster(["172.31.35.21"],port=9042)
         # cluster.connection_class = LibevConnection
         try:
-            #session = cluster.connect()
+            session = cluster.connect()
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
             insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
@@ -47,6 +47,7 @@ class insertTweetData(storm.BasicBolt):
                 session.execute(selectDB)
 
                 try:
+                    session.execute("INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';")
                     session.execute(insertData)
 
                 except Exception as e:
