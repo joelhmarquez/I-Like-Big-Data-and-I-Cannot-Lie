@@ -13,14 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-    <script type = "text/javascript" src="elm.js"></script>
-    <style media = "map_screen">
-        #map {
-            width: 200px;
-            height: 200px;
-            background-color: gray;
-        }
-    </style>
+    <script type = "text/javascript" src="elm.js"></script>-->
 
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -40,21 +33,21 @@
             ['US-NM', -10], ['US-NY', 20], ['US-NC', 150], ['US-ND', -100], ['US-OH', 200],
             ['US-OK', -10], ['US-OR', 20], ['US-PA', 150], ['US-RI', 200], ['US-SC', -10],
             ['US-SD', 20], ['US-TN', 150], ['US-TX', -100], ['US-UT', 200], ['US-VT', -10],
-            ['US-VA', 20], ['US-WA', 150], ['US-WV', -100], ['US-WI', -100], ['US-WY', -100]
+            ['US-VA', 20], ['US-WA', 150], ['US-WV', null], ['US-WI', -100], ['US-WY', -100]
         ]);
 
-        var options = {width: 556, height: 347, region: "US", resolution: "provinces"};
-//        var options = {
-//          region: '002', // Africa
-//          colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
-//          backgroundColor: '#81d4fa',
-//          datalessRegionColor: '#f8bbd0',
-//          defaultColor: '#f5f5f5',
-//        };
+        var options = {
+            width: 556,
+            height: 347,
+            region: "US",
+            resolution: "provinces",
+            colorAxis: {colors: ['#0044bd', '#9b0000']},
+            defaultColor: '#606060'
+        };
 
         var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
         chart.draw(data, options);
-      };
+      }
     </script>
 </head>
 
@@ -64,7 +57,7 @@
 
     <div class="row">
         <div id ="map">
-                <div id="geochart-colors" style="width: 700px; height: 433px;"></div>
+                <div id="geochart-colors" style="width: 700px; height: 433px; margin-top: 10%; margin-left: 30%"></div>
 
         </div>
     </div>
