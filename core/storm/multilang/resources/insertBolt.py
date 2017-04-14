@@ -30,7 +30,7 @@ class insertTweetData(storm.BasicBolt):
         self.score = tweet['sentimentscore']
         self.state = tweet['state']
         self.time = int(tweet['time'])
-        self.time = int(math.floor(self.time//3600))
+        self.time = int(math.floor(self.time//3600000))
         self.insert(tweet)
     
     def insert(self,tweet):
