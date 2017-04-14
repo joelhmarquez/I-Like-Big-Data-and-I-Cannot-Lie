@@ -19,10 +19,10 @@ class insertTweetData(storm.BasicBolt):
         #tweet['tweet'] = tweet['tweet'].replace("\/","")
         self.id = tweet['id']
         self.text = tweet['tweettext']
-        self.text = self.text.replace("'"," ")
-        self.text = self.text.replace("\""," ")
-        self.text = self.text.replace("\\"," ")
-        #self.text = self.text.replace("@"," ")
+        self.text = self.text.replace("'","")
+        self.text = self.text.replace("\"","")
+        #self.text = self.text.replace("\\"," ")
+        #self.text = self.text.replace("@","AT:")
         #self.text = re.sub(r'^https?:\/\/.*[\r\n]*', '', self.text, flags=re.MULTILINE)
         self.lat = tweet['lat']
         self.lng = tweet['lng']
@@ -32,7 +32,6 @@ class insertTweetData(storm.BasicBolt):
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600))
         self.insert(tweet)
-        # storm.emit([self.insert(tweet)])
     
     def insert(self,tweet):
         # Need to figure out how to emit an error properly for logging
@@ -42,12 +41,11 @@ class insertTweetData(storm.BasicBolt):
             session = cluster.connect()
             selectDB = "USE "+self.state+";"
             #insertData = "INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';"
-            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES ("+self.id+","+self.text+","+self.lat+","+self.lng+","+tweet['time']+","+self.score+","+self.state + ");"
+            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES (\'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\');"
             try:
                 session.execute(selectDB)
 
                 try:
-                    #session.execute("INSERT INTO \""+str(self.time)+"\" JSON '"+json.dumps(tweet)+"';")
                     session.execute(insertData)
 
                 except Exception as e:
