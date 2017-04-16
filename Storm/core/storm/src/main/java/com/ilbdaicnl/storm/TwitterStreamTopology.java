@@ -46,7 +46,5 @@ public class TwitterStreamTopology {
 
         cluster.submitTopology("racialMapping", conf, builder.createTopology());
 
-        Utils.sleep(1000000);
-        cluster.shutdown();
     }
 }
