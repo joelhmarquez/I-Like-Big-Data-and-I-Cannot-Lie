@@ -7,3 +7,4 @@ config.py
 *.pyc
 *credentials*
 *.pem
+db.sqlite3
