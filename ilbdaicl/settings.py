@@ -25,7 +25,7 @@ SECRET_KEY = '5pqb=(3+jb76n7vexo_dcgv@sv#fx0zsni2zz379x4hj)g@wp@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['swishertest.site', '52.14.155.145']
 
 
 # Application definition
