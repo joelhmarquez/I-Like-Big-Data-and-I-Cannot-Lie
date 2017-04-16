@@ -19,7 +19,8 @@ main =
 
 -- MODEL
 type alias Model = 
-    { topic: String
+    { tech: String
+    , image: String
     }
 
 
@@ -32,9 +33,9 @@ update: Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of 
         Title -> 
-            (Model "Tweet Dat(a) Hate", Cmd.none)
+            (Model "Tweet Dat(a) Hate" "", Cmd.none)
         Header newHeader ->
-            (Model newHeader, Cmd.none)
+            (Model newHeader "", Cmd.none)
 
 
 -- VIEW 
@@ -43,24 +44,165 @@ view model =
     Grid.container []
         [ CDN.stylesheet
         , Grid.row
-            [ Row.topXs
+            [ Row.middleXs
             , Row.centerMd
             , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] [ text "image for Tech 1" ]
-            , Grid.col [ Col.sm4 ] [ text "Tech 1" ]
-            , Grid.col [ Col.sm2 ] [ text "image for Tech 2" ]
-            , Grid.col [ Col.sm4 ] [ text "Tech 2" ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/github.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Github"] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/pivotaltracker.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Pivotal Tracker" ] ]
             ]
         , Grid.row 
-            [ Row.topXs
+            [ Row.middleXs
             , Row.centerMd
             , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] [ text "image for Tech 3" ]
-            , Grid.col [ Col.sm4 ] [ text "Tech 3" ]
-            , Grid.col [ Col.sm2 ] [ text "image for Tech 4" ]
-            , Grid.col [ Col.sm4 ] [ text "Tech 4" ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/cassandra.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Cassandra" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/storm.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Storm" ] ]
+            ]
+        , Grid.row 
+            [ Row.middleXs
+            , Row.centerMd
+            , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
+            ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/maven.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Maven" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/aws.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "AWS" ] ]
+            ]
+        , Grid.row 
+            [ Row.middleXs
+            , Row.centerMd
+            , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
+            ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/twitter.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Twitter" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/json.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "JSON" ] ]
+            ]
+        , Grid.row 
+            [ Row.middleXs
+            , Row.centerMd
+            , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
+            ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/python.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Python" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/textblob.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "TextBlob" ] ]
+            ]
+        , Grid.row 
+            [ Row.middleXs
+            , Row.centerMd
+            , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
+            ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/django.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Django" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/gmaps.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Google Maps" ] ]
+            ]
+        , Grid.row 
+            [ Row.middleXs
+            , Row.centerMd
+            , Row.leftSm
+            , Row.attrs [ style [("margin-top", "30px")] ]
+            ]
+            [ Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/Elm.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Elm" ] ]
+            , Grid.col [ Col.sm2 ] 
+                [ img 
+                    [ src "../images/html.png"
+                    , style [ ( "width", "75px" ) ] 
+                    ] 
+                    [] 
+                ]
+            , Grid.col [ Col.sm4 ] [ h6 [] [ text "HTML" ] ]
             ]
         ]
 {-    navbar DefaultNavbar 
@@ -88,5 +230,5 @@ subscriptions model =
 -- INIT 
 init: (Model, Cmd Msg)
 init = 
-    (Model "Tweet Dat(a) Hate", Cmd.none)
+    (Model "Tweet Dat(a) Hate" "", Cmd.none)
 
