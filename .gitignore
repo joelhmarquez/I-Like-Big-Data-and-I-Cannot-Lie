@@ -4,3 +4,6 @@
 .metadata/
 config.py
 */__pycache__/*
+*.pyc
+*credentials*
+*.pem
