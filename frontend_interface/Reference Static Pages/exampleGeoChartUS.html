@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['geochart']});
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Foo Factor'],
+          ['US-IL', 200],
+          ['US-IN', 300],
+          ['US-IA', 20],
+          ['US-RI', 150]
+        ]);
+
+        var options = {
+          region: 'US', // Africa
+          resolution: 'provinces',
+          colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
+          backgroundColor: '#81d4fa',
+          datalessRegionColor: '#f8bbd0',
+          defaultColor: '#f5f5f5',
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
+        chart.draw(data, options);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="geochart-colors" style="width: 700px; height: 433px;"></div>
+  </body>
+</html>
