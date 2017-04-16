@@ -47,16 +47,20 @@ view model =
             , Row.centerMd
             , Row.leftSm
             ]
-            [ Grid.col [ Col.xl9 ] [ text "Tech 1" ]
-            , Grid.col [ Col.xs1 ] [ text "Tech 2" ]
+            [ Grid.col [ Col.sm2 ] [ text "image for Tech 1" ]
+            , Grid.col [ Col.sm4 ] [ text "Tech 1" ]
+            , Grid.col [ Col.sm2 ] [ text "image for Tech 2" ]
+            , Grid.col [ Col.sm4 ] [ text "Tech 2" ]
             ]
         , Grid.row 
             [ Row.topXs
             , Row.centerMd
             , Row.leftSm
             ]
-            [ Grid.col [ Col.xs6 ] [ text "Tech 3" ]
-            , Grid.col [ Col.xs6 ] [ text "Tech 4" ]
+            [ Grid.col [ Col.sm2 ] [ text "image for Tech 3" ]
+            , Grid.col [ Col.sm4 ] [ text "Tech 3" ]
+            , Grid.col [ Col.sm2 ] [ text "image for Tech 4" ]
+            , Grid.col [ Col.sm4 ] [ text "Tech 4" ]
             ]
         ]
 {-    navbar DefaultNavbar 
