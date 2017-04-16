@@ -26,22 +26,23 @@ for state in statesToInsert:
 					#General exception handling
 					try:
 						countQuery = "select \"sentimentscore\" from \"%s\" where id = \'0\';" % timeblock
-						countResult = session.execute(countQuery)[0]['sentimentscore']
+						countResult = float("%.2f" % float(session.execute(countQuery)[0]['sentimentscore']))
 
 					except Exception as e:
-						countResult = 0.0
+						countResult = 0.00
 						print "Query Error: %s" % e
 									
 		except Exception as e:
-			countResult = 0.0
+			countResult = 0.00
 			print e
 
 	except Exception as e:
-		countResult = 0.0
+		countResult = 0.00
 		print e
 
 
 
 	finalMapScore.append([state, countResult])
 
+print finalMapScore
 cluster.shutdown()
