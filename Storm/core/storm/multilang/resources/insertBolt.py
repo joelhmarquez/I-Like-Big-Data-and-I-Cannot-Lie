@@ -58,16 +58,15 @@ class insertTweetData(storm.BasicBolt):
                    
                         except Exception as e:
                             error = "Unable to insert data. Query: "+insertData
-                            storm.emit([error])
 
                     except Exception as e:
                         error = "Unable to CREATE TABLE "+str(self.time)
-                        storm.emit([error])
+
             except Exception as e:
                 error = "Unable to select keyspace "+self.state
-                storm.emit([error])
+
         except Exception as e:
-            storm.emit(["Unable to connect to Cassandra"])
+
         cluster.shutdown()
 
 

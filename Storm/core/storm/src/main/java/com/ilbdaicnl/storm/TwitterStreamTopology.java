@@ -33,8 +33,8 @@ public class TwitterStreamTopology {
                 accessToken, accessTokenSecret, keyWords.toArray(new String[0])));
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
         builder.setBolt("geolocation", new GeolocationBolt()).shuffleGrouping("formatter");
-        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation", "success");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("insert");
+        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("geolocation", "success");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "failure");
         builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
 //        builder.setBolt("log", new LoggerBolt()).shuffleGrouping("insert", "error");
 
