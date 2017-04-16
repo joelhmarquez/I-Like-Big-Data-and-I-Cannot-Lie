@@ -51,7 +51,7 @@ view model =
         |> Navbar.brand 
             [ href "#"
             , style [("color", "gray")] ] 
-            [ text "Tweet Dat(a) Hate" ]
+            [ h1 [] [text "Tweet Dat(a) Hate" ]]
         |> Navbar.items
             [ Navbar.itemLink [href "#"] [ text "Visualize" ]
             , Navbar.itemLink [href "#"] [ text "About" ]

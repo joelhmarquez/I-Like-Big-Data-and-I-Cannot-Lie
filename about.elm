@@ -1,7 +1,9 @@
 module About exposing (..)
 
 import Bootstrap.Navbar exposing (..)
-
+import Bootstrap.Grid as Grid
+import Bootstrap.Grid.Col as Col
+import Bootstrap.Grid.Row as Row
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -35,15 +37,33 @@ update msg model =
 
 
 -- VIEW 
-view: Model -> Html Msg
+view: model -> Html Msg
 view model = 
-    navbar DefaultNavbar 
+    Grid.container []
+        [ Grid.row
+            [ Row.topXs
+            , Row.centerMd
+            , Row.leftSm
+            ]
+            [ Grid.col [ Col.xl9 ] [ text "Tech 1" ]
+            , Grid.col [ Col.xs1 ] [ text "Tech 2" ]
+            ]
+        , Grid.row 
+            [ Row.topXs
+            , Row.centerMd
+            , Row.leftSm
+            ]
+            [ Grid.col [] [ text "Tech 3" ]
+            , Grid.col [] [ text "Tech 4" ]
+            ]
+        ]
+{-    navbar DefaultNavbar 
         [ style 
             [("color", "gray")]
         ]
         [ h1 [][text "Tweet Dat(a) Hate"]
         ]
-{-    div 
+    div 
         []
         [ div [] [text "Tweet Dat(a) Hate"]
         , div [] []
@@ -51,7 +71,7 @@ view model =
     div
         []
         [
-        ]-}
+        ] -}
 
 
 -- SUBSCRIPTIONS
