@@ -1,0 +1,6 @@
+
+wpython:S101"[Rename class "tweetFilteredSentiment" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(ËäÑëøÿÿÿÿ
+Bpython:S125"Remove this commented out code.(ıïößüÿÿÿÿ8Ö·©­ª+
+wpython:S100"TRename method "normalizeText" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ÄÚ›ğşÿÿÿÿ8µÙÎ±ª+
+Bpython:S125"Remove this commented out code.(¶¨¸ˆùÿÿÿÿ8Äœ±ª+
+<python:S2325"Make this method static.(ÄÚ›ğşÿÿÿÿ8µÙÎ±ª+
