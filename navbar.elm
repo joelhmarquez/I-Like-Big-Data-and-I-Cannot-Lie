@@ -1,5 +1,6 @@
 module Base.Navbar exposing (..)
 
+import Bootstrap.CDN as CDN
 import Bootstrap.Navbar as Navbar
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -50,8 +51,10 @@ view model =
         -- |> Navbar.withAnimation
         |> Navbar.brand 
             [ href "#"
-            , style [("color", "gray")] ] 
-            [ h1 [] [text "Tweet Dat(a) Hate" ]]
+            , style [("color", "gray")]
+            ] 
+            [ CDN.stylesheet
+            , h1 [] [text "Tweet Dat(a) Hate" ]]
         |> Navbar.items
             [ Navbar.itemLink [href "#"] [ text "Visualize" ]
             , Navbar.itemLink [href "#"] [ text "About" ]

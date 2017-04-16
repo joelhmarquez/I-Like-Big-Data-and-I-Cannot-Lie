@@ -1,5 +1,6 @@
 module About exposing (..)
 
+import Bootstrap.CDN as CDN
 import Bootstrap.Navbar exposing (..)
 import Bootstrap.Grid as Grid
 import Bootstrap.Grid.Col as Col
@@ -40,7 +41,8 @@ update msg model =
 view: model -> Html Msg
 view model = 
     Grid.container []
-        [ Grid.row
+        [ CDN.stylesheet
+        , Grid.row
             [ Row.topXs
             , Row.centerMd
             , Row.leftSm
@@ -53,8 +55,8 @@ view model =
             , Row.centerMd
             , Row.leftSm
             ]
-            [ Grid.col [] [ text "Tech 3" ]
-            , Grid.col [] [ text "Tech 4" ]
+            [ Grid.col [ Col.xs6 ] [ text "Tech 3" ]
+            , Grid.col [ Col.xs6 ] [ text "Tech 4" ]
             ]
         ]
 {-    navbar DefaultNavbar 
