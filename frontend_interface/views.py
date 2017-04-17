@@ -99,7 +99,11 @@ def index(request):
 	return response
 
 def mapsData(request):
+
+	returnValue = {}
+	returnValue['values'] = mapSetQuery()
 	response = HttpResponse()
-	response.write(mapSetQuery())
+	
+	response.write(json.dumps(returnValue))
 	return response
 
