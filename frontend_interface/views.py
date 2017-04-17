@@ -12,11 +12,7 @@ import json
 
 # Create your views here.
 
-
-
-
-
-def index(request):
+def mapSetQuery():
 	cluster = Cluster(['172.31.35.21'], port=9042)
 	session = cluster.connect()
 
@@ -57,7 +53,11 @@ def index(request):
 
 
 		finalMapScore.append([str(stateToCode[state]), countResult])
+	return finalMapScore
 
+
+
+def index(request):
 	response = HttpResponse()
 	response.write('''
 <!DOCTYPE html>
@@ -71,7 +71,7 @@ def index(request):
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable(
 ''')
-	response.write(finalMapScore)
+	response.write(mapSetQuery())
 	response.write(''');
         var options = {
           region: 'US', 
@@ -94,3 +94,6 @@ def index(request):
 ''')
 
 	return response
+
+def mapsData(request):
+	return HttpResponse(mapSetQuery())
