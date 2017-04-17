@@ -1,7 +1,6 @@
 import storm
 import json
 import math
-import re
 # from cassandra.io.libevreactor import LibevConnection
 # Previous not built for Windows
 from cassandra.cluster import Cluster
@@ -66,7 +65,8 @@ class insertTweetData(storm.BasicBolt):
                 error = "Unable to select keyspace "+self.state
 
         except Exception as e:
-
+            error = "Unable to connect to Cassandra"
+            
         cluster.shutdown()
 
 
