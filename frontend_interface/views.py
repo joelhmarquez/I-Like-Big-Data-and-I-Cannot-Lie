@@ -8,6 +8,9 @@ from django.http import HttpResponse
 from cassandra.cluster import Cluster
 from cassandra.query import *
 
+
+from restless.views import Endpoint
+
 import json
 
 # Create your views here.
@@ -96,4 +99,7 @@ def index(request):
 	return response
 
 def mapsData(request):
-	return HttpResponse(mapSetQuery())
+	response = HttpResponse()
+	response.write(mapSetQuery())
+	return response
+
