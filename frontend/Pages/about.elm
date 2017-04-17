@@ -185,7 +185,8 @@ view model =
                 ]
             , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
                 [ h6 [] [ text "TextBlob" ] 
-                , ]
+                , text "TextBlob, a Python library, allows us to do sentiment analysis on the content of tweets."
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -200,7 +201,10 @@ view model =
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Django" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Django" ] 
+                , text "Django Unchained. 'Nuff said."
+                ]
             , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/gmaps.png"
@@ -208,7 +212,10 @@ view model =
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Google Maps" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Google Maps" ] 
+                , text "Google Maps API allowed us to determine the location of each tweet in order to map it to a state in Cassandra."
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -223,7 +230,10 @@ view model =
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Elm" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Elm" ] 
+                , text "We used Elm in conjunction with HTMl, JavaScript, and CSS to create the webpage."
+                ]
             , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/html.png"
@@ -231,7 +241,10 @@ view model =
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "HTML" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "HTML" ] 
+                , text "We used HTML in conjunction with Elm, JavaScript, and CSS to create the webpage."
+                ]
             ]
         ]
 
