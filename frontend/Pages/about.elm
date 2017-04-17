@@ -49,22 +49,28 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/github.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Github"] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Github"]
+                , text "We used GitHub as our main code repository for version control." 
+                ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/pivotaltracker.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Pivotal Tracker" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Pivotal Tracker" ] 
+                , text "Pivotal Tracker served as our project management tool in an Agile environment." 
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -72,22 +78,28 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/cassandra.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Cassandra" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Cassandra" ] 
+                , text "Cassandra stored the tweet data after filtering."
+                ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/storm.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Storm" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Storm" ] 
+                , text "Storm handled the queuing of our Twitter API data stream and also handled the processing of the data stream."
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -95,22 +107,28 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/maven.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Maven" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Maven" ] 
+                , text "Maven compiled our Cassandra database and our Storm package."
+                ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/aws.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "AWS" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "AWS" ] 
+                , text "AWS hosted the servers for all of our components."
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -118,22 +136,28 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/twitter.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Twitter" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Twitter" ] 
+                , text "Using Twitter's API, we pulled tweets to filter for hateful sentiment across the country."
+                ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/json.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "JSON" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "JSON" ] 
+                , text "JSON lets us transfer data easily in a standard data structure."
+                ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -141,22 +165,27 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/python.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Python" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "Python" ] 
+                , text "We used Python everywhere. Our sentiment analysis and its Storm bolt is in Storm, and we used Python to talk to the database. Our front-end web-server also uses Python."
+                ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/textblob.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "TextBlob" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] 
+                [ h6 [] [ text "TextBlob" ] 
+                , ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -164,22 +193,22 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/django.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Django" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Django" ] ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/gmaps.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Google Maps" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Google Maps" ] ]
             ]
         , Grid.row 
             [ Row.middleXs
@@ -187,39 +216,24 @@ view model =
             , Row.leftSm
             , Row.attrs [ style [("margin-top", "30px")] ]
             ]
-            [ Grid.col [ Col.sm2 ] 
+            [ Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/Elm.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "Elm" ] ]
-            , Grid.col [ Col.sm2 ] 
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "Elm" ] ]
+            , Grid.col [ Col.sm2, Col.attrs [ class "tech-img" ] ] 
                 [ img 
                     [ src "../images/html.png"
                     , style [ ( "width", "75px" ) ] 
                     ] 
                     [] 
                 ]
-            , Grid.col [ Col.sm4 ] [ h6 [] [ text "HTML" ] ]
+            , Grid.col [ Col.sm4, Col.attrs [ class "tech-desc" ] ] [ h6 [] [ text "HTML" ] ]
             ]
         ]
-{-    navbar DefaultNavbar 
-        [ style 
-            [("color", "gray")]
-        ]
-        [ h1 [][text "Tweet Dat(a) Hate"]
-        ]
-    div 
-        []
-        [ div [] [text "Tweet Dat(a) Hate"]
-        , div [] []
-        ]
-    div
-        []
-        [
-        ] -}
 
 
 -- SUBSCRIPTIONS
