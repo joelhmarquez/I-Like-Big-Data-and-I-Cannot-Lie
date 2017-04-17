@@ -8,3 +8,5 @@ config.py
 elm-stuff
 # elm-repl generated files
 repl-temp-*
+/target/
+*config.properties*
