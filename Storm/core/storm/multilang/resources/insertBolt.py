@@ -1,7 +1,6 @@
 import storm
 import json
 import math
-import re
 # from cassandra.io.libevreactor import LibevConnection
 # Previous not built for Windows
 from cassandra.cluster import Cluster
@@ -58,16 +57,16 @@ class insertTweetData(storm.BasicBolt):
                    
                         except Exception as e:
                             error = "Unable to insert data. Query: "+insertData
-                            storm.emit([error])
 
                     except Exception as e:
                         error = "Unable to CREATE TABLE "+str(self.time)
-                        storm.emit([error])
+
             except Exception as e:
                 error = "Unable to select keyspace "+self.state
-                storm.emit([error])
+
         except Exception as e:
-            storm.emit(["Unable to connect to Cassandra"])
+            error = "Unable to connect to Cassandra"
+            
         cluster.shutdown()
 
 

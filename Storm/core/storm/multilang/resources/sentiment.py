@@ -6,7 +6,7 @@ import json
 hateWords = set()
 hateFile = open("resources/hatewords.txt", "r")
 for word in hateFile:
-    hateWords.add(word.rstrip())
+    hateWords.add(word.rstrip().lower())
 hateFile.close()
 
 #For this to work, it is necessary to use the following command:

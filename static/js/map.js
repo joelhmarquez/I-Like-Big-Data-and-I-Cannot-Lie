@@ -15,6 +15,8 @@
 
         http.get(url, function(resp) {
             drawRegionsMap(JSON.parse(resp));
+             document.getElementById('content').style.visibility='visible'; 
+            document.getElementById('loader').style.visibility='hidden';
         })
     }
 

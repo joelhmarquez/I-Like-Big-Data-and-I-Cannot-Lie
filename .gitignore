@@ -12,3 +12,5 @@ db.sqlite3
 elm-stuff
 # elm-repl generated files
 repl-temp-*
+/target/
+*config.properties*

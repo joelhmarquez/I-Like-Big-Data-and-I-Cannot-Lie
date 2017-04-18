@@ -1,4 +1,4 @@
-race
+racist
 racism
 discrimination
 vandalism
@@ -72,6 +72,12 @@ Gipps
 Gips
 Gook
 Gookey-eye
+gooki
+gookieye
+gooki-eye
+gookey-eyes
+gookieyes
+gooki-eyes
 Gooks
 Gooky
 Goy
@@ -246,7 +252,6 @@ Polak
 Polakk
 Polakks
 Polaks
-RACIAL_SLUR
 Raghead
 Ragheads
 Redskin
@@ -291,19 +296,19 @@ Squaws
 Squinties
 Squinty
 Squnities
-Tar Babies
-Tar Baby
-Tar Babys
+Tar-Babies
+Tar-Babi
+Tar-Babis
 Tar-Babies
 Tar-baby
 Tar-babys
 TarBabies
 TarBaby
 TarBabys
-Uncle Tom
+UncoleTom
 UncleTom
 UncleToms
-Uncole Toms
+UncoleToms
 Wetback
 Wetbacks
 Wop
