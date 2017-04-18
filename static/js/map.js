@@ -10,7 +10,7 @@
     google.charts.setOnLoadCallback(init);
 
     function init() {
-        var url = "http://swishertest.site/api/map";
+        var url = "https://swishertest.site/api/map";
         var http = new HttpClient();
 
         http.get(url, function(resp) {
