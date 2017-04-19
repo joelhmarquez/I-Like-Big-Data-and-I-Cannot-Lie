@@ -85,10 +85,6 @@
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center" id="techs">
-                    <script type = "text/javascript">
-                        var div = document.getElementById('techs');
-                        Elm.about.embed(div);
-                    </script>
                     <img class="img-responsive img-border img-full" src="img/extra.jpg" alt="">
                     <h2>Technologies
                         <br>
@@ -131,6 +127,12 @@
 
     <!-- Elm stuffiez -->
     <!--<script type = "text/javascript" src="./js/tech.js"></script>-->
+
+    <script type = "text/javascript">
+        var div = document.getElementById('techs');
+        //Elm.embed(Elm.about, div);
+        Elm.Pages.About.embed(div);
+    </script>
 
 </body>
 
