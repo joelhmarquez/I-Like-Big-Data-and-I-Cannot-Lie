@@ -21,6 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
+    <script type = "text/javascript" src="./js/tech.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -82,7 +84,11 @@
                     </h2>
                     <hr>
                 </div>
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center" id="techs">
+                    <script type = "text/javascript">
+                        var div = document.getElementById('techs');
+                        Elm.about.embed(div);
+                    </script>
                     <img class="img-responsive img-border img-full" src="img/extra.jpg" alt="">
                     <h2>Technologies
                         <br>
@@ -122,6 +128,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Elm stuffiez -->
+    <!--<script type = "text/javascript" src="./js/tech.js"></script>-->
 
 </body>
 
