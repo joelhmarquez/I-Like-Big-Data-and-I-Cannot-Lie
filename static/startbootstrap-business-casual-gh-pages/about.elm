@@ -41,7 +41,13 @@ update msg model =
 -- VIEW 
 view: model -> Html Msg
 view model = 
-    Grid.container []
+    Grid.container 
+        [style 
+            [("padding-left", "-15px")
+            , ("padding-right", "-15px")
+            , ("margin-left", "-15px")
+            , ("margin-right", "-15px")]
+        ]
         [ CDN.stylesheet
         , Grid.row
             [ Row.middleXs
