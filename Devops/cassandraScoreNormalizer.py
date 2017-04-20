@@ -3,7 +3,7 @@ import sys
 import time
 from cassandra.cluster import Cluster
 from cassandra.query import *
-cluster = Cluster(['172.31.35.21'], port=9042)
+cluster = Cluster(['172.31.3.194'], port=9042)
 session = cluster.connect()
 
 session.row_factory = dict_factory

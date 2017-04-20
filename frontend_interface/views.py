@@ -16,7 +16,7 @@ import json
 # Create your views here.
 
 def mapSetQuery():
-	cluster = Cluster(['172.31.35.21'], port=9042)
+	cluster = Cluster(['172.31.3.194'], port=9042)
 	session = cluster.connect()
 
 	session.row_factory = dict_factory
