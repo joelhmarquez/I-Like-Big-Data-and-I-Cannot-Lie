@@ -12,26 +12,32 @@ var d3charts = function(){
             bindto: '#chart1',
             data: {
                 columns: [
-                    ['Hate(%)', 5, 20, 46, 60, 75, 100]
+                    ['data1', 5, 20, 46, 60, 75, 100]
                 ],
-                type: 'spline'
-            },
-            axis: {
-                y: {
-                    label: { // ADD
-                        text: 'Hate (%)',
-                        position: 'outer-middle'
+                type: 'spline',
+                colors: {
+                    data1: '#9b0000'
+                },
+                names: {
+                    data1: 'Hate (%)'
+                },
+                axis: {
+                    y: {
+                        label: { // ADD
+                            text: 'Hate (%)',
+                            position: 'outer-middle'
+                        }
+                    },
+                    x: {
+                        label: { // ADD
+                            text: 'Date',
+                            position: 'outer-middle'
+                        }
                     }
                 },
-                x: {
-                    label: { // ADD
-                        text: 'Date',
-                        position: 'outer-middle'
-                    }
+                title: {
+                    text: state? state + ' hate over time': 'Total hate over time'
                 }
-            },
-            title: {
-                text: 'Hate over time'
             }
         });
 
@@ -39,50 +45,65 @@ var d3charts = function(){
             bindto: '#chart2',
             data: {
                 columns: [
-                    ['Hate Tweets', 30],
-                    ['Non-Hate Tweets', 70]
+                    ['data1', 30],
+                    ['data2', 70]
                 ],
-                type : 'donut',
-                onclick: function (d, i) { console.log("onclick", d, i); },
-                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                colors: {
+                    data1: '#9b0000',
+                    data2: '#1ab2ff'
+                },
+                names: {
+                    data1: 'Hate Tweets',
+                    data2: 'Non-Hate Tweets'
+                },
+                type : 'donut'
             },
             donut: {
                 title: state || "Total"
             }
         });
-
         chart3 = c3.generate({
             bindto: '#chart3',
             data: {
                 columns: [
-                    [state + '(%)', 5, 20, 46, 60, 75, 100],
-                    ['Avg(%)', 10, 40, 56, 78, 83, 100]
+                    ['data1', 30]
                 ],
-                type: 'spline'
-            },
-            axis: {
-                y: {
-                    label: { // ADD
-                        text: 'Hate (%)',
-                        position: 'outer-middle'
+                type: 'bar',
+                colors: {
+                    data1: '#9975b9',
+                    data2: '#9b0000'
+                },
+                names: {
+                    data1: 'Average Hate Tweets',
+                    data2: state + ' Hate Tweets'
+                },
+                axis: {
+                    y: {
+                        label: { // ADD
+                            text: 'Hate (%)',
+                            position: 'outer-middle'
+                        }
+                    },
+                    x: {
+                        label: { // ADD
+                            text: 'Date',
+                            position: 'outer-middle'
+                        }
                     }
                 },
-                x: {
-                    label: { // ADD
-                        text: 'Date',
-                        position: 'outer-middle'
-                    }
+                title: {
+                    text: state? state + ' vs Average': 'Average'
                 }
             },
-            title: {
-                text: state? state + ' vs Average': 'Average'
+            bar: {
+                width: {
+                    ratio: 0.25 // this makes bar width 50% of length between ticks
+                }
+                // or
+                //width: 100 // this makes bar width 100px
             }
+
         });
     };
-
-    // this.update= function (state) {
-    //     this.init(state, null)
-    // }
 };
 
