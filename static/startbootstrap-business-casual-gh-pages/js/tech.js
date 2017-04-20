@@ -12524,7 +12524,20 @@ var _user$project$Pages_About$subscriptions = function (model) {
 var _user$project$Pages_About$view = function (model) {
 	return A2(
 		_rundis$elm_bootstrap$Bootstrap_Grid$container,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'padding-left', _1: '0'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding-right', _1: '0'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: _rundis$elm_bootstrap$Bootstrap_CDN$stylesheet,
