@@ -12,17 +12,13 @@
     google.charts.setOnLoadCallback(init);
 
     function init() {
-        var url = "https://swishertest.site/api/map";
-        var http = new HttpClient();
-
-        http.get(url, function(resp) {
-            //TODO: Write http call to get initial chart data and have this func be in callback
+        factory.getScores().then(function (resp) {
             d3.draw(null, null);
 
-            drawRegionsMap(JSON.parse(resp));
-             document.getElementById('content').style.visibility='visible'; 
+            drawRegionsMap(resp);
+            document.getElementById('content').style.visibility='visible';
             document.getElementById('loader').style.visibility='hidden';
-        })
+        });
     }
 
     function drawRegionsMap(values) {
