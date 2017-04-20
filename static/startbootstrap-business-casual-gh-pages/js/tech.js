@@ -12529,16 +12529,16 @@ var _user$project$Pages_About$view = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'padding-left', _1: '0px'},
+					_0: {ctor: '_Tuple2', _0: 'padding-left', _1: '15px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'padding-right', _1: '0px'},
+						_0: {ctor: '_Tuple2', _0: 'padding-right', _1: '45px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'margin-left', _1: '0px'},
+							_0: {ctor: '_Tuple2', _0: 'margin-left', _1: '15px'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin-right', _1: '0px'},
+								_0: {ctor: '_Tuple2', _0: 'margin-right', _1: '15px'},
 								_1: {ctor: '[]'}
 							}
 						}
