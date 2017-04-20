@@ -43,10 +43,10 @@ view: model -> Html Msg
 view model = 
     Grid.container 
         [style 
-            [("padding-left", "-15px")
-            , ("padding-right", "-15px")
-            , ("margin-left", "-15px")
-            , ("margin-right", "-15px")]
+            [("padding-left", "0px")
+            , ("padding-right", "0px")
+            , ("margin-left", "0px")
+            , ("margin-right", "0px")]
         ]
         [ CDN.stylesheet
         , Grid.row
