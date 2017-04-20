@@ -11,33 +11,40 @@ var d3charts = function(){
         chart1 = c3.generate({
             bindto: '#chart1',
             data: {
+                x: 'x',
                 columns: [
+                    ['x', '2017-01-14', '2017-02-15', '2017-03-7', '2017-01-11', '2017-02-10', '2017-03-19'],
                     ['data1', 5, 20, 46, 60, 75, 100]
                 ],
-                type: 'spline',
+                // type: 'spline',
                 colors: {
                     data1: '#9b0000'
                 },
                 names: {
                     data1: 'Hate (%)'
-                },
-                axis: {
-                    y: {
-                        label: { // ADD
-                            text: 'Hate (%)',
-                            position: 'outer-middle'
-                        }
+                }
+            },
+            axis: {
+                x: {
+                    label: { // ADD
+                        text: 'Date',
+                        position: 'outer-middle'
                     },
-                    x: {
-                        label: { // ADD
-                            text: 'Date',
-                            position: 'outer-middle'
-                        }
+                    type: 'timeseries',
+                    tick: {
+                        values: ['2017-01-01', '2017-02-01', '2017-03-01']
+                        // format: '%m-%d'
                     }
                 },
-                title: {
-                    text: state? state + ' hate over time': 'Total hate over time'
+                y: {
+                    label: { // ADD
+                        text: 'Hate (%)',
+                        position: 'outer-middle'
+                    }
                 }
+            },
+            title: {
+                text: state? state + ' hate over time': 'Total hate over time'
             }
         });
 
@@ -66,7 +73,8 @@ var d3charts = function(){
             bindto: '#chart3',
             data: {
                 columns: [
-                    ['data1', 30]
+                    ['data1', 30],
+                    ['data2', 50]
                 ],
                 type: 'bar',
                 colors: {
@@ -90,10 +98,10 @@ var d3charts = function(){
                             position: 'outer-middle'
                         }
                     }
-                },
-                title: {
-                    text: state? state + ' vs Average': 'Average'
                 }
+            },
+            title: {
+                text: state? state + ' vs Average': 'Average',
             },
             bar: {
                 width: {
