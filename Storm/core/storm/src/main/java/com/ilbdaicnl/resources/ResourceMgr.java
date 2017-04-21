@@ -26,7 +26,6 @@ public class ResourceMgr {
 	final Logger logger = LoggerFactory.getLogger(ResourceMgr.class);
 	 
 	protected ResourceMgr() {
-//		BufferedReader br = null;
         
         /* Reading in twitter oauth values, google maps api key and keyWords*/
         try {
@@ -40,26 +39,10 @@ public class ResourceMgr {
 			
 			this.gmapsApiKeys = new ArrayList<String>(Arrays.asList(env.getProperty("google.keys").split("\\s*,\\s*")));
 			
-//			br = new BufferedReader(new FileReader("hatewords.txt"));
-//			
-//			String line;
-//            while ((line = br.readLine()) != null) {
-//                this.keyWords.add(line);
-//            }
-		
 			logger.info("Successfully read in environment variables and keywords");
 		} catch (IOException e) {
 			logger.error("Error reading in environment variables or keywords: " + e.getMessage());
 		} 
-//        finally {
-//            try {
-//                if (br != null) {
-//                    br.close();
-//                }
-//            } catch (IOException e) {
-//            	logger.error("Error closing bufferReader: " + e.getMessage());
-//            }
-//        }
 	}
  
 	public static ResourceMgr getInstance() {

@@ -31,20 +31,13 @@ public class TwitterStreamTopology {
 
         builder.setSpout("twitter", new TwitterStreamSpout(consumerKey, consumerSecret,
                 accessToken, accessTokenSecret, keyWords.toArray(new String[0])));
-<<<<<<< HEAD
-        builder.setBolt("formatter", new TweetFormatterBolt(), 1).shuffleGrouping("twitter");
-        builder.setBolt("geolocation", new GeolocationBolt(), 1).shuffleGrouping("formatter");
-        builder.setBolt("sentiment", new SentimentAnalysisBolt(), 1).shuffleGrouping("geolocation");
-        builder.setBolt("insert", new CassandraInsertBolt(), 1).shuffleGrouping("sentiment");
-        builder.setBolt("print", new TwitterStreamPrint(), 1).shuffleGrouping("insert");
-=======
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
         builder.setBolt("geolocation", new GeolocationBolt()).shuffleGrouping("formatter");
-        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("geolocation", "success");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "failure");
-        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
->>>>>>> master
+//        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("geolocation", "success");
+//        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "failure");
+//        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
 //        builder.setBolt("log", new LoggerBolt()).shuffleGrouping("insert", "error");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "success");
 
 
         Config conf = new Config();

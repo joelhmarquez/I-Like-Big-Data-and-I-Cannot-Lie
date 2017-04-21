@@ -93,18 +93,14 @@ public class TwitterStreamSpout extends BaseRichSpout {
         AccessToken token = new AccessToken(accessToken, accessTokenSecret);
         twitterStream.setOAuthAccessToken(token);
 
-        if (keyWords.length == 0) {
 
-            twitterStream.sample();
-        }
-
-        else {
-
-            FilterQuery query = new FilterQuery().track(keyWords).locations(new double[][]{new double[]{-126.562500,30.448674},
-                new double[]{-61.171875,44.087585
-                }});
+            FilterQuery query = new FilterQuery();
+//            query.track(new String[]{""}); 
+            query.locations(new double[][]{new double[]{-126.562500,30.448674},
+                            new double[]{-61.171875,44.087585
+                            }});
+            query.language(new String[]{"en"});
             twitterStream.filter(query);
-        }
 
     }	
 
