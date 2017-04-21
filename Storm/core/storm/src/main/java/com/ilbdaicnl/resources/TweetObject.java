@@ -1,9 +1,9 @@
 package com.ilbdaicnl.resources;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import twitter4j.Status;
 
 public class TweetObject {
 	private String id;
@@ -15,26 +15,15 @@ public class TweetObject {
 	private String state;
 	private String sentimentscore;
 	
-	public TweetObject(Status tweet){
-		this.id = Long.toString(tweet.getId());
-		this.text = tweet.getText();
-		this.lat = tweet.getGeoLocation()!=null ? Double.toString(tweet.getGeoLocation().getLatitude()) : null;
-		this.lng = tweet.getGeoLocation()!=null ? Double.toString(tweet.getGeoLocation().getLongitude()) : null;
-		this.time = Long.toString(tweet.getCreatedAt().getTime());
-		this.location = tweet.getUser()!=null ? tweet.getUser().getLocation(): null;
-		this.state = null;
-		this.sentimentscore = null;
-	}
-	
-	public TweetObject(ObjectNode tweet){
-		this.id = tweet.findValue("id").asText();
-		this.text = tweet.findValue("text").asText();
-		this.lat = tweet.findValue("lat").asText();
-		this.lng = tweet.findValue("lng").asText();
-		this.time = tweet.findValue("time").asText();
-		this.location = tweet.findValue("location").asText();
-		this.state = tweet.findValue("state").asText();
-		this.sentimentscore = tweet.findValue("sentimentscore").asText();
+	public TweetObject(JsonNode tweet){
+		this.id = tweet.findValuesAsText("id").isEmpty() ? null : tweet.findValuesAsText("id").get(0);
+		this.text = tweet.findValuesAsText("body").isEmpty() ? null : tweet.findValuesAsText("body").get(0);
+		this.lat = null;
+		this.lng = null;
+		this.time = tweet.findValuesAsText("timePosted").isEmpty() ? null : tweet.findValuesAsText("timePosted").get(0);
+		this.location = tweet.findValuesAsText("location").isEmpty() ? null : tweet.findValuesAsText("location").get(0);
+		this.state = tweet.findValuesAsText("region").isEmpty() ? null : tweet.findValuesAsText("region").get(0);
+		this.sentimentscore = "null";
 	}
 	
 	public String getId() {

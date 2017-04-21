@@ -15,13 +15,9 @@ import org.slf4j.LoggerFactory;
 
 public class ResourceMgr {
 	private static final ResourceMgr instance = new ResourceMgr();
-	private String consumerKey;
-	private String consumerSecret;
-	private String accessToken;
-	private String accessTokenSecret;
-	List<String> keyWords = new ArrayList<String>();
-	
-	List<String> gmapsApiKeys;
+	private String gnipUsername;
+	private String gnipPassword;
+	private String gnipUrl;
 	
 	final Logger logger = LoggerFactory.getLogger(ResourceMgr.class);
 	 
@@ -32,16 +28,13 @@ public class ResourceMgr {
         	Properties env = new Properties();
             InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
 			env.load(stream);
-			this.consumerKey = env.getProperty("consumer.key");
-			this.consumerSecret = env.getProperty("consumer.secret");
-			this.accessToken = env.getProperty("access.token");
-			this.accessTokenSecret = env.getProperty("access.token.secret");
-			
-			this.gmapsApiKeys = new ArrayList<String>(Arrays.asList(env.getProperty("google.keys").split("\\s*,\\s*")));
-			
-			logger.info("Successfully read in environment variables and keywords");
+			this.gnipUsername = env.getProperty("gnip.username");
+			this.gnipPassword = env.getProperty("gnip.password");
+			this.gnipUrl = env.getProperty("gnip.url");
+					
+			logger.info("Successfully read in environment variables");
 		} catch (IOException e) {
-			logger.error("Error reading in environment variables or keywords: " + e.getMessage());
+			logger.error("Error reading in environment variables: " + e.getMessage());
 		} 
 	}
  
@@ -49,36 +42,14 @@ public class ResourceMgr {
 		return instance;
 	}
 
-	public String getConsumerKey() {
-		return consumerKey;
-	}
-
-	public String getConsumerSecret() {
-		return consumerSecret;
-	}
-
-	public String getAccessToken() {
-		return accessToken;
-	}
-
-	public String getAccessTokenSecret() {
-		return accessTokenSecret;
-	}
-
-	public List<String> getKeyWords() {
-		return keyWords;
-	}
-
-	public String getApiKey() {
-		return gmapsApiKeys.get(0);
+	public String getGnipUsername() {
+		return gnipUsername;
 	}
 	
-	public String refreshKey(){
-		System.out.println("Reset Key");
-		String currentKey = gmapsApiKeys.get(0);
-		gmapsApiKeys.remove(0);
-		gmapsApiKeys.add(currentKey);
-		
-		return gmapsApiKeys.get(0);
+	public String getGnipPassword() {
+		return gnipPassword;
+	}
+	public String getGnipUrl() {
+		return gnipUrl;
 	}
 }
