@@ -1,11 +1,7 @@
 package com.ilbdaicnl.storm;
 
-import org.apache.storm.utils.Utils;
-
 import com.ilbdaicnl.resources.ResourceMgr;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
@@ -25,7 +21,7 @@ public class TwitterStreamTopology {
         
         TopologyBuilder builder = new TopologyBuilder();
 
-        builder.setSpout("twitter", new TwitterStreamSpout2(gnipUser, gnipPass, gnipUrl));
+        builder.setSpout("twitter", new TwitterStreamSpout(gnipUser, gnipPass, gnipUrl));
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
 //        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("geolocation", "success");
 //        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "failure");
