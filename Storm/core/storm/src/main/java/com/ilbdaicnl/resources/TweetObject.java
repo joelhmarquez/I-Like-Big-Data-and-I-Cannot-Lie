@@ -22,7 +22,7 @@ public class TweetObject {
 		this.lng = null;
 		this.time = tweet.findValuesAsText("timePosted").isEmpty() ? null : tweet.findValuesAsText("timePosted").get(0);
 		this.location = tweet.findValuesAsText("location").isEmpty() ? null : tweet.findValuesAsText("location").get(0);
-		this.state = tweet.findValuesAsText("region").isEmpty() ? null : tweet.findValuesAsText("region").get(0);
+		this.state = tweet.findValuesAsText("region").isEmpty() ? null : tweet.findValuesAsText("region").get(0).replaceAll("\\s+","");
 		this.sentimentscore = "null";
 	}
 	
