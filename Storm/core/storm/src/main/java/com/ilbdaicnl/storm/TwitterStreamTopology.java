@@ -23,11 +23,10 @@ public class TwitterStreamTopology {
 
         builder.setSpout("twitter", new TwitterStreamSpout(gnipUser, gnipPass, gnipUrl));
         builder.setBolt("formatter", new TweetFormatterBolt()).shuffleGrouping("twitter");
-//        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("geolocation", "success");
-//        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("geolocation", "failure");
-//        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
+        builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("formatter");
+        builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
 //        builder.setBolt("log", new LoggerBolt()).shuffleGrouping("insert", "error");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("formatter");
+        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("insert");
 
 
         Config conf = new Config();
