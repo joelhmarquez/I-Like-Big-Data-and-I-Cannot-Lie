@@ -56,16 +56,16 @@ class insertTweetData(storm.BasicBolt):
                    
                         except Exception as e:
                             error = "Unable to insert data. Query: "+insertData
-                            storm.emit([error])
+                            storm.emit([str(e)])
                     except Exception as e:
                         error = "Unable to CREATE TABLE "+str(self.time)
-                        storm.emit([error])
+                        storm.emit([str(e)])
             except Exception as e:
                 error = "Unable to select keyspace "+self.state
-                storm.emit([error])
+                storm.emit([str(e)])
         except Exception as e:
-            error = "Unable to connect to Cassandra"
-            storm.emit([error])
+            error = "Unable to connect to Cassandra with Tweet object: \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
+            storm.emit([str(e)])
         
         cluster.shutdown()
 
