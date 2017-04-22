@@ -9,8 +9,8 @@ import org.apache.storm.tuple.Tuple;
 public class TwitterStreamPrint extends BaseBasicBolt {
 	@Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
-//        System.out.println("\u001B[33m"+tuple.getValueByField("error")+"\u001B[0m");
-		System.out.println(tuple);
+        System.out.println("\u001B[33m"+tuple.getValueByField("error")+"\u001B[0m");
+		//System.out.println(tuple);
     }
 
     @Override
