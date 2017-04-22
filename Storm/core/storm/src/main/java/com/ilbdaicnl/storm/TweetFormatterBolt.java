@@ -22,7 +22,7 @@ public class TweetFormatterBolt extends BaseBasicBolt {
 			JsonNode tweetJson = m.readTree(tuple.getValueByField("tweet").toString());
 			TweetObject tweet = new TweetObject(tweetJson);
 			if(tweet.getState() != null){
-				System.out.print("Formatted Tweet:" + tweet);
+				//System.out.print("Formatted Tweet:" + tweet);
 				collector.emit(new Values(tweet.asJSON()));
 			}
 		}
