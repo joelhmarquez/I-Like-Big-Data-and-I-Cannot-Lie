@@ -9,7 +9,7 @@ import org.apache.storm.tuple.Fields;
 
 public class CassandraInsertBolt extends ShellBolt implements IRichBolt{
 		public CassandraInsertBolt() {
-	      super("python", "resources/insertBolt.py");
+	      super("python", "insertBolt.py");
 	    }
 
 	    @Override

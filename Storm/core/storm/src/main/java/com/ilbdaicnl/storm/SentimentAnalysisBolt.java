@@ -9,7 +9,7 @@ import org.apache.storm.tuple.Fields;
 
 public class SentimentAnalysisBolt extends ShellBolt implements IRichBolt{
 		public SentimentAnalysisBolt() {
-	      super("python", "resources/sentiment.py");
+	      super("python", "sentiment.py");
 	    }
 
 	    @Override

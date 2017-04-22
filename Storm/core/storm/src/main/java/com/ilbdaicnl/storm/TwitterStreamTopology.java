@@ -26,7 +26,7 @@ public class TwitterStreamTopology {
         builder.setBolt("sentiment", new SentimentAnalysisBolt()).shuffleGrouping("formatter");
         builder.setBolt("insert", new CassandraInsertBolt()).shuffleGrouping("sentiment");
 //        builder.setBolt("log", new LoggerBolt()).shuffleGrouping("insert", "error");
-        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("insert");
+//        builder.setBolt("print", new TwitterStreamPrint()).shuffleGrouping("insert");
 
 
         Config conf = new Config();
