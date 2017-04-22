@@ -64,7 +64,7 @@ class insertTweetData(storm.BasicBolt):
                 error = "Unable to select keyspace "+self.state
                 storm.emit([error])
         except Exception as e:
-            error = "Unable to connect to Cassandra"
+            error = "Unable to connect to Cassandra with Tweet object: \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
             storm.emit([error])
         
         cluster.shutdown()
