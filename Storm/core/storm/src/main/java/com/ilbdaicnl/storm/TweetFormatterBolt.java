@@ -9,7 +9,6 @@ import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilbdaicnl.resources.TweetObject;
@@ -23,6 +22,7 @@ public class TweetFormatterBolt extends BaseBasicBolt {
 			JsonNode tweetJson = m.readTree(tuple.getValueByField("tweet").toString());
 			TweetObject tweet = new TweetObject(tweetJson);
 			if(tweet.getState() != null){
+				System.out.print("Formatted Tweet:" + tweet);
 				collector.emit(new Values(tweet.asJSON()));
 			}
 		}

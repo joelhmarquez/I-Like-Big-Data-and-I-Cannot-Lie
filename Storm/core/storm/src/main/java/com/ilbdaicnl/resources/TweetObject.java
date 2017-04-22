@@ -1,5 +1,12 @@
 package com.ilbdaicnl.resources;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -14,16 +21,32 @@ public class TweetObject {
 	private String location;
 	private String state;
 	private String sentimentscore;
+	private String epoch;
 	
-	public TweetObject(JsonNode tweet){
-		this.id = tweet.findValuesAsText("id").isEmpty() ? null : tweet.findValuesAsText("id").get(0);
-		this.text = tweet.findValuesAsText("body").isEmpty() ? null : tweet.findValuesAsText("body").get(0);
+	public TweetObject(JsonNode tweet) throws ParseException{
+		List<String> ids = tweet.findValuesAsText("id");
+		List<String> texts = tweet.findValuesAsText("body");
+		List<String> times = tweet.findValuesAsText("postedTime");
+		List<String> locations = tweet.findValuesAsText("location");
+		List<String> states = tweet.findValuesAsText("region");
+		
+		if(!times.isEmpty()){
+			String dateUTC = times.get(0);
+			SimpleDateFormat df = new SimpleDateFormat(
+				    "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+				df.setTimeZone(TimeZone.getTimeZone("UTC"));
+		    Date date = df.parse(dateUTC);
+		    epoch = Long.toString(date.getTime());
+		}
+		
+		this.id = ids.isEmpty() ? null : ids.get(0);
+		this.text = texts.isEmpty() ? null : texts.get(0);
 		this.lat = null;
 		this.lng = null;
-		this.time = tweet.findValuesAsText("postedTime").isEmpty() ? "0" : tweet.findValuesAsText("timePosted").get(0);
-		this.location = tweet.findValuesAsText("location").isEmpty() ? null : tweet.findValuesAsText("location").get(0);
-		this.state = tweet.findValuesAsText("region").isEmpty() ? null : tweet.findValuesAsText("region").get(0).replaceAll("\\s+","");
-		this.sentimentscore = "null";
+		this.time = times.isEmpty() ? null : epoch;
+		this.location = locations.isEmpty() ? null : locations.get(0);
+		this.state = states.isEmpty() ? null : states.get(0).replaceAll("\\s+","");
+		this.sentimentscore = null;
 	}
 	
 	public String getId() {

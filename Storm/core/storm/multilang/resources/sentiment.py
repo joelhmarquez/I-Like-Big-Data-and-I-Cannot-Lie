@@ -4,7 +4,7 @@ import math
 import storm
 import json
 hateWords = set()
-hateFile = open("hatewords.txt", "r")
+hateFile = open("resources/hatewords.txt", "r")
 for word in hateFile:
     hateWords.add(word.rstrip().lower())
 hateFile.close()
