@@ -29,8 +29,7 @@ class insertTweetData(storm.BasicBolt):
     
     def insert(self,tweet):
         # Need to figure out how to emit an error properly for logging
-        cluster = Cluster(["172.31.3.194"],port=9042)
-
+        cluster = Cluster(['172.31.3.194'], port=9042)
         try:
             session = cluster.connect()
             selectDB = "USE "+self.state+";"
