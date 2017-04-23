@@ -55,17 +55,17 @@ class insertTweetData(storm.BasicBolt):
                             storm.emit([sucess])
                    
                         except Exception as e:
-                            error = "Unable to insert data. Query: "+insertData
-                            storm.emit([str(e)])
+                            error = "Unable to insert data. Query: "+insertData+" error: "+str(e)
+                            storm.emit([error])
                     except Exception as e:
-                        error = "Unable to CREATE TABLE "+str(self.time)
-                        storm.emit([str(e)])
+                        error = "Unable to CREATE TABLE "+str(self.time)+" error: "+str(e)
+                        storm.emit([error])
             except Exception as e:
-                error = "Unable to select keyspace "+self.state
-                storm.emit([str(e)])
+                error = "Unable to select keyspace "+self.state+" error: "+str(e)
+                storm.emit([error])
         except Exception as e:
-            error = "Unable to connect to Cassandra with Tweet object:"#" \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
-            storm.emit([str(e)])
+            error = "Unable to connect to Cassandra with Tweet object: "+str(e)#" \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
+            storm.emit([error])
         
         cluster.shutdown()
 
