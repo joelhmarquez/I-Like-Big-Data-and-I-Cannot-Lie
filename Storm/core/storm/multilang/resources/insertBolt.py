@@ -29,20 +29,42 @@ class insertTweetData(storm.BasicBolt):
     
     def insert(self,tweet):
         # Need to figure out how to emit an error properly for logging
-        cluster = Cluster(["172.31.3.194"],port=9042)
-        
-        session = cluster.connect()
-        selectDB = "USE "+self.state+";"
-        insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES (\'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\');"
-        session.execute(selectDB)
-        #session.execute(insertData)
-        #success = "Successfully inserted"
-        #storm.emit([sucess])
-        createTable = "CREATE TABLE IF NOT EXIST \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
-        session.execute(createTable)
-        session.execute(insertData)
-        success = "Successfully inserted"
-        storm.emit([sucess])
+        try:
+            session = cluster.connect()
+            print("after connect command")
+            session.execute("CREATE KEYSPACE IF NOT EXISTS testing WITH replication = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };")
+            selectDB = "USE testing;"
+            try:
+                session.execute(selectDB)
+                try:
+                    insert = "Insert into \"1227\" (id) VALUES (\'0\');"
+                    session.execute(insert)
+                except:
+                    table = "CREATE TABLE IF NOT EXISTS \"1227\"(id text PRIMARY KEY);"
+                    try:
+                        session.execute(table)
+                        try:
+                            session.execute(insert)
+                        except:
+                            print("failed to insert after table")
+                    except:
+                        print("failed to create table")
+            except:
+                print("failed to select keyspace")
+        except:
+            print("Failed to Connect")
+        cluster.shutdown()
+        # selectDB = "USE "+self.state+";"
+        # insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES (\'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\');"
+        # session.execute(selectDB)
+        # #session.execute(insertData)
+        # #success = "Successfully inserted"
+        # #storm.emit([sucess])
+        # createTable = "CREATE TABLE IF NOT EXIST \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
+        # session.execute(createTable)
+        # session.execute(insertData)
+        # success = "Successfully inserted"
+        # storm.emit([sucess])
         # error = "Unable to insert data. Query: "+insertData+" error: "#+e.strerror
         # storm.emit([error])
         # error = "Unable to CREATE TABLE "+str(self.time)+" error: "#+e.strerror
@@ -87,7 +109,7 @@ class insertTweetData(storm.BasicBolt):
         #     error = "Unable to connect to Cassandra with Tweet object: "+str(e)#" \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
         #     storm.emit([error])
         
-        cluster.shutdown()
+        # cluster.shutdown()
 
 
 insertTweetData().run()
