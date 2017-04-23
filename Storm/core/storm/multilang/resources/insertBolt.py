@@ -15,14 +15,36 @@ class insertTweetData(storm.BasicBolt):
         tweet = tup.values[0]
 
         self.id = tweet['id']
+
+	if tweet['tweettext'] == None:
+		tweet['tweettext'] = ""
+
         self.text = tweet['tweettext']
         self.text = self.text.replace("'","")
         self.text = self.text.replace("\"","")
+
+        if tweet['lat'] == None:
+                tweet['lat'] = ""
+
         self.lat = tweet['lat']
+
+        if tweet['lng'] == None:
+                tweet['lng'] = ""
         self.lng = tweet['lng']
+
+        if tweet['location'] == None:
+                tweet['location'] = ""
+
         self.location = tweet['location']
+
+        if tweet['sentimentscore'] == None:
+                tweet['sentimentscore'] = ""
         self.score = tweet['sentimentscore']
+
+        if tweet['state'] == None:
+                tweet['state'] = ""
         self.state = tweet['state']
+
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600000))
         self.insert(tweet)
