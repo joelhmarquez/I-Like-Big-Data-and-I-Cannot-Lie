@@ -63,7 +63,7 @@ class insertTweetData(storm.BasicBolt):
                 try:
                     session.execute(insertData)
                     success = "Successfully inserted"
-                    storm.emit([sucess])
+                    storm.emit([success])
                 
                 except Exception as e:
                     createTable = "CREATE TABLE \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
@@ -73,7 +73,7 @@ class insertTweetData(storm.BasicBolt):
                         try:
                             session.execute(insertData)
                             success = "Successfully inserted"
-                            storm.emit([sucess])
+                            storm.emit([success])
                    
                         except Exception as e:
                             error = "Unable to insert data. Query: "+insertData+" error: "+str(e)
