@@ -47,7 +47,7 @@ class insertTweetData(storm.BasicBolt):
         if tweet['time'] == None:
             tweet['time'] = "0"
         self.time = int(tweet['time'])
-        self.time = int(math.floor(self.time//3600000))
+        #self.time = int(math.floor(self.time//3600000))
         self.insert(tweet)
     
     def insert(self,tweet):
