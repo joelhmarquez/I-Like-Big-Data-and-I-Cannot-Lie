@@ -38,10 +38,10 @@ chmod 755 lein
 cd ~/
 
 # Add the configuration files for storm and zookeeper
-wget 52.14.155.145/storm.yaml
+wget swishertest.site/static/storm.yaml
 mv storm.yaml /opt/storm/conf/
 
-wget 52.14.155.145/zoo.cfg
+wget swishertest.site/static/zoo.cfg
 mv zoo.cfg /opt/zookeeper/conf/
 
 # Add symlink for streamparse
@@ -51,7 +51,7 @@ sudo ln -s /opt/storm/bin/storm /bin/storm
 sudo chown -R ubuntu:ubuntu /opt/*
 
 # Get script to update boot settings on system.
-wget 52.14.155.145/rc.local
+wget swishertest.site/static/rc.local
 sudo cat rc.local > /etc/rc.local
 
 # Restart system to initialize services

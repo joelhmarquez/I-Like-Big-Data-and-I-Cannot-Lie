@@ -22,13 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
     <script type = "text/javascript" src="./js/tech.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type = "text/javascript" src="./js/navbar.js"></script>
 
 </head>
 
@@ -38,7 +32,7 @@
     <div class="address-bar"> University of Colorado, Boulder | Big Data Architecture </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation" id="nav">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -63,9 +57,6 @@
                     <li>
                         <a href="tech.html">Technologies</a>
                     </li>
-                    <!--<li>
-                        <a href="contact.html">Contact</a>
-                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -77,23 +68,171 @@
 
         <div class="row">
             <div class="box" id="techs">
-                <!--<div class="col-lg-12">
+                <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Incorporated
                         <strong>Technologies </strong>
                     </h2>
                     <hr>
                 </div>
-                <div class="col-lg-12 text-center" id="techs">
-                    <img class="img-responsive img-border img-full" src="img/extra.jpg" alt="">
-                    <h2>Technologies
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/github.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>GitHub</h5>
+                            <text>We used GitHub as our main code repository for version control.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/pivotaltracker.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Pivotal Tracker</h5>
+                            <text>Pivotal Tracker served as our project management tool in an Agile environment.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/cassandra.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Cassandra</h5>
+                            <text>Cassandra stored the tweet data after filtering.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/storm.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Storm</h5>
+                            <text>Storm handled the queuing of our Twitter API data stream and also handled the processing of the data stream.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/maven.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Maven</h5>
+                            <text>Maven compiled our Cassandra database and our Storm package.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/aws.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Amazon Web Services</h5>
+                            <text>AWS hosted the servers for all of our components.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/twitter.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Twitter</h5>
+                            <text>Using Twitter's API, we pulled tweets to filter for hateful sentiment across the country.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/json.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>JSON</h5>
+                            <text>JSON lets us transfer data easily in a standard data structure.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/python.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Python</h5>
+                            <text>We used Python everywhere. Our sentiment analysis and its Storm bolt is in Storm, and we used Python to talk to the database. Our front-end web-server also uses Python.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/textblob.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>TextBlob</h5>
+                            <text>TextBlob, a Python library, allows us to do sentiment analysis on the content of tweets.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/django.png" width="75px" style="padding-top:15px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Django</h5>
+                            <text>Django Unchained. 'Nuff said.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/gmaps.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Google Maps</h5>
+                            <text>Google Maps API allowed us to determine the location of each tweet in order to map it to a state in Cassandra.</text>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-bottom:5%">
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/elm.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>Elm</h5>
+                            <text>We used Elm in conjunction with HTMl, JavaScript, and CSS to create the webpage.</text>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <img src="../images/html.png" width="75px">
+                        </div>
+                        <div class="col-lg-10">
+                            <h5>HTML</h5>
+                            <text>We used HTML in conjunction with Elm, JavaScript, and CSS to create the webpage.</text>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-12 col-lg-offset-5">
+                    <!-- <h2>Technologies
                         <br>
                         <small>May 2017</small>
                     </h2>
-                    <p>Technologies that were used to complete our project.</p>
+                    <p>Technologies that were used to complete our project.</p> -->
                     <a href="#" class="btn btn-default btn-lg">Return to Top</a>
-                    <hr>
-                </div>-->
+                </div>
 
              <!--   <div class="col-lg-12 text-center">
                     <ul class="pager">
@@ -106,6 +245,7 @@
             </div>
         </div>
 
+
     </div>
     <!-- /.container -->
 
@@ -113,7 +253,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; ILBDAICNL 2017</p>
+                    <p>Copyright &copy; Tweet Dat(a) Hate 2017</p>
                 </div>
             </div>
         </div>
@@ -128,10 +268,10 @@
     <!-- Elm stuffiez -->
     <!--<script type = "text/javascript" src="./js/tech.js"></script>-->
 
-    <script type = "text/javascript">
+   <!-- <script type = "text/javascript">
         var div = document.getElementById('techs');
         Elm.Pages.About.embed(div);
-    </script>
+    </script>-->
 
 </body>
 

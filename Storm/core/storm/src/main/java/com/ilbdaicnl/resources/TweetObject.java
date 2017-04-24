@@ -1,9 +1,16 @@
 package com.ilbdaicnl.resources;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import twitter4j.Status;
 
 public class TweetObject {
 	private String id;
@@ -14,27 +21,38 @@ public class TweetObject {
 	private String location;
 	private String state;
 	private String sentimentscore;
+	private String epoch;
+	private String actualID;
 	
-	public TweetObject(Status tweet){
-		this.id = Long.toString(tweet.getId());
-		this.text = tweet.getText();
-		this.lat = tweet.getGeoLocation()!=null ? Double.toString(tweet.getGeoLocation().getLatitude()) : null;
-		this.lng = tweet.getGeoLocation()!=null ? Double.toString(tweet.getGeoLocation().getLongitude()) : null;
-		this.time = Long.toString(tweet.getCreatedAt().getTime());
-		this.location = tweet.getUser()!=null ? tweet.getUser().getLocation(): null;
-		this.state = null;
+	public TweetObject(JsonNode tweet) throws ParseException{
+		List<String> ids = tweet.findValuesAsText("id");
+		List<String> texts = tweet.findValuesAsText("body");
+		List<String> times = tweet.findValuesAsText("postedTime");
+		List<String> locations = tweet.findValuesAsText("location");
+		List<String> states = tweet.findValuesAsText("region");
+		
+		if(!times.isEmpty()){
+			String dateUTC = times.get(0);
+			SimpleDateFormat df = new SimpleDateFormat(
+				    "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+				df.setTimeZone(TimeZone.getTimeZone("UTC"));
+		    Date date = df.parse(dateUTC);
+		    epoch = Long.toString(date.getTime());
+		}
+		
+		if(!ids.isEmpty()){
+			String[] idList = ids.get(0).split(":");
+			actualID = idList[2];
+		}
+		
+		this.id = ids.isEmpty() ? null : actualID;
+		this.text = texts.isEmpty() ? null : texts.get(0);
+		this.lat = null;
+		this.lng = null;
+		this.time = times.isEmpty() ? null : epoch;
+		this.location = locations.isEmpty() ? null : locations.get(0);
+		this.state = states.isEmpty() ? null : states.get(0).replaceAll("\\s+","");
 		this.sentimentscore = null;
-	}
-	
-	public TweetObject(ObjectNode tweet){
-		this.id = tweet.findValue("id").asText();
-		this.text = tweet.findValue("text").asText();
-		this.lat = tweet.findValue("lat").asText();
-		this.lng = tweet.findValue("lng").asText();
-		this.time = tweet.findValue("time").asText();
-		this.location = tweet.findValue("location").asText();
-		this.state = tweet.findValue("state").asText();
-		this.sentimentscore = tweet.findValue("sentimentscore").asText();
 	}
 	
 	public String getId() {
