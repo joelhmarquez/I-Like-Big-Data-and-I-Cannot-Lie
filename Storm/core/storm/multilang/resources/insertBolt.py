@@ -6,7 +6,7 @@ import math
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time long, location text, sentimentscore double, state text"
+CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time bigint, location text, sentimentscore double, state text"
 
 class insertTweetData(storm.BasicBolt):
     global CREATE_COLUMNS
