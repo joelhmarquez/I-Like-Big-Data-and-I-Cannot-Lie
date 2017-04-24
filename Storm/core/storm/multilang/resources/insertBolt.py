@@ -38,7 +38,7 @@ class insertTweetData(storm.BasicBolt):
 
         if tweet['sentimentscore'] == None:
             tweet['sentimentscore'] = "0.0"
-        self.score = double(tweet['sentimentscore'])
+        self.score = float(tweet['sentimentscore'])
 
         if tweet['state'] == None:
             tweet['state'] = ""
