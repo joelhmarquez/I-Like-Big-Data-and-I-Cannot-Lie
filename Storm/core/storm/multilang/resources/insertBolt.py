@@ -6,7 +6,7 @@ import math
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time int, location text, sentimentscore double, state text"
+CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time long, location text, sentimentscore double, state text"
 
 class insertTweetData(storm.BasicBolt):
     global CREATE_COLUMNS
@@ -46,7 +46,7 @@ class insertTweetData(storm.BasicBolt):
 
         if tweet['time'] == None:
             tweet['time'] = "0"
-        self.time = int(tweet['time'])
+        self.time = long(tweet['time'])
         #self.time = int(math.floor(self.time//3600000))
         self.insert(tweet)
     
@@ -79,10 +79,10 @@ class insertTweetData(storm.BasicBolt):
                             error = "Unable to insert data. Query: "+insertData+" error: "+str(e)
                             storm.emit([error])
                     except Exception as e:
-                        error = "Unable to CREATE TABLE "+str(self.time)+" error: "+str(e)
+                        error = "Unable to CREATE TABLE "+self.state+" error: "+str(e)
                         storm.emit([error])
             except Exception as e:
-                error = "Unable to select keyspace "+self.state+" error: "+str(e)
+                error = "Unable to select keyspace twittertweets error: "+str(e)
                 storm.emit([error])
         except Exception as e:
             error = "Unable to connect to Cassandra error: "+str(e)
