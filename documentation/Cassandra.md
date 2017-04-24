@@ -1,4 +1,6 @@
-#Downloading and Installing Cassandra using Linux:
+# Cassandra 
+
+Downloading and Installing Cassandra using Linux:
 
 Document to provide helpful hints, links, structure of Cassandra
 
