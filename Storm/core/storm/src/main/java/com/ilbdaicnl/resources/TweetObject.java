@@ -22,6 +22,7 @@ public class TweetObject {
 	private String state;
 	private String sentimentscore;
 	private String epoch;
+	private String actualID;
 	
 	public TweetObject(JsonNode tweet) throws ParseException{
 		List<String> ids = tweet.findValuesAsText("id");
@@ -39,7 +40,12 @@ public class TweetObject {
 		    epoch = Long.toString(date.getTime());
 		}
 		
-		this.id = ids.isEmpty() ? null : ids.get(0);
+		if(!ids.isEmpty()){
+			String[] idList = ids.get(0).split(":");
+			actualID = idList[2];
+		}
+		
+		this.id = ids.isEmpty() ? null : actualID;
 		this.text = texts.isEmpty() ? null : texts.get(0);
 		this.lat = null;
 		this.lng = null;
