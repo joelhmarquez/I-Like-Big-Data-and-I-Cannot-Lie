@@ -1,4 +1,4 @@
-#Structure Planning
+# Structure Planning
 
 Document to outline the stack structure as well as the storage structure
 
