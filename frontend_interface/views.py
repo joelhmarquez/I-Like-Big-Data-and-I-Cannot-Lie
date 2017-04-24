@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 from django.http import HttpResponse
+from django.views.generic.base import TemplateView
 
 from cassandra.cluster import Cluster
 from cassandra.query import *
@@ -107,3 +108,26 @@ def mapsData(request):
 	response.write(json.dumps(returnValue))
 	return response
 
+class HomePageView(TemplateView):
+    template_name = 'ilbdaicl/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+class TeamPageView(TemplateView):
+    template_name = 'ilbdaicl/team.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TeamPageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+class TechnologiesPageView(TemplateView):
+    template_name = 'ilbdaicl/technologies.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TechnologiesPageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
