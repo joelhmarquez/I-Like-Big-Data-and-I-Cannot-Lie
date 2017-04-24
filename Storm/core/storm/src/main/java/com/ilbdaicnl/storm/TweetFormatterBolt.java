@@ -18,6 +18,7 @@ public class TweetFormatterBolt extends BaseBasicBolt {
 		TweetObject tweet = new TweetObject((Status) tuple.getValueByField("tweet"));
 		
 		collector.emit(new Values(tweet));
+		return;
 	}
 	
     @Override

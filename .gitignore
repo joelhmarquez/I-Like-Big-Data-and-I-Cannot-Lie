@@ -4,6 +4,10 @@
 .metadata/
 config.py
 */__pycache__/*
+*.pyc
+*credentials*
+*.pem
+db.sqlite3
 # elm-package generated files
 elm-stuff
 # elm-repl generated files

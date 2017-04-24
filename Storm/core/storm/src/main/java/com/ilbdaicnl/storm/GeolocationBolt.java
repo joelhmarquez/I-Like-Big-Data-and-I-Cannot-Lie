@@ -18,6 +18,14 @@ public class GeolocationBolt extends BaseBasicBolt {
 		
 		TweetObject stateSet = geocoder.setState(tweet);
 		
+<<<<<<< HEAD
+		if(stateSet.getState() != null) collector.emit(new Values(geocoder.setState(tweet).asJSON()));
+		return;
+	}
+	 @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+    	declarer.declare(new Fields("tweet"));
+=======
 		if(stateSet.getState() != null) collector.emit("success", new Values(geocoder.setState(tweet).asJSON()));
 		collector.emit(new Values("failure", geocoder.setState(tweet).asJSON()));
 	}
@@ -25,5 +33,6 @@ public class GeolocationBolt extends BaseBasicBolt {
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
     	declarer.declareStream("success", new Fields("tweet"));
     	declarer.declareStream("failure", new Fields("tweet"));
+>>>>>>> master
     }
 }
