@@ -9,9 +9,6 @@ from django.views.generic.base import TemplateView
 from cassandra.cluster import Cluster
 from cassandra.query import *
 
-
-from restless.views import Endpoint
-
 import json
 
 # Create your views here.
