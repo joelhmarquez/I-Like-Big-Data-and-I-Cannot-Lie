@@ -14,3 +14,4 @@ elm-stuff
 repl-temp-*
 /target/
 *config.properties*
+*/.idea/*
