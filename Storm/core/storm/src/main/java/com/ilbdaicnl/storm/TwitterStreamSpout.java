@@ -1,17 +1,14 @@
 package com.ilbdaicnl.storm;
 
+import sun.misc.BASE64Encoder;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.LinkedBlockingQueue;
-
-import twitter4j.FilterQuery;
-import twitter4j.StallWarning;
-import twitter4j.Status;
-import twitter4j.StatusDeletionNotice;
-import twitter4j.StatusListener;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
-import twitter4j.auth.AccessToken;
-import twitter4j.conf.ConfigurationBuilder;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.storm.Config;
 import org.apache.storm.spout.SpoutOutputCollector;
@@ -25,21 +22,22 @@ import org.apache.storm.utils.Utils;
 @SuppressWarnings("serial")
 public class TwitterStreamSpout extends BaseRichSpout {
 	SpoutOutputCollector _collector;
-    LinkedBlockingQueue<Status> queue = null;
-    TwitterStream _twitterStream;
-    String consumerKey;
-    String consumerSecret;
-    String accessToken;
-    String accessTokenSecret;
-    String[] keyWords;
+    LinkedBlockingQueue<String> queue = null;
+    String gnipUser;
+    String gnipPass;
+    String gnipUrl;
+    String resp;
+    String next = null;
+        
+    private HttpURLConnection connection = null;
+    private InputStream inputStream = null;
+    private BufferedReader reader = null;
+    
 
-    public TwitterStreamSpout(String consumerKey, String consumerSecret,
-                              String accessToken, String accessTokenSecret, String[] keyWords) {
-        this.consumerKey = consumerKey;
-        this.consumerSecret = consumerSecret;
-        this.accessToken = accessToken;
-        this.accessTokenSecret = accessTokenSecret;
-        this.keyWords = keyWords;
+    public TwitterStreamSpout(String gnipUser, String gnipPass, String gnipUrl) {
+        this.gnipUser = gnipUser;
+        this.gnipPass = gnipPass;
+        this.gnipUrl = gnipUrl;
     }
 
     public TwitterStreamSpout() {
@@ -49,74 +47,34 @@ public class TwitterStreamSpout extends BaseRichSpout {
     @Override
     public void open(Map conf, TopologyContext context,
                      SpoutOutputCollector collector) {
-        queue = new LinkedBlockingQueue<Status>(1000);
         _collector = collector;
-
-        StatusListener listener = new StatusListener() {
-
-            @Override
-            public void onStatus(Status status) {
-
-                queue.offer(status);
-            }
-
-            @Override
-            public void onDeletionNotice(StatusDeletionNotice sdn) {
-            }
-
-            @Override
-            public void onTrackLimitationNotice(int i) {
-            }
-
-            @Override
-            public void onScrubGeo(long l, long l1) {
-            }
-
-            @Override
-            public void onException(Exception ex) {
-            }
-
-            @Override
-            public void onStallWarning(StallWarning arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-        };
-
-        TwitterStream twitterStream = new TwitterStreamFactory(
-                new ConfigurationBuilder().setJSONStoreEnabled(true).build())
-                .getInstance();
-
-        twitterStream.addListener(listener);
-        twitterStream.setOAuthConsumer(consumerKey, consumerSecret);
-        AccessToken token = new AccessToken(accessToken, accessTokenSecret);
-        twitterStream.setOAuthAccessToken(token);
-
-
-            FilterQuery query = new FilterQuery();
-//            query.track(new String[]{""}); 
-            query.locations(new double[][]{new double[]{-126.562500,30.448674},
-                            new double[]{-61.171875,44.087585
-                            }});
-            query.language(new String[]{"en"});
-            twitterStream.filter(query);
-
+        queue = new LinkedBlockingQueue<String>(1000);
+       
+        next = sendRequest(next);
     }	
-
+    
+    @Override
+    public void deactivate() {
+      try {
+    	  inputStream.close();
+      } catch (IOException e) {
+    	  e.printStackTrace();
+      }
+    }
     @Override
     public void nextTuple() {
-        Status ret = queue.poll();
-        if (ret == null) {
-            Utils.sleep(50);
-        } else {
-            _collector.emit(new Values(ret));
-        }
+    	if(queue.isEmpty())next = sendRequest(next);
+    	String ret = queue.poll();
+    	if(ret == null){
+    		Utils.sleep(50);
+    	} else {
+    		_collector.emit(new Values(ret));
+    		Utils.sleep(15);
+    	}
     }
 
     @Override
     public void close() {
-        _twitterStream.shutdown();
     }
 
     @Override
@@ -137,5 +95,82 @@ public class TwitterStreamSpout extends BaseRichSpout {
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
         declarer.declare(new Fields("tweet"));
+    }
+    
+   /* GNIP FUNCTIONS */
+    
+    private String sendRequest(String next){
+    	String query = "-0 (has:geo OR has:profile_geo) lang:en";
+        String charset = "UTF-8";
+        String nextKey = null;
+        String queryString = (next==null)? "%s?query=%s&maxResults=500" : "%s?query=%s&maxResults=500&next=" + next;
+
+        	try {
+    			String queryURL = String.format(queryString, gnipUrl, java.net.URLEncoder.encode(query, charset));
+
+    	        try {
+    	            connection = getConnection(queryURL, gnipUser, gnipPass);
+
+    	            inputStream = connection.getInputStream();
+    	            int responseCode = connection.getResponseCode();
+
+    	            if (responseCode >= 200 && responseCode <= 299) {
+    	                reader = new BufferedReader(new InputStreamReader((inputStream), charset));
+    	                String line = reader.readLine();
+    	                while(line != null){
+    	                    resp = resp + line;
+    	                    line = reader.readLine();
+    	                }
+    	                Matcher m = Pattern.compile("(\\{\"id\":\"tag.+?\\})(?=,\\{\"id\":\"tag)").matcher(resp);
+    	                while(m.find()){
+    	                	queue.offer(m.group());
+    	                }
+    	                Matcher n = Pattern.compile("(?=\"next\":\")(.+?(?=\",\"requestParameters\":))").matcher(resp);
+    	                while(n.find()){
+    	                	nextKey = n.group(1).substring(8);
+    	                } 
+    	                System.out.println("API Called with next token: " + next);
+    	            } else {
+    	                handleNonSuccessResponse(connection);
+    	            }
+    	        } catch (Exception e) {
+    	            e.printStackTrace();
+    	            if (connection != null) {
+    	                try {
+    						handleNonSuccessResponse(connection);
+    					} catch (IOException e1) {
+    						e1.printStackTrace();
+    					}
+    	            }
+    	        }
+    		} catch (UnsupportedEncodingException e2) {
+    			e2.printStackTrace();
+    		}
+        	
+        	return nextKey;
+    }
+    
+    private static void handleNonSuccessResponse(HttpURLConnection connection) throws IOException {
+        int responseCode = connection.getResponseCode();
+        String responseMessage = connection.getResponseMessage();
+        System.out.println("Non-success response: " + responseCode + " -- " + responseMessage);
+    }
+
+    private static HttpURLConnection getConnection(String urlString, String username, String password) throws IOException {
+        URL url = new URL(urlString);
+
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setReadTimeout(1000 * 60 * 60);
+        connection.setConnectTimeout(1000 * 10);
+
+        connection.setRequestProperty("Authorization", createAuthHeader(username, password));
+
+   return connection;
+    }
+
+    private static String createAuthHeader(String username, String password) throws UnsupportedEncodingException {
+        BASE64Encoder encoder = new BASE64Encoder();
+        String authToken = username + ":" + password;
+        return "Basic " + encoder.encode(authToken.getBytes());
     }
 }
