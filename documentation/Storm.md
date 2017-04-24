@@ -1,19 +1,23 @@
-Requirements (download the following)
-Zookeeper
-mkdir /tmp/zookeeper
-Set datadir in conf/zoo.cfg to use newly made directory
-sudo mv zookeeper /opt
-Apache storm
-mkdir /tmp/storm
-Set datadir in conf/storm.yaml to use newly made directory
-sudo mv apache-storm /opt
-Leiningen (Needed for python storm implementation)
-mkdir ~/bin
-edit ~/.bashrc
-Add ~/bin to path at end of file
-export PATH=$PATH:~/bin
-$bash <<< yes this is actually a command. It refreshes your shell to add the path in
-cd ~/bin
+#Storm
+
+Document to outline how to implement and use Storm
+
+## Requirements (download the following):
++ Zookeeper
+ * mkdir /tmp/zookeeper
+ ⋅⋅* Set datadir in conf/zoo.cfg to use newly made directory
+ * sudo mv zookeeper /opt
++ Apache storm
+ * mkdir /tmp/storm
+ ⋅⋅* Set datadir in conf/storm.yaml to use newly made directory
+ * sudo mv apache-storm /opt
++ Leiningen (Needed for python storm implementation)
+ * mkdir ~/bin
+ * edit ~/.bashrc
+ ⋅⋅* Add ~/bin to path at end of file
+ ⋅⋅* export PATH=$PATH:~/bin
+ * $bash <<< yes this is actually a command. It refreshes your shell to add the path in
+ * cd ~/bin
 wget <link for leininigen>
 chmod 755 <file>
 lein <<< seriously this isn’t a trick. Actually a command now
