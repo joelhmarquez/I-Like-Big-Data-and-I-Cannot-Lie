@@ -6,56 +6,56 @@ import math
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time text, location text, sentimentscore text, state text"
+CREATE_COLUMNS = "id text PRIMARY KEY, tweettext text, lat text, lng text, time int, location text, sentimentscore double, state text"
 
 class insertTweetData(storm.BasicBolt):
     global CREATE_COLUMNS
 
     def process(self,tup):
         tweet = tup.values[0]
-
+        if tweet['id'] == None:
+            tweet['id'] = ""
         self.id = tweet['id']
 
-	if tweet['tweettext'] == None:
-		tweet['tweettext'] = ""
+    	if tweet['tweettext'] == None:
+    		tweet['tweettext'] = ""
 
         self.text = tweet['tweettext']
         self.text = self.text.replace("'","")
         self.text = self.text.replace("\"","")
 
         if tweet['lat'] == None:
-                tweet['lat'] = ""
-
+            tweet['lat'] = ""
         self.lat = tweet['lat']
 
         if tweet['lng'] == None:
-                tweet['lng'] = ""
+            tweet['lng'] = ""
         self.lng = tweet['lng']
 
         if tweet['location'] == None:
-                tweet['location'] = ""
-
+            tweet['location'] = ""
         self.location = tweet['location']
 
         if tweet['sentimentscore'] == None:
-                tweet['sentimentscore'] = ""
-        self.score = tweet['sentimentscore']
+            tweet['sentimentscore'] = "0.0"
+        self.score = double(tweet['sentimentscore'])
 
         if tweet['state'] == None:
-                tweet['state'] = ""
+            tweet['state'] = ""
         self.state = tweet['state']
 
+        if tweet['time'] == None:
+            tweet['time'] = "0"
         self.time = int(tweet['time'])
         self.time = int(math.floor(self.time//3600000))
         self.insert(tweet)
     
     def insert(self,tweet):
-        # Need to figure out how to emit an error properly for logging
         cluster = Cluster(['172.31.3.194'], port=9042)
         try:
             session = cluster.connect()
-            selectDB = "USE "+self.state+";"
-            insertData = "INSERT INTO \""+str(self.time)+"\" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES (\'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\');"
+            selectDB = "USE twittertweets;"
+            insertData = "INSERT INTO "+self.state+" (id, tweettext, lat, lng, time, location, sentimentscore, state) VALUES (\'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',"+str(self.time)+",\'"+self.location+"\',"+str(self.score)+",\'"+self.state+"\');"
             
             try:
                 session.execute(selectDB)
@@ -66,7 +66,7 @@ class insertTweetData(storm.BasicBolt):
                     storm.emit([success])
                 
                 except Exception as e:
-                    createTable = "CREATE TABLE \""+str(self.time)+"\"("+CREATE_COLUMNS+");"
+                    createTable = "CREATE TABLE "+self.state+"("+CREATE_COLUMNS+");"
 
                     try:
                         session.execute(createTable)
@@ -85,7 +85,7 @@ class insertTweetData(storm.BasicBolt):
                 error = "Unable to select keyspace "+self.state+" error: "+str(e)
                 storm.emit([error])
         except Exception as e:
-            error = "Unable to connect to Cassandra with Tweet object: "+str(e)#" \'"+self.id+"\',\'"+self.text+"\',\'"+self.lat+"\',\'"+self.lng+"\',\'"+tweet['time']+"\',\'"+self.location+"\',\'"+self.score+"\',\'"+self.state+"\'"
+            error = "Unable to connect to Cassandra error: "+str(e)
             storm.emit([error])
         
         cluster.shutdown()
