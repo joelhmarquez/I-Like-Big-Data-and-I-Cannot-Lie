@@ -1,6 +1,6 @@
 ﻿# I like big data and I cannot lie
 
-[![CircleCI](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie/tree/swish.svg?style=shield&circle-token=081c033c9d14b3246d9422a8bbde12b6b432e0a1)](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie/tree/swish)
+[![CircleCI](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie/tree/master.svg?style=shield&circle-token=081c033c9d14b3246d9422a8bbde12b6b432e0a1)](https://circleci.com/gh/CUBigDataClass/I-Like-Big-Data-and-I-Cannot-Lie/tree/master)
 
 Big Data Architecture Project
 ATLS 5214
