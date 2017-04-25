@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5pqb=(3+jb76n7vexo_dcgv@sv#fx0zsni2zz379x4hj)g@wp@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['swishertest.site', '52.14.155.145']
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'frontend_interface',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'ilbdaicl.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['frontend_interface/templates', 'frontend_interface/static',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +123,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'staticfiles'),
+)
 
 
 
