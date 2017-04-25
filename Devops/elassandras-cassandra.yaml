@@ -340,7 +340,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "127.0.0.1"
+          - seeds: "172.31.3.194, 127.0.0.1"
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
@@ -471,9 +471,9 @@ ssl_storage_port: 7001
 # you can specify which should be chosen using listen_interface_prefer_ipv6. If false the first ipv4
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
-listen_address: 172.31.3.194
-#listen_interface: eth0
-#listen_interface_prefer_ipv6: false
+#listen_address: 172.31.3.194
+listen_interface: eth0
+listen_interface_prefer_ipv6: false
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
@@ -546,9 +546,9 @@ start_rpc: false
 # you can specify which should be chosen using rpc_interface_prefer_ipv6. If false the first ipv4
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
-rpc_address: 172.31.3.194
-#rpc_interface: eth0
-#rpc_interface_prefer_ipv6: false
+#rpc_address: 172.31.3.194
+rpc_interface: eth0
+rpc_interface_prefer_ipv6: false
 
 # port for Thrift to listen for clients on
 rpc_port: 9160
