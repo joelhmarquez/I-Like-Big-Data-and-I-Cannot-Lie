@@ -66,21 +66,8 @@ class insertTweetData(storm.BasicBolt):
                     storm.emit([success])
                 
                 except Exception as e:
-                    createTable = "CREATE TABLE "+self.state+"("+CREATE_COLUMNS+");"
-
-                    try:
-                        session.execute(createTable)
-                        try:
-                            session.execute(insertData)
-                            success = "Successfully inserted"
-                            storm.emit([success])
-                   
-                        except Exception as e:
-                            error = "Unable to insert data. Query: "+insertData+" error: "+str(e)
-                            storm.emit([error])
-                    except Exception as e:
-                        error = "Unable to CREATE TABLE "+self.state+" error: "+str(e)
-                        storm.emit([error])
+                    error = "Unable to insert into table "+self.state+" error: "+str(e)
+                    storm.emit([error])
             except Exception as e:
                 error = "Unable to select keyspace twittertweets error: "+str(e)
                 storm.emit([error])
