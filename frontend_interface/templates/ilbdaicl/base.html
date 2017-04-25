@@ -32,7 +32,7 @@
     {% block additonalBodyTop %}
     {% endblock %}
 
-    <div id="content" style="visibility: hidden">
+    <div id="content">
         <div class="brand">Tweet Dat(a) Hate</div>
         <div class="address-bar"> CU Boulder | Big Data Architecture | I-Like-Big-Data-And-I-Cannot-Lie
             <div class="brand-before">
@@ -96,10 +96,8 @@
     <script src="{% static "js/lib/d3.js" %}" charset="utf-8"></script>
     <script src="{% static "js/lib/c3.min.js" %}"></script>
 
-    <script src="{% static "js/http.js" %}"></script>
-    <script src="{% static "js/factory.js" %}"></script>
-    <script src="{% static "js/charts.js" %}"></script>
-    <script src="{% static "js/map.js" %}"></script>
+    {% block additionalBodyBottom %}
+    {% endblock %}
 </body>
 
 </html>
