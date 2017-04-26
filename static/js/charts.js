@@ -8,14 +8,10 @@ let d3charts = function(){
         let dates = ['x'];
         let vals = ['data1'];
 
-        // console.log("state" + state);
-        // console.log("data" + data);
-
         if(data.history){
             for(let key in data.history){
                 if(data.history[key] != 0){
-                    let d = new Date(0);
-                    dates.push(d.setUTCSeconds(key));
+                    dates.push(new Date(parseFloat(key + '000')));
                     vals.push(data.history[key]);
                     console.log(d)
                 }
