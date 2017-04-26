@@ -5,14 +5,14 @@
 'use strict';
 
 (function () {
-    var chart;
-    var factory = new Factory();
-    var d3 = new d3charts();
+    let chart;
+    let factory = new Factory();
+    let d3 = new d3charts();
     google.charts.load('current', {'packages': ['geochart']});
     google.charts.setOnLoadCallback(init);
 
     function init() {
-        factory.getScores().then(function (resp) {
+        factory.getScores().then((resp) => {
             d3.draw(null, null);
 
             drawRegionsMap(resp);
@@ -22,9 +22,9 @@
     }
 
     function drawRegionsMap(values) {
-        var data = google.visualization.arrayToDataTable(values.values);
+        let data = google.visualization.arrayToDataTable(values.values);
 
-        var options = {
+        let options = {
             region: "US",
             resolution: "provinces",
             colorAxis: {colors: ['#1ab2ff', '#9b0000']},
@@ -35,9 +35,13 @@
         chart = new google.visualization.GeoChart(document.getElementById('geochart'));
         chart.draw(data, options);
 
-        google.visualization.events.addListener(chart, 'select', function getSelection() {
-            d3.draw(factory.selections[chart.getSelection()[0].row]);
-            document.getElementById('visualization').scrollIntoView();
+        google.visualization.events.addListener(chart, 'select', () => {
+            let state = factory.selections[chart.getSelection()[0].row];
+            d3.draw(state, null);
+            // factory.getData(state).then((resp) => {
+            //     d3.draw(state, resp);
+            //     document.getElementById('visualization').scrollIntoView();
+            // });
         });
     }
 

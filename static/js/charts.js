@@ -3,10 +3,10 @@
  */
 'use strict';
 
-var d3charts = function(){
-    var chart1;
-    var chart2;
-    var chart3;
+let d3charts = function(){
+    let chart1;
+    let chart2;
+    let chart3;
     this.draw = function (state, data) {
         chart1 = c3.generate({
             bindto: '#chart1',
@@ -83,11 +83,11 @@ var d3charts = function(){
                 },
                 names: {
                     data1: 'Average Hate Tweets',
-                    data2: state + ' Hate Tweets'
+                    data2: state ? state + ' Hate Tweets': null
                 },
                 axis: {
                     y: {
-                        label: { // ADD
+                        label: {
                             text: 'Hate (%)',
                             position: 'outer-middle'
                         }
@@ -105,10 +105,8 @@ var d3charts = function(){
             },
             bar: {
                 width: {
-                    ratio: 0.25 // this makes bar width 50% of length between ticks
+                    ratio: 0.25
                 }
-                // or
-                //width: 100 // this makes bar width 100px
             }
 
         });

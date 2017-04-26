@@ -1,8 +1,8 @@
 /**
  * Created by joelmarquez on 4/19/17.
  */
-var Factory = function () {
-    var http = new HttpClient();
+let Factory = function () {
+    let http = new HttpClient();
 
 
     this.selections = {
@@ -18,33 +18,23 @@ var Factory = function () {
         45: 'Virginia', 46: 'Washington', 47: 'West Virginia', 48: 'Wisconsin', 49: 'Wyoming'
     };
 
-  this.getScores = function () {
-    return new Promise(function (resolve, reject) {
-        var url = "https://swishertest.site/api/map";
+    this.getScores = () => {
+    return new Promise((resolve, reject) => {
+        let url = "https://swishertest.site/api/map";
 
         http.get(url, function(resp) {
             resolve(JSON.parse(resp))
         })
     });
-  };
+    };
 
-  // this.getTotals = function () {
-  //     return new Promise(function (resolve, reject) {
-  //         var url = "https://swishertest.site/api/data/totals";
-  //
-  //         http.get(url, function(resp) {
-  //             resolve(JSON.parse(resp))
-  //         })
-  //     });
-  // };
-  //
-  // this.getStates = function () {
-  //     return new Promise(function (resolve, reject) {
-  //         var url = "https://swishertest.site/api/data/states";
-  //
-  //         http.get(url, function(resp) {
-  //             resolve(JSON.parse(resp))
-  //         })
-  //     });
-  // }
+    // this.getData = (state) => {
+    //     return new Promise((resolve, reject) => {
+    //         let url = "https://swishertest.site/api/data/" + state;
+    //
+    //         http.get(url, function(resp) {
+    //             resolve(JSON.parse(resp))
+    //         })
+    //     });
+    // };
 };
