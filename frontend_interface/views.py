@@ -75,6 +75,7 @@ def stateDataQuery(statename):
 	epoch = int(time.mktime(time.strptime(current, '%Y-%m-%d')))*1000
 	week = 604800000
 	daily = 86400000
+	week = daily*4
 	lowerEnd = epoch - week
 	state = statename
 	session.execute("USE twittertweets;")
@@ -83,11 +84,11 @@ def stateDataQuery(statename):
 	percent = dict()
 	while ((lowerEnd+daily) != epoch):
 		day = lowerEnd + daily
-		hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore=0 allow filtering;")[0]
+		hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore>0 allow filtering;")[0]
 		hate = str(hate).split('=')
 		hate = hate[1]
 		hate = hate.replace(")","")
-		neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore>0 allow filtering;")[0]
+		neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore=0 allow filtering;")[0]
 		neutral = str(neutral).split('=')
 		neutral = neutral[1]
 		neutral = neutral.replace(")","")
@@ -105,12 +106,12 @@ def stateDataQuery(statename):
         	percent['hate'] = firstSet[0]
 	        percent['nonhate'] = firstSet[1]
         	percent['percent'] = firstSet[2]
-
-        hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore=0 allow filtering;")[0]
+		
+        hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore>0 allow filtering;")[0]
         hate = str(hate).split('=')
         hate = hate[1]
         hate = hate.replace(")","")
-        neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore>0 allow filtering;")[0]
+        neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore=0 allow filtering;")[0]
         neutral = str(neutral).split('=')
         neutral = neutral[1]
         neutral = neutral.replace(")","")
@@ -122,7 +123,7 @@ def stateDataQuery(statename):
         else:
 	          values.append((0,0,0))
                   history[day] = 0
-	firstSet = values[0]
+	firstSet = values[len(values)-1]
 	percent['hate'] = firstSet[0]
 	percent['nonhate'] = firstSet[1]
 	percent['percent'] = firstSet[2]
