@@ -14,15 +14,11 @@
     function init() {
         factory.getScores().then((resp) => {
             factory.getData('colorado').then((resp2) => {
-                d3.draw(null, resp2);
+                d3.draw('colorado', resp2);
                 drawRegionsMap(resp);
                 document.getElementById('content').style.visibility='visible';
                 document.getElementById('loader').style.visibility='hidden';
             });
-
-            // drawRegionsMap(resp);
-            // document.getElementById('content').style.visibility='visible';
-            // document.getElementById('loader').style.visibility='hidden';
         });
     }
 
