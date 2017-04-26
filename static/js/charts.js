@@ -13,9 +13,11 @@ let d3charts = function(){
 
         if(data.history){
             for(let key in data.history){
-                let d = new Date(0);
-                dates.push(d.setUTCSeconds(parseFloat(key)));
-                vals.push(data.history[key]);
+                if(data.history[key] != 0){
+                    let d = new Date(0);
+                    dates.push(d.setUTCSeconds(parseFloat(key)));
+                    vals.push(data.history[key]);
+                }
             }
         }
 
@@ -94,7 +96,7 @@ let d3charts = function(){
             bindto: '#chart3',
             data: {
                 columns: [
-                    ['data1', data.percent.percent],
+                    ['data1', 2.69],
                     ['data2', state? data.percent.percent : null]
                 ],
                 type: 'bar',
