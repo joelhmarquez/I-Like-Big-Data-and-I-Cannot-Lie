@@ -4,11 +4,10 @@
 'use strict';
 
 let d3charts = function(){
-    let chart1;
-    let chart2;
-    let chart3;
     this.draw = function (state, data) {
-        chart1 = c3.generate({
+        console.log(data.history.keys);
+
+        let chart1 = c3.generate({
             bindto: '#chart1',
             data: {
                 x: 'x',
@@ -48,7 +47,7 @@ let d3charts = function(){
             }
         });
 
-        chart2 = c3.generate({
+        let chart2 = c3.generate({
             bindto: '#chart2',
             data: {
                 columns: [
@@ -69,12 +68,12 @@ let d3charts = function(){
                 title: state || "Total"
             }
         });
-        chart3 = c3.generate({
+        let chart3 = c3.generate({
             bindto: '#chart3',
             data: {
                 columns: [
                     ['data1', data.percent.average],
-                    ['data2', data.percent.hate]
+                    ['data2', state? data.percent.hate : null]
                 ],
                 type: 'bar',
                 colors: {
