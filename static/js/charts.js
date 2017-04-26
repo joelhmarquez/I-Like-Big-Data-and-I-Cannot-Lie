@@ -11,9 +11,10 @@ let d3charts = function(){
         if(data.history){
             for(let key in data.history){
                 if(data.history[key] != 0){
-                    dates.push(new Date(parseFloat(key + '000')));
+                    let d = new Date(parseFloat(key));
+                    dates.push(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay());
+                    console.log(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay())
                     vals.push(data.history[key]);
-                    console.log(d)
                 }
             }
         }
@@ -32,8 +33,7 @@ let d3charts = function(){
                 },
                 names: {
                     data1: 'Hate (%)'
-                },
-                xFormat: '%Y-%m-%d %H:%M:%S'
+                }
             },
             axis: {
                 x: {
@@ -48,7 +48,7 @@ let d3charts = function(){
                     type: 'timeseries',
                     tick: {
                         count: 2,
-                        format: '%d-%m'
+                        // format: '%d-%m'
                         // outer: false
                     }
                 },
