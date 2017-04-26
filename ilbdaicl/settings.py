@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5pqb=(3+jb76n7vexo_dcgv@sv#fx0zsni2zz379x4hj)g@wp@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['swishertest.site', '52.14.155.145']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'frontend_interface',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,18 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    )
+}
 
 ROOT_URLCONF = 'ilbdaicl.urls'
 
@@ -130,5 +143,5 @@ STATICFILES_DIRS = (
 
 
 
-APPEND_SLASH = True
+APPEND_SLASH = False
 CORS_ORIGIN_ALLOW_ALL = True

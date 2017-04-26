@@ -58,44 +58,6 @@ def mapSetQuery():
 
 
 
-def index(request):
-	response = HttpResponse()
-	response.write('''
-<!DOCTYPE html>
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['geochart']});
-      google.charts.setOnLoadCallback(drawRegionsMap);
-
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable(
-''')
-	response.write(mapSetQuery())
-	response.write(''');
-        var options = {
-          region: 'US', 
-          resolution: 'provinces',
-          colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
-          backgroundColor: '#81d4fa',
-          datalessRegionColor: '#f8bbd0',
-          defaultColor: '#f5f5f5',
-        };
-
-        var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
-        chart.draw(data, options);
-      };
-    </script>
-  </head>
-  <body>
-    <div id="geochart-colors" style="width: 700px; height: 433px;"></div>
-  </body>
-</html>
-''')
-
-	return response
-
 def mapsData(request):
 
 	returnValue = {}
@@ -104,6 +66,13 @@ def mapsData(request):
 	
 	response.write(json.dumps(returnValue))
 	return response
+
+def stateData(request, statename):
+
+	response = HttpResponse()
+	response.write(statename)
+	return response
+
 
 class HomePageView(TemplateView):
     template_name = 'ilbdaicl/home.html'
