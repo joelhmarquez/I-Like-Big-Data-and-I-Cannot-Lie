@@ -97,8 +97,8 @@ let d3charts = function(){
             bindto: '#chart3',
             data: {
                 columns: [
-                    ['data1', 2.69],
-                    ['data2', state? data.percent.percent : null]
+                    ['data1', state? data.percent.hate: null],
+                    ['data2', state? data.percent.nonHate : null]
                 ],
                 type: 'bar',
                 colors: {
@@ -106,8 +106,8 @@ let d3charts = function(){
                     data2: '#9b0000'
                 },
                 names: {
-                    data1: 'Average Hate Tweets',
-                    data2: state ? state + ' Hate Tweets': null
+                    data1: state ? 'Number of Hate Tweets': null,
+                    data2: state ? 'Number of Non-Hate Tweets': null
                 },
                 axis: {
                     y: {
@@ -125,7 +125,7 @@ let d3charts = function(){
                 }
             },
             title: {
-                text: state? state + ' vs Average': 'Average',
+                text: state? state + 'hate vs Non-Hate': null,
             },
             bar: {
                 width: {
