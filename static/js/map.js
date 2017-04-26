@@ -13,7 +13,7 @@
 
     function init() {
         factory.getScores().then((resp) => {
-            factory.getData('total').then((resp2) => {
+            factory.getData('total', factory.test).then((resp2) => {
                 d3.draw(null, resp2);
                 drawRegionsMap(resp);
                 document.getElementById('content').style.visibility='visible';
@@ -44,7 +44,7 @@
 
         google.visualization.events.addListener(chart, 'select', () => {
             let state = factory.selections[chart.getSelection()[0].row];
-            factory.getData(state).then((resp) => {
+            factory.getData(state, factory.test).then((resp) => {
                 d3.draw(state, resp);
                 document.getElementById('visualization').scrollIntoView();
             }).catch(e => {
