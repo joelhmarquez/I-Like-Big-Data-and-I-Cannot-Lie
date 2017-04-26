@@ -5,8 +5,8 @@
 
 let d3charts = function(){
     this.draw = function (state, data) {
-        let dates = [];
-        let vals = [];
+        let dates = ['x'];
+        let vals = ['data1'];
         for(let key in data.history){
             dates.push(key);
             vals.push(data.history[key]);
@@ -20,8 +20,8 @@ let d3charts = function(){
             data: {
                 x: 'x',
                 columns: [
-                    ['x'] + dates,
-                    ['data1'] + vals
+                    dates,
+                    vals
                 ],
                 // type: 'spline',
                 colors: {
