@@ -97,8 +97,8 @@ let d3charts = function(){
             bindto: '#chart3',
             data: {
                 columns: [
-                    ['data1', state? data.percent.hate: null],
-                    ['data2', state? data.percent.nonhate : null]
+                    ['data1', state ? data.percent.nonhate: null],
+                    ['data2', state ? data.percent.hate : null]
                 ],
                 type: 'bar',
                 colors: {
@@ -125,7 +125,7 @@ let d3charts = function(){
                 }
             },
             title: {
-                text: state? state + 'hate vs Non-Hate': null,
+                text: state? state + ' hate vs Non-Hate count': null,
             },
             bar: {
                 width: {
