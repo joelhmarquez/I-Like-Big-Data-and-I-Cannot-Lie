@@ -70,8 +70,8 @@ let d3charts = function(){
             bindto: '#chart2',
             data: {
                 columns: [
-                    ['data1', data.percent.hate],
-                    ['data2', data.percent.nonHate]
+                    ['data1', data.percent.average],
+                    ['data2', 1-data.percent.average]
                 ],
                 colors: {
                     data1: '#9b0000',
@@ -92,7 +92,7 @@ let d3charts = function(){
             data: {
                 columns: [
                     ['data1', data.percent.average],
-                    ['data2', state? data.percent.hate : null]
+                    ['data2', state? data.percent.average : null]
                 ],
                 type: 'bar',
                 colors: {

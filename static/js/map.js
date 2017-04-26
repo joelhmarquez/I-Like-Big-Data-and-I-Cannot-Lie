@@ -13,18 +13,16 @@
 
     function init() {
         factory.getScores().then((resp) => {
-            // factory.getData('total').then((resp2) => {
-            //     d3.draw(null, resp2);
-            //     drawRegionsMap(resp);
-            //     document.getElementById('content').style.visibility='visible';
-            //     document.getElementById('loader').style.visibility='hidden';
-            // });
+            factory.getData('colorado').then((resp2) => {
+                d3.draw(null, resp2);
+                drawRegionsMap(resp);
+                document.getElementById('content').style.visibility='visible';
+                document.getElementById('loader').style.visibility='hidden';
+            });
 
-            d3.draw(null, factory.test);
-
-            drawRegionsMap(resp);
-            document.getElementById('content').style.visibility='visible';
-            document.getElementById('loader').style.visibility='hidden';
+            // drawRegionsMap(resp);
+            // document.getElementById('content').style.visibility='visible';
+            // document.getElementById('loader').style.visibility='hidden';
         });
     }
 
