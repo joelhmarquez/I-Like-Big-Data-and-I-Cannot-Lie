@@ -80,7 +80,8 @@ def stateDataQuery(statename):
 	session.execute("USE twittertweets;")
 	values = []
 	history = dict()
-	while (lowerEnd != epoch):
+	percent = dict()
+	while ((lowerEnd+daily) != epoch):
 		day = lowerEnd + daily
 		hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore=0 allow filtering;")[0]
 		hate = str(hate).split('=')
@@ -99,8 +100,29 @@ def stateDataQuery(statename):
 			values.append((0,0,0))
 			history[day] = 0
 		lowerEnd += daily
+		firstSet = values[0]
+	        
+        	percent['hate'] = firstSet[0]
+	        percent['nonhate'] = firstSet[1]
+        	percent['percent'] = firstSet[2]
+
+        hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore=0 allow filtering;")[0]
+        hate = str(hate).split('=')
+        hate = hate[1]
+        hate = hate.replace(")","")
+        neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(epoch)+" and sentimentscore>0 allow filtering;")[0]
+        neutral = str(neutral).split('=')
+        neutral = neutral[1]
+        neutral = neutral.replace(")","")
+        total = float(hate) + float(neutral)
+        if total != 0:
+                percentage = float(float(hate)/float(total)*100)
+                values.append((hate, int(total), percentage))
+                history[day] = percentage
+        else:
+	          values.append((0,0,0))
+                  history[day] = 0
 	firstSet = values[0]
-	percent = dict()
 	percent['hate'] = firstSet[0]
 	percent['nonhate'] = firstSet[1]
 	percent['percent'] = firstSet[2]
