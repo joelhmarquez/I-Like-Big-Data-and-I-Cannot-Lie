@@ -40,7 +40,7 @@ let d3charts = function(){
                     type: 'timeseries',
                     tick: {
                         values: ['2017-01-01', '2017-02-01', '2017-03-01']
-                        // format: '%m-%d'
+                        format: '%m-%d'
                     }
                 },
                 y: {
