@@ -52,8 +52,8 @@ let d3charts = function(){
             bindto: '#chart2',
             data: {
                 columns: [
-                    ['data1', 30],
-                    ['data2', 70]
+                    ['data1', data.percent.hate],
+                    ['data2', data.percent.nonHate]
                 ],
                 colors: {
                     data1: '#9b0000',
@@ -73,8 +73,8 @@ let d3charts = function(){
             bindto: '#chart3',
             data: {
                 columns: [
-                    ['data1', 30],
-                    ['data2', 50]
+                    ['data1', data.percent.average],
+                    ['data2', data.percent.hate]
                 ],
                 type: 'bar',
                 colors: {

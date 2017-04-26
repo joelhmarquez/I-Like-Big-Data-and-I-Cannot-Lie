@@ -13,7 +13,7 @@
 
     function init() {
         factory.getScores().then((resp) => {
-            d3.draw(null, null);
+            d3.draw(null, factory.test);
 
             drawRegionsMap(resp);
             document.getElementById('content').style.visibility='visible';

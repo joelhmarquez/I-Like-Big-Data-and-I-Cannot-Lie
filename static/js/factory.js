@@ -4,7 +4,6 @@
 let Factory = function () {
     let http = new HttpClient();
 
-
     this.selections = {
         0: 'Alabama', 1: 'Alaska', 2: 'Arizona', 3: 'Arkansas', 4: 'California',
         5: 'Colorado', 6: 'Connecticut', 7: 'Delaware', 8: 'Florida', 9: 'Georgia',
@@ -16,6 +15,14 @@ let Factory = function () {
         35: 'Oklahoma', 36: 'Oregon', 37: 'Pennsylvania', 38: 'Rhode Island', 39: 'South Carolina',
         40: 'South Dakota', 41: 'Tennessee', 42: 'Texas', 43: 'Utah', 44: 'Vermont',
         45: 'Virginia', 46: 'Washington', 47: 'West Virginia', 48: 'Wisconsin', 49: 'Wyoming'
+    };
+
+    this.test = {
+        'percent': {
+            'hate': 35,
+            'nonHate': 65,
+            'average': 2
+        }
     };
 
     this.getScores = () => {
