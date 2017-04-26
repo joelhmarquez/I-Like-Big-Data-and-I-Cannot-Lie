@@ -10,7 +10,9 @@ let d3charts = function(){
 
         if(data.history){
             for(let key in data.history){
-                dates.push(key);
+                let d = new Date(0);
+                d.setUTCSeconds(key);
+                dates.push(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay());
                 vals.push(data.history[key]);
             }
         }
