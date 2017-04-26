@@ -7,9 +7,12 @@ let d3charts = function(){
     this.draw = function (state, data) {
         let dates = ['x'];
         let vals = ['data1'];
-        for(let key in data.history){
-            dates.push(key);
-            vals.push(data.history[key]);
+
+        if(data.history){
+            for(let key in data.history){
+                dates.push(key);
+                vals.push(data.history[key]);
+            }
         }
 
         let chart1 = c3.generate({
