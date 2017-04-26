@@ -11,9 +11,9 @@ let d3charts = function(){
         if(data.history){
             for(let key in data.history){
                 if(data.history[key] != 0){
+                    console.log(new Date(parseFloat(key + '000')))
                     dates.push(new Date(parseFloat(key + '000')));
                     vals.push(data.history[key]);
-                    console.log(d)
                 }
             }
         }
