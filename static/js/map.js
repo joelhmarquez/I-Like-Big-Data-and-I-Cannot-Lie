@@ -37,7 +37,7 @@
 
         google.visualization.events.addListener(chart, 'select', () => {
             let state = factory.selections[chart.getSelection()[0].row];
-            d3.draw(state, null);
+            d3.draw(state, factory.test);
             // factory.getData(state).then((resp) => {
             //     d3.draw(state, resp);
             //     document.getElementById('visualization').scrollIntoView();
