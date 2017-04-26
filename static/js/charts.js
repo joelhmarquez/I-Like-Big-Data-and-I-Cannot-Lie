@@ -12,9 +12,6 @@ let d3charts = function(){
             vals.push(data.history[key]);
         }
 
-        console.log(dates)
-        console.log(vals)
-
         let chart1 = c3.generate({
             bindto: '#chart1',
             data: {
@@ -38,12 +35,12 @@ let d3charts = function(){
                         position: 'outer-middle'
                     },
                     padding: {
-                        left: 20,
+                        left: 40,
                         right: 40
                     },
                     type: 'timeseries',
                     tick: {
-                        count: 3,
+                        count: 2,
                         outer: false
                     }
                 },
