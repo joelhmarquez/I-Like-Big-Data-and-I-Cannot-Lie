@@ -11,7 +11,7 @@ let d3charts = function(){
         if(data.history){
             for(let key in data.history){
                 let d = new Date(0);
-                d.setUTCSeconds(key);
+                d.setUTCSeconds(parseInt(key));
                 dates.push(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay());
                 vals.push(data.history[key]);
             }
