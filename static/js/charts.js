@@ -36,12 +36,12 @@ let d3charts = function(){
                     },
                     padding: {
                         left: 40,
-                        right: 40
+                        right: 80
                     },
                     type: 'timeseries',
                     tick: {
                         count: 2,
-                        outer: false
+                        // outer: false
                     }
                 },
                 y: {
