@@ -77,7 +77,7 @@ let d3charts = function(){
             data: {
                 columns: [
                     ['data1', data.percent.percent],
-                    ['data2', 1-data.percent.percent]
+                    ['data2', 100-data.percent.percent]
                 ],
                 colors: {
                     data1: '#9b0000',
