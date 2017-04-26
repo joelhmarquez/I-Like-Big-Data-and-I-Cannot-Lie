@@ -12,8 +12,8 @@ let d3charts = function(){
             for(let key in data.history){
                 if(data.history[key] != 0){
                     let d = new Date(parseFloat(key));
-                    dates.push(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay());
-                    console.log(d.getFullYear() + '-' + d.getDate() + '-' + d.getDay())
+                    dates.push(d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate());
+                    console.log(d.getFullYear() + '-' + (d.getDate()+1) + '-' + d.getDate())
                     vals.push(data.history[key]);
                 }
             }
@@ -48,7 +48,7 @@ let d3charts = function(){
                     type: 'timeseries',
                     tick: {
                         count: 2,
-                        // format: '%d-%m'
+                        format: '%d-%m'
                         // outer: false
                     }
                 },
