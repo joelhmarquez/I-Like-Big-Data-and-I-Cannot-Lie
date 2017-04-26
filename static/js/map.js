@@ -13,18 +13,18 @@
 
     function init() {
         factory.getScores().then((resp) => {
-            factory.getData('total', factory.test).then((resp2) => {
-                d3.draw(null, resp2);
-                drawRegionsMap(resp);
-                document.getElementById('content').style.visibility='visible';
-                document.getElementById('loader').style.visibility='hidden';
-            }).catch(e => {
-                d3.draw(null, factory.test);
+            // factory.getData('total').then((resp2) => {
+            //     d3.draw(null, resp2);
+            //     drawRegionsMap(resp);
+            //     document.getElementById('content').style.visibility='visible';
+            //     document.getElementById('loader').style.visibility='hidden';
+            // });
 
-                drawRegionsMap(resp);
-                document.getElementById('content').style.visibility='visible';
-                document.getElementById('loader').style.visibility='hidden';
-            });
+            d3.draw(null, factory.test);
+
+            drawRegionsMap(resp);
+            document.getElementById('content').style.visibility='visible';
+            document.getElementById('loader').style.visibility='hidden';
         });
     }
 
@@ -44,11 +44,8 @@
 
         google.visualization.events.addListener(chart, 'select', () => {
             let state = factory.selections[chart.getSelection()[0].row];
-            factory.getData(state, factory.test).then((resp) => {
+            factory.getData(state).then((resp) => {
                 d3.draw(state, resp);
-                document.getElementById('visualization').scrollIntoView();
-            }).catch(e => {
-                d3.draw(state, factory.test);
                 document.getElementById('visualization').scrollIntoView();
             });
         });

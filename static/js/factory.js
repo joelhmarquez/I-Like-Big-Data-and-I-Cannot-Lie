@@ -43,16 +43,12 @@ let Factory = function () {
     });
     };
 
-    this.getData = (state, fallback) => {
+    this.getData = (state) => {
         return new Promise((resolve, reject) => {
             let url = "https://swishertest.site/api/data/" + state;
 
             http.get(url, function(resp) {
-                try{
-                    resolve(JSON.parse(resp))
-                } catch (err){
-                    return reject(fallback)
-                }
+                resolve(JSON.parse(resp))
             })
         });
     };
