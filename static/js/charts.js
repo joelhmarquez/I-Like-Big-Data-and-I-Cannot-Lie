@@ -53,7 +53,11 @@ let d3charts = function(){
             },
             title: {
                 text: state? state + ' hate over time': 'Total hate over time'
-            }
+            },
+            padding: {
+                right: 10,
+                left: 35
+            },
         });
 
         let chart2 = c3.generate({
