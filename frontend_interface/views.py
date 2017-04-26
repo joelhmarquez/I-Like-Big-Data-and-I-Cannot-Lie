@@ -29,6 +29,7 @@ def mapsData(request):
 	'''
 	returnValue = {}
 	returnValue['values'] = mapSetQuery()
+	response = HttpResponse()
 	'''
 	returnValue = {}
 	returnValue['values'] = resultSet
