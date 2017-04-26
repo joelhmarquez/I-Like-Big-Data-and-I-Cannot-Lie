@@ -13,6 +13,13 @@
 
     function init() {
         factory.getScores().then((resp) => {
+            // factory.getData('total').then((resp2) => {
+            //     d3.draw(null, resp2);
+            //     drawRegionsMap(resp);
+            //     document.getElementById('content').style.visibility='visible';
+            //     document.getElementById('loader').style.visibility='hidden';
+            // });
+
             d3.draw(null, factory.test);
 
             drawRegionsMap(resp);
@@ -37,12 +44,10 @@
 
         google.visualization.events.addListener(chart, 'select', () => {
             let state = factory.selections[chart.getSelection()[0].row];
-            d3.draw(state, factory.test);
-            document.getElementById('visualization').scrollIntoView();
-            // factory.getData(state).then((resp) => {
-            //     d3.draw(state, resp);
-            //     document.getElementById('visualization').scrollIntoView();
-            // });
+            factory.getData(state).then((resp) => {
+                d3.draw(state, resp);
+                document.getElementById('visualization').scrollIntoView();
+            });
         });
     }
 

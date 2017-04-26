@@ -43,13 +43,13 @@ let Factory = function () {
     });
     };
 
-    // this.getData = (state) => {
-    //     return new Promise((resolve, reject) => {
-    //         let url = "https://swishertest.site/api/data/" + state;
-    //
-    //         http.get(url, function(resp) {
-    //             resolve(JSON.parse(resp))
-    //         })
-    //     });
-    // };
+    this.getData = (state) => {
+        return new Promise((resolve, reject) => {
+            let url = "https://swishertest.site/api/data/" + state;
+
+            http.get(url, function(resp) {
+                resolve(JSON.parse(resp))
+            })
+        });
+    };
 };
