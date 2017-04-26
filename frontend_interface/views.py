@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import date
+
 from django.shortcuts import render
 
 from django.http import HttpResponse
@@ -10,8 +12,91 @@ from cassandra.cluster import Cluster
 from cassandra.query import *
 
 import json
-
+import time
+import re
 # Create your views here.
+
+def mapsData(request):
+
+	returnValue = {}
+	returnValue['values'] = mapSetQuery()
+	response = HttpResponse()
+	
+	response.write(json.dumps(returnValue))
+	return response
+
+def stateData(request, statename):
+	response = HttpResponse()
+	try:
+		statename = re.sub("[^a-zA-Z]", "", statename).lower()
+		response.write(stateDataQuery(statename))
+	except:
+		response.write("No available data for: %s" % statename)
+
+	return response
+
+
+class HomePageView(TemplateView):
+    template_name = 'ilbdaicl/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+class TeamPageView(TemplateView):
+    template_name = 'ilbdaicl/team.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TeamPageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+class TechnologiesPageView(TemplateView):
+    template_name = 'ilbdaicl/technologies.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TechnologiesPageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+class AnalyticsPageView(TemplateView):
+    template_name = 'ilbdaicl/analytics.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AnalyticsPageView, self).get_context_data(**kwargs)
+        #messages.info(self.request, 'hello http://example.com')
+        return context
+
+def stateDataQuery(statename):
+	cluster = Cluster(['172.31.3.194'], port=9042)
+	session = cluster.connect()
+	current = str(date.today())
+	epoch = int(time.mktime(time.strptime(current, '%Y-%m-%d')))*1000
+	week = 604800000
+	daily = 86400000
+	lowerEnd = epoch - week
+	state = statename
+	session.execute("USE twittertweets;")
+	values = []
+	while (lowerEnd != epoch):
+		day = lowerEnd + daily
+		hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore=0 allow filtering;")[0]
+		hate = str(hate).split('=')
+		hate = hate[1]
+		hate = hate.replace(")","")
+		neutral = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore>0 allow filtering;")[0]
+		neutral = str(neutral).split('=')
+		neutral = neutral[1]
+		neutral = neutral.replace(")","")
+		total = float(hate) + float(neutral)
+		if total != 0:
+			percentage = float(float(hate)/float(total)*100)
+			values.append((hate, int(total), percentage))
+		else:
+			values.append((0,0,0))
+		lowerEnd += daily
+	return values
 
 def mapSetQuery():
 	cluster = Cluster(['172.31.3.194'], port=9042)
@@ -58,50 +143,4 @@ def mapSetQuery():
 
 
 
-def mapsData(request):
 
-	returnValue = {}
-	returnValue['values'] = mapSetQuery()
-	response = HttpResponse()
-	
-	response.write(json.dumps(returnValue))
-	return response
-
-def stateData(request, statename):
-
-	response = HttpResponse()
-	response.write(statename)
-	return response
-
-
-class HomePageView(TemplateView):
-    template_name = 'ilbdaicl/home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(HomePageView, self).get_context_data(**kwargs)
-        #messages.info(self.request, 'hello http://example.com')
-        return context
-
-class TeamPageView(TemplateView):
-    template_name = 'ilbdaicl/team.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(TeamPageView, self).get_context_data(**kwargs)
-        #messages.info(self.request, 'hello http://example.com')
-        return context
-
-class TechnologiesPageView(TemplateView):
-    template_name = 'ilbdaicl/technologies.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(TechnologiesPageView, self).get_context_data(**kwargs)
-        #messages.info(self.request, 'hello http://example.com')
-        return context
-
-class AnalyticsPageView(TemplateView):
-    template_name = 'ilbdaicl/analytics.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(AnalyticsPageView, self).get_context_data(**kwargs)
-        #messages.info(self.request, 'hello http://example.com')
-        return context
