@@ -10,7 +10,8 @@ let d3charts = function(){
 
         if(data.history){
             for(let key in data.history){
-                dates.push(parseFloat(key));
+                let d = new Date(0);
+                dates.push(d.setUTCSeconds(parseFloat(key)));
                 vals.push(data.history[key]);
             }
         }
