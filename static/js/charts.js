@@ -51,7 +51,7 @@ let d3charts = function(){
                     type: 'timeseries',
                     tick: {
                         count: 2,
-                        format: '%m-%d'
+                        format: '%d-%m'
                         // outer: false
                     }
                 },
