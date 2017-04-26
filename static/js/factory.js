@@ -48,7 +48,7 @@ let Factory = function () {
             let url = "https://swishertest.site/api/data/" + state;
 
             http.get(url, function(resp) {
-                resolve(JSON.parse(resp))
+                resolve(JSON.parse(resp)['results'])
             })
         });
     };
