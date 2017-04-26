@@ -19,12 +19,12 @@ let Factory = function () {
 
     this.test = {
         'history': {
-            '2017-01-14': 5,
-            '2017-02-15': 20,
-            '2017-03-7': 39,
-            '2017-01-11': 78,
-            '2017-02-10': 83,
-            '2017-03-19': 100
+            '1492646400': 5,
+            '1492732800': 20,
+            '1492819200': 39,
+            '1492905600': 78,
+            '1492992000': 83,
+            '1493078400': 100
         },
         'percent': {
             'hate': 35,
@@ -43,13 +43,13 @@ let Factory = function () {
     });
     };
 
-    // this.getData = (state) => {
-    //     return new Promise((resolve, reject) => {
-    //         let url = "https://swishertest.site/api/data/" + state;
-    //
-    //         http.get(url, function(resp) {
-    //             resolve(JSON.parse(resp))
-    //         })
-    //     });
-    // };
+    this.getData = (state) => {
+        return new Promise((resolve, reject) => {
+            let url = "https://swishertest.site/api/data/" + state;
+
+            http.get(url, function(resp) {
+                resolve(JSON.parse(resp))
+            })
+        });
+    };
 };

@@ -10,7 +10,7 @@ let d3charts = function(){
 
         if(data.history){
             for(let key in data.history){
-                dates.push(key);
+                dates.push(parseFloat(key));
                 vals.push(data.history[key]);
             }
         }
@@ -29,7 +29,8 @@ let d3charts = function(){
                 },
                 names: {
                     data1: 'Hate (%)'
-                }
+                },
+                xFormat: '%Y-%m-%d %H:%M:%S'
             },
             axis: {
                 x: {
@@ -44,6 +45,7 @@ let d3charts = function(){
                     type: 'timeseries',
                     tick: {
                         count: 2,
+                        format: '%m-%d'
                         // outer: false
                     }
                 },
