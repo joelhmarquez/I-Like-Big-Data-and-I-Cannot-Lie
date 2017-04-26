@@ -98,7 +98,7 @@ let d3charts = function(){
             data: {
                 columns: [
                     ['data1', state? data.percent.hate: null],
-                    ['data2', state? data.percent.nonHate : null]
+                    ['data2', state? data.percent.nonhate : null]
                 ],
                 type: 'bar',
                 colors: {
