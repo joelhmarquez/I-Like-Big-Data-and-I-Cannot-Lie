@@ -61,7 +61,7 @@ let d3charts = function(){
                 text: state? state + ' hate over time': 'Total hate over time'
             },
             padding: {
-                right: 10,
+                right: 20,
                 left: 35
             },
         });
