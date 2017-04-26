@@ -75,7 +75,7 @@ def stateDataQuery(statename):
 	epoch = int(time.mktime(time.strptime(current, '%Y-%m-%d')))*1000
 	week = 604800000
 	daily = 86400000
-	week = daily*4
+	week = daily*7
 	lowerEnd = epoch - week
 	state = statename
 	session.execute("USE twittertweets;")
