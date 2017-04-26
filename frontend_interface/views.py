@@ -102,10 +102,10 @@ def stateDataQuery(statename):
 	firstSet = values[0]
 	percent = dict()
 	percent['hate'] = firstSet[0]
-	percent['non'] = firstSet[1]
+	percent['nonhate'] = firstSet[1]
 	percent['percent'] = firstSet[2]
 
-	finalValue = { statename: { "history": history, "percent": percent}}
+	finalValue = { "results": { "history": history, "percent": percent}}
 	return finalValue
 
 def mapSetQuery():
