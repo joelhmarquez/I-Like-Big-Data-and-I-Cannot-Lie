@@ -5,7 +5,9 @@
 
 let d3charts = function(){
     this.draw = function (state, data) {
-        console.log(data.history.keys());
+        for(let key in data.history){
+            console.log(key)
+        }
 
         let chart1 = c3.generate({
             bindto: '#chart1',
