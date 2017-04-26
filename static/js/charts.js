@@ -5,9 +5,15 @@
 
 let d3charts = function(){
     this.draw = function (state, data) {
+        let dates = [];
+        let vals = [];
         for(let key in data.history){
-            console.log(key)
+            dates.push(key);
+            vals.push(data.history[key]);
         }
+
+        console.log(dates)
+        console.log(vals)
 
         let chart1 = c3.generate({
             bindto: '#chart1',
