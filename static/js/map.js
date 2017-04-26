@@ -18,7 +18,7 @@
                 drawRegionsMap(resp);
                 document.getElementById('content').style.visibility='visible';
                 document.getElementById('loader').style.visibility='hidden';
-            }, (err) => {
+            }).catch(e => {
                 d3.draw(null, factory.test);
 
                 drawRegionsMap(resp);
@@ -47,8 +47,8 @@
             factory.getData(state).then((resp) => {
                 d3.draw(state, resp);
                 document.getElementById('visualization').scrollIntoView();
-            }, (err) => {
-                d3.draw(null, factory.test);
+            }).catch(e => {
+                d3.draw(state, factory.test);
                 document.getElementById('visualization').scrollIntoView();
             });
         });
