@@ -29,7 +29,7 @@ def stateData(request, statename):
 	response = HttpResponse()
 	try:
 		statename = re.sub("[^a-zA-Z]", "", statename).lower()
-		response.write(stateDataQuery(statename))
+		response.write(json.dumps(stateDataQuery(statename)))
 	except:
 		response.write("No available data for: %s" % statename)
 
@@ -79,6 +79,7 @@ def stateDataQuery(statename):
 	state = statename
 	session.execute("USE twittertweets;")
 	values = []
+	history = dict()
 	while (lowerEnd != epoch):
 		day = lowerEnd + daily
 		hate = session.execute("select count(*) from "+state+" where time>="+str(lowerEnd)+" and time<="+str(day)+" and sentimentscore=0 allow filtering;")[0]
@@ -93,10 +94,19 @@ def stateDataQuery(statename):
 		if total != 0:
 			percentage = float(float(hate)/float(total)*100)
 			values.append((hate, int(total), percentage))
+			history[day] = percentage
 		else:
 			values.append((0,0,0))
+			history[day] = 0
 		lowerEnd += daily
-	return values
+	firstSet = values[0]
+	percent = dict()
+	percent['hate'] = firstSet[0]
+	percent['nonhate'] = firstSet[1]
+	percent['percent'] = firstSet[2]
+
+	finalValue = { "results": { "history": history, "percent": percent}}
+	return finalValue
 
 def mapSetQuery():
 	cluster = Cluster(['172.31.3.194'], port=9042)
