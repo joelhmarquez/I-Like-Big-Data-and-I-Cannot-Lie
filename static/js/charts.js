@@ -37,10 +37,14 @@ let d3charts = function(){
                         text: 'Date',
                         position: 'outer-middle'
                     },
+                    padding: {
+                        left: 20,
+                        right: 40
+                    },
                     type: 'timeseries',
                     tick: {
-                        values: ['2017-01-01', '2017-02-01', '2017-03-01'],
-                        format: '%m-%d'
+                        count: 3,
+                        outer: false
                     }
                 },
                 y: {
