@@ -10,12 +10,10 @@ let d3charts = function(){
 
         if(data.history){
             for(let key in data.history){
-                if(data.history[key] != 0){
-                    let d = new Date(parseFloat(key));
-                    dates.push(d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate());
-                    console.log(d.getFullYear() + '-' + (d.getDate()+1) + '-' + d.getDate())
-                    vals.push(data.history[key]);
-                }
+                let d = new Date(parseFloat(key));
+                dates.push(d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate());
+                console.log(d.getFullYear() + '-' + (d.getDate()+1) + '-' + d.getDate())
+                vals.push(data.history[key]);
             }
         }
 
