@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^tech$', TechnologiesPageView.as_view(), name='tech'),
 	url(r'^analytics$', AnalyticsPageView.as_view(), name='analytics'),
 	url(r'api/map$', views.mapsData, name='mapsData'),
+	url(r'^api/data/(?P<statename>\w{0,50})$', views.stateData, name='stateData'),
 ]
