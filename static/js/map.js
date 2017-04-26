@@ -13,18 +13,18 @@
 
     function init() {
         factory.getScores().then((resp) => {
-            // factory.getData('total').then((resp2) => {
-            //     d3.draw(null, resp2);
-            //     drawRegionsMap(resp);
-            //     document.getElementById('content').style.visibility='visible';
-            //     document.getElementById('loader').style.visibility='hidden';
-            // });
+            factory.getData('total').then((resp2) => {
+                d3.draw(null, resp2);
+                drawRegionsMap(resp);
+                document.getElementById('content').style.visibility='visible';
+                document.getElementById('loader').style.visibility='hidden';
+            }, (err) => {
+                d3.draw(null, factory.test);
 
-            d3.draw(null, factory.test);
-
-            drawRegionsMap(resp);
-            document.getElementById('content').style.visibility='visible';
-            document.getElementById('loader').style.visibility='hidden';
+                drawRegionsMap(resp);
+                document.getElementById('content').style.visibility='visible';
+                document.getElementById('loader').style.visibility='hidden';
+            });
         });
     }
 
@@ -46,6 +46,9 @@
             let state = factory.selections[chart.getSelection()[0].row];
             factory.getData(state).then((resp) => {
                 d3.draw(state, resp);
+                document.getElementById('visualization').scrollIntoView();
+            }, (err) => {
+                d3.draw(null, factory.test);
                 document.getElementById('visualization').scrollIntoView();
             });
         });
