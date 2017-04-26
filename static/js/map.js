@@ -32,7 +32,7 @@
         let options = {
             region: "US",
             resolution: "provinces",
-            colorAxis: {colors: ['#1ab2ff', '#9b0000'], values: [0, 100]},
+            colorAxis: {colors: ['#1ab2ff', '#9b0000']},
             defaultColor: '#606060',
             backgroundColor: '#F8F8F8'
         };
