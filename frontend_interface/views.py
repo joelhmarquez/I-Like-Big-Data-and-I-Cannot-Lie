@@ -27,15 +27,16 @@ def mapsData(request):
 		result = stateValue['results']['percent']['percent']
 		resultSet.append([stateToCode[state],result])
 	'''
-	returnValue = {}
-	returnValue['values'] = mapSetQuery()
+	#returnValue = {}
+	#returnValue['values'] = mapSetQuery()
 	response = HttpResponse()
 	'''
 	returnValue = {}
 	returnValue['values'] = resultSet
 	response = HttpResponse()
 	'''
-	response.write(json.dumps(returnValue))
+	#response.write(json.dumps(returnValue))
+	response.write(json.dumps(mapSetQuery()))
 	return response
 
 def stateData(request, statename):
@@ -199,7 +200,7 @@ def mapSetQuery():
 	'WestVirginia',
 	'Wyoming'
 	}
-
+	stateToCode = {"alabama":"Alabama","alaska":"Alaska","arizona":"Arizona","arkansas":"Arkansas","california":"California","colorado":"Colorado","connecticut":"Connecticut","delaware":"Delaware","florida":"Florida","georgia":"Georgia","hawaii":"Hawaii","idaho":"Idaho","illinois":"Illinois","indiana":"Indiana","iowa":"Iowa","kansas":"Kansas","kentucky":"Kentucky","louisiana":"Louisiana","maine":"Maine","maryland":"Maryland","massachusetts":"Massachusetts","michigan":"Michigan","minnesota":"Minnesota","mississippi":"Mississippi","missouri":"Missouri","montana":"Montana","nebraska":"Nebraska","nevada":"Nevada","newhampshire":"New Hampshire","newjersey":"New Jersey","newmexico":"New Mexico","newyork":"New York","northcarolina":"North Carolina","northdakota":"North Dakota","ohio":"Ohio","oklahoma":"Oklahoma","oregon":"Oregon","pennsylvania":"Pennsylvania","rhodeisland":"Rhode Island","southcarolina":"South Carolina","southdakota":"South Dakota","tennessee":"Tennessee","texas":"Texas","utah":"Utah","vermont":"Vermont","virginia":"Virginia","washington":"Washington","westvirginia":"West Virginia","wisconsin":"Wisconsin","wyoming":"Wyoming"}
 	session.execute("USE twittertweets;")
 	count = 0
 	returnValues = dict()
@@ -218,7 +219,8 @@ def mapSetQuery():
 	        hate = hate.replace(")","")
 	        total = int(neutral) + int(hate)
 	        percentage = float((float(hate)/float(total))*100)
-	        totals.append([item,percentage])
+	        totals.append([stateToCode[item.lower()],percentage])
 	        #print(item+" Hate Percentage: {}% Total: {}".format(float((float(hate)/float(total))*100),total))
 	returnValues['values'] = totals
 	cluster.shutdown()
+	return returnValues
