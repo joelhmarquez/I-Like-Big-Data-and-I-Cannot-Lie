@@ -100,8 +100,8 @@ let d3charts = function(){
                     data2: '#9b0000'
                 },
                 names: {
-                    data1: state ? 'Number of Hate Tweets': null,
-                    data2: state ? 'Number of Non-Hate Tweets': null
+                    data1: state ? 'Number of Non-Hate Tweets': null,
+                    data2: state ? 'Number of Hate Tweets': null
                 },
                 axis: {
                     y: {
